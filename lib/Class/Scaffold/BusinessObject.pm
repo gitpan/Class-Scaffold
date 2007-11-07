@@ -7,7 +7,7 @@ use warnings;
 use Error::Hierarchy::Util 'assert_defined';
 
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 
 use base qw(

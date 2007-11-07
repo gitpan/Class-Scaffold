@@ -11,6 +11,7 @@ requires 'Class::Value';
 requires 'Data::Comparable';
 requires 'Data::Inherited';
 requires 'Data::Miscellany';
+requires 'Data::Storage' => '0.02';
 requires 'DBI';
 requires 'Error::Hierarchy';
 requires 'String::FlexMatch';

@@ -11,7 +11,7 @@ use YAML::Active qw/Load Load_inactive/;
 use Test::Builder;
 
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 
 use base 'Class::Scaffold::App::Test';

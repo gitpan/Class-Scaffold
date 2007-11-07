@@ -8,7 +8,7 @@ use Error::Hierarchy::Util 'load_class';
 use Class::Scaffold::Factory::Type;
 
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 
 use base 'Class::Scaffold::Base';

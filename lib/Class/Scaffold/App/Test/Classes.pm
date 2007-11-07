@@ -7,7 +7,7 @@ use Test::More;
 use Test::CompanionClasses::Engine;
 
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 
 use base 'Class::Scaffold::App::Test';

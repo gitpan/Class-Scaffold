@@ -13,7 +13,7 @@ use Class::Scaffold::Environment::Configurator::Local;
 use Error::Hierarchy::Internal::CustomMessage;
 
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 
 use base 'Class::Scaffold::Accessor';

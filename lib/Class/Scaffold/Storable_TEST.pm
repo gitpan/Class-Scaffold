@@ -8,7 +8,7 @@ use Error::Hierarchy::Test 'throws2_ok';
 use Test::More;
 
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 
 use base 'Class::Scaffold::Test';

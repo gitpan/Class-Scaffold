@@ -28,6 +28,7 @@ requires:
   Data::Comparable: 0
   Data::Inherited: 0
   Data::Miscellany: 0
+  Data::Storage: 0.02
   Error::Hierarchy: 0
   String::FlexMatch: 0
   Term::Shell::Enhanced: 0
@@ -38,4 +39,4 @@ requires:
   YAML: 0
   YAML::Active: 0
   perl: 5.6.0
-version: 0.01
+version: 0.02

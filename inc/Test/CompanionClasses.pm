@@ -10,7 +10,7 @@ use Getopt::Long;
 use base 'Exporter';
 
 
-our $VERSION = '0.02';
+our $VERSION = '0.04';
 
 
 our @EXPORT = ('run_tests');
@@ -32,5 +32,7 @@ sub run_tests {
 
 __END__
 
-#line 108
+{% USE p = PodGenerated %}
+
+#line 78
 

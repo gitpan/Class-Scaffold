@@ -1,8 +1,36 @@
-Revision history for Perl extension Class::Scaffold.
-
-0.02  Mi Nov  7 18:51:08 CET 2007
-    - Makefile.PL now requires Data::Storage 0.02
-
-0.01  Mi Nov  7 13:14:02 CET 2007
-    - original version
-
+---
+global:
+  name: Class-Scaffold
+releases:
+  - author: 'Marcel Gruenauer <marcel@cpan.org>'
+    changes:
+      - Converted Changes file to YAML style
+      - '.shipit: added Twitter step'
+      - 'Makefile.PL: added auto_install(); fixed process_templates()'
+      - 'lib/*: template now uses standard_pod instead of standard_pod_zid'
+      - 'bin/*: removed standard pod section'
+      - updated MANIFEST
+      - updated t/perlcriticrc
+      - 'Makefile.PL: now requires Test::CompanionClasses 0.03; earlier versions had a bug in make_real_object()'
+      - 'Makefile.PL: require v0.03 of Class::Accessor::FactoryTyped'
+      - moved generated documentation of interited methods to after documentation of this class' methods so the manpage is more readable
+      - Class::Scaffold::Environment's STORAGE_CLASS_NAME_HASH now also defines STG_NULL_DBI => 'Data::Storage::DBI' for testing
+      - added t/storage_conf.t
+      - updated MANIFEST
+      - updated MANIFEST
+    date: 2008-02-25T16:28:59Z
+    tags:
+      - NEWFEATURE
+    version: 0.03
+  - author: 'Marcel Gruenauer <marcel@cpan.org>'
+    changes:
+      - Makefile.PL now requires Data::Storage 0.02
+    date: 2007-11-07T18:51:08+01:00
+    tags: []
+    version: 0.02
+  - author: 'Marcel Gruenauer <marcel@cpan.org>'
+    changes:
+      - original version
+    date: 2007-11-07T13:14:02+01:00
+    tags: []
+    version: 0.01

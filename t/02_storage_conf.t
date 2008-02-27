@@ -41,6 +41,8 @@ sub app_init {
 
 sub app_code {
     my $self = shift;
+    $ENV{CF_CONF} = 'local';
+
     $self->SUPER::app_code(@_);
 
     my $storage = $self->delegate->core_storage;

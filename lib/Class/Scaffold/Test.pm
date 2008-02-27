@@ -8,7 +8,7 @@ use Test::More;
 use Class::Value;  # see run() below
 
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 
 # Also inherit from Class::Scaffold::Base so we get a delegate; put it first
@@ -221,7 +221,7 @@ please use the C<classscaffold> tag.
 
 =head1 VERSION 
                    
-This document describes version 0.03 of L<Class::Scaffold::Test>.
+This document describes version 0.04 of L<Class::Scaffold::Test>.
 
 =head1 BUGS AND LIMITATIONS
 

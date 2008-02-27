@@ -13,7 +13,7 @@ use Class::Scaffold::Environment::Configurator::Local;
 use Error::Hierarchy::Internal::CustomMessage;
 
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 
 use base 'Class::Scaffold::Accessor';
@@ -458,7 +458,7 @@ please use the C<classscaffold> tag.
 
 =head1 VERSION 
                    
-This document describes version 0.03 of L<Class::Scaffold::Environment::Configurator>.
+This document describes version 0.04 of L<Class::Scaffold::Environment::Configurator>.
 
 =head1 BUGS AND LIMITATIONS
 

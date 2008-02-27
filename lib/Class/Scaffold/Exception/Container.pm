@@ -8,7 +8,7 @@ use strict;
 use warnings;
 
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 
 # It's ok to inherit from Class::Scaffold::Storable as well; new() will be
@@ -215,7 +215,7 @@ please use the C<classscaffold> tag.
 
 =head1 VERSION 
                    
-This document describes version 0.03 of L<Class::Scaffold::Exception::Container>.
+This document describes version 0.04 of L<Class::Scaffold::Exception::Container>.
 
 =head1 BUGS AND LIMITATIONS
 

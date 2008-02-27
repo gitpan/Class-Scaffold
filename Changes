@@ -4,6 +4,16 @@ global:
 releases:
   - author: 'Marcel Gruenauer <marcel@cpan.org>'
     changes:
+      - set the version to 0.04
+      - fixed t/storage_conf.t to use 'local' CF_CONF
+      - mv t/storage_conf.t t/02_storage_conf.t
+      - added + t/02_storage_conf.t
+      - deleted t/storage_conf.t
+    date: 2008-02-27T14:03:27Z
+    tags: []
+    version: 0.04
+  - author: 'Marcel Gruenauer <marcel@cpan.org>'
+    changes:
       - Converted Changes file to YAML style
       - '.shipit: added Twitter step'
       - 'Makefile.PL: added auto_install(); fixed process_templates()'

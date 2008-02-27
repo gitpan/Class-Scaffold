@@ -7,7 +7,7 @@ use Class::Scaffold::Environment::Configurator;
 use Error ':try';
 
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 
 use base 'Class::Scaffold::Storable';
@@ -305,7 +305,7 @@ please use the C<classscaffold> tag.
 
 =head1 VERSION 
                    
-This document describes version 0.03 of L<Class::Scaffold::App>.
+This document describes version 0.04 of L<Class::Scaffold::App>.
 
 =head1 BUGS AND LIMITATIONS
 

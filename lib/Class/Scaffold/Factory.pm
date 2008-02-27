@@ -6,7 +6,7 @@ use Error;   # to get $Error::Depth;
 use Error::Hierarchy::Util qw/assert_defined load_class/;
 
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 
 use base 'Class::Scaffold::Storable';
@@ -226,7 +226,7 @@ please use the C<classscaffold> tag.
 
 =head1 VERSION 
                    
-This document describes version 0.03 of L<Class::Scaffold::Factory>.
+This document describes version 0.04 of L<Class::Scaffold::Factory>.
 
 =head1 BUGS AND LIMITATIONS
 

@@ -20,6 +20,7 @@ use base 'Class::Scaffold::App::Test';
 
 sub app_init {
     my $self = shift;
+    $ENV{CF_CONF} = 'local';
     $self->SUPER::app_init(@_);
 
     our %local_conf = (

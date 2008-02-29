@@ -7,7 +7,7 @@ use warnings;
 use Error::Hierarchy::Util 'assert_class';
 
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 
 use base 'Exporter';
@@ -70,7 +70,7 @@ please use the C<classscaffold> tag.
 
 =head1 VERSION 
                    
-This document describes version 0.04 of L<Class::Scaffold::Exception::Util>.
+This document describes version 0.05 of L<Class::Scaffold::Exception::Util>.
 
 =head1 BUGS AND LIMITATIONS
 

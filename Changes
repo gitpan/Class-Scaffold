@@ -4,6 +4,13 @@ global:
 releases:
   - author: 'Marcel Gruenauer <marcel@cpan.org>'
     changes:
+      - set the version to 0.05
+      - "re-fixed t/02_storage_conf.t - did the last fix get lost somewhere? Anyway, set ENV{CF_CONF}='local' to appease the configurator"
+    date: 2008-02-29T11:31:10Z
+    tags: []
+    version: 0.05
+  - author: 'Marcel Gruenauer <marcel@cpan.org>'
+    changes:
       - set the version to 0.04
       - fixed t/storage_conf.t to use 'local' CF_CONF
       - mv t/storage_conf.t t/02_storage_conf.t

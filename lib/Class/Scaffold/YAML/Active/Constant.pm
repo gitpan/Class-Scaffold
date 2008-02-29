@@ -6,7 +6,7 @@ use warnings;
 use strict;
 
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 
 use base 'Class::Scaffold::YAML::Active';
@@ -191,7 +191,7 @@ please use the C<classscaffold> tag.
 
 =head1 VERSION 
                    
-This document describes version 0.04 of L<Class::Scaffold::YAML::Active::Constant>.
+This document describes version 0.05 of L<Class::Scaffold::YAML::Active::Constant>.
 
 =head1 BUGS AND LIMITATIONS
 

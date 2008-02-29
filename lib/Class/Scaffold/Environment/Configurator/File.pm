@@ -7,7 +7,7 @@ use strict;
 use File::Basename;
 
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 
 use base 'Class::Scaffold::Environment::Configurator::Base';
@@ -315,7 +315,7 @@ please use the C<classscaffold> tag.
 
 =head1 VERSION 
                    
-This document describes version 0.04 of L<Class::Scaffold::Environment::Configurator::File>.
+This document describes version 0.05 of L<Class::Scaffold::Environment::Configurator::File>.
 
 =head1 BUGS AND LIMITATIONS
 

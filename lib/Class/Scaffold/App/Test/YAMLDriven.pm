@@ -11,7 +11,7 @@ use YAML::Active qw/Load Load_inactive/;
 use Test::Builder;
 
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 
 use base 'Class::Scaffold::App::Test';
@@ -573,7 +573,7 @@ please use the C<classscaffold> tag.
 
 =head1 VERSION 
                    
-This document describes version 0.04 of L<Class::Scaffold::App::Test::YAMLDriven>.
+This document describes version 0.05 of L<Class::Scaffold::App::Test::YAMLDriven>.
 
 =head1 BUGS AND LIMITATIONS
 

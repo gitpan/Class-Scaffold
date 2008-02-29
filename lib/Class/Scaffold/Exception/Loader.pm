@@ -6,7 +6,7 @@ use warnings;
 use strict;
 
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 
 use base qw(Error::Hierarchy::Internal Class::Scaffold::Accessor);
@@ -206,7 +206,7 @@ please use the C<classscaffold> tag.
 
 =head1 VERSION 
                    
-This document describes version 0.04 of L<Class::Scaffold::Exception::Loader>.
+This document describes version 0.05 of L<Class::Scaffold::Exception::Loader>.
 
 =head1 BUGS AND LIMITATIONS
 

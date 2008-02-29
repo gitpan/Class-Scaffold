@@ -8,7 +8,7 @@ use Error::Hierarchy::Test 'throws2_ok';
 use Test::More;
 
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 
 use base 'Class::Scaffold::Test';
@@ -215,7 +215,7 @@ please use the C<classscaffold> tag.
 
 =head1 VERSION 
                    
-This document describes version 0.04 of L<Class::Scaffold::Base_TEST>.
+This document describes version 0.05 of L<Class::Scaffold::Base_TEST>.
 
 =head1 BUGS AND LIMITATIONS
 

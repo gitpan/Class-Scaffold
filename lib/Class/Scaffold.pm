@@ -7,7 +7,7 @@ use warnings;
 # section.
 
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 
 1;
@@ -44,7 +44,7 @@ please use the C<classscaffold> tag.
 
 =head1 VERSION 
                    
-This document describes version 0.04 of L<Class::Scaffold>.
+This document describes version 0.05 of L<Class::Scaffold>.
 
 =head1 BUGS AND LIMITATIONS
 

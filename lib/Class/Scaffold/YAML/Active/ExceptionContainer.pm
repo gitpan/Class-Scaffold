@@ -7,7 +7,7 @@ use strict;
 use YAML::Active qw/assert_arrayref array_activate/;
 
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 
 use base 'Class::Scaffold::YAML::Active';
@@ -204,7 +204,7 @@ please use the C<classscaffold> tag.
 
 =head1 VERSION 
                    
-This document describes version 0.04 of L<Class::Scaffold::YAML::Active::ExceptionContainer>.
+This document describes version 0.05 of L<Class::Scaffold::YAML::Active::ExceptionContainer>.
 
 =head1 BUGS AND LIMITATIONS
 

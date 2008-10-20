@@ -6,22 +6,16 @@ use warnings;
 use strict;
 
 
-our $VERSION = '0.05';
 
+our $VERSION = '0.06';
+
+
+# Class::Scaffold::Base inherits from this mixin, so we shouldn't use()
+# Class::Scaffold::Environment, which inherits from
+# Class::Scaffold::Base, creating redefined() warnings. So we just
+# require() it here.
 
 sub delegate {
-    # Class::Scaffold::Base inherits from this mixin, so we shouldn't use()
-    # Class::Scaffold::Environment, which inherits from
-    # Class::Scaffold::Base, creating redefined() warnings. So we just
-    # require() it here.
-
-    my $self = shift;
-    if (@_) {
-        throw Error::Hierarchy::Internal::CustomMessage(
-            custom_message => 'delegate() is read-only'
-        );
-    }
-
     require Class::Scaffold::Environment;
     Class::Scaffold::Environment->getenv
 }

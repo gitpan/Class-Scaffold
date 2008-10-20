@@ -11,7 +11,7 @@ use YAML::Active qw/Load Load_inactive/;
 use Test::Builder;
 
 
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 
 
 use base 'Class::Scaffold::App::Test';
@@ -88,18 +88,15 @@ sub read_test_defs {
             =~ s/%%PID%%/sprintf("%06d", $$)/ge;
         $tests_yaml =~ s/%%CNT%%/sprintf("%03d", ++(our $cnt))/ge;
 
-        # First, load without activation. This is to give the test def a
-        # chance to say that it wants to be skipped. If we used YAML::Active's
-        # Load() directly, it would activate the yaml file, which might be
-        # potentially invalid if it is a work in progress.
-        #
-        # Then we load again using YAML::Active only if the test doesn't want
-        # to be skipped.
+        # Check whether the test wants to be skipped. Quick check with a regex
+        # because YAML::Load is expensive. Only then decide whether to use
+        # Load() or Load_inactive(). To use Load() on a test that wants to be
+        # skipped would be a bad idea as it might be work in progress; it will
+        # be skipped for a reason.
 
-        my $inactive_yaml = Load_inactive($tests_yaml);
-        if ($self->should_skip($inactive_yaml)) {
+        if ($tests_yaml =~ /^skip:\s*1/m) {
             print "#    Test wants to be skipped, no activation\n";
-            $self->test_def($name => $inactive_yaml);
+            $self->test_def($name => Load_inactive($tests_yaml));
         } else {
             # support for value classes
             local $Class::Value::SkipChecks = 1;
@@ -109,15 +106,9 @@ sub read_test_defs {
 }
 
 
-sub should_skip {
-    my ($self, $test_def) = @_;
-    $test_def->{skip};
-}
-
-
 sub should_skip_testname {
     my ($self, $testname) = @_;
-    $self->should_skip($self->test_def($testname));
+    $self->test_def($testname)->{skip};
 }
 
 
@@ -136,7 +127,7 @@ sub make_plan {
             # If a test def specifies that it wants to be skipped, just plan
             # one test - a pass.
 
-            if ($self->should_skip($self->test_def($name))) {
+            if ($self->should_skip_testname($name)) {
                 $plan++;
             } else {
                 $plan += $self->plan_test($self->test_def($name), $run);

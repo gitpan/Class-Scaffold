@@ -10,7 +10,7 @@ use Time::HiRes 'gettimeofday';
 
 
 
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 
 
 use base 'Class::Scaffold::Base';
@@ -81,14 +81,18 @@ sub handle {
 # called like printf
 sub __log {
     my ($self, $level, $format, @args) = @_;
-    $format = "$format";
+    $self = Class::Scaffold::Log->instance unless ref $self;
+
+    # Check for max_level before stringifying $format so we don't
+    # unnecessarily trigger a potentially lazy string.
+
+    return if $level > $self->max_level;
 
     # in case someone passes us an object that needs to be stringified so we
-    # can compare it with 'ne' further down (e.g., an exception object).
+    # can compare it with 'ne' further down (e.g., an exception object):
 
-    $self = Class::Scaffold::Log->instance unless ref $self;
+    $format = "$format";
     return unless defined $format and $format ne '';
-    return if $level > $self->max_level;
 
     # make sure there's exactly one newline at the end
     1 while chomp $format;

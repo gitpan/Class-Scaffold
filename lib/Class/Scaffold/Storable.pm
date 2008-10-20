@@ -8,7 +8,7 @@ use strict;
 use warnings;
 
 
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 
 
 use base 'Class::Scaffold::Base';
@@ -66,18 +66,31 @@ use constant HYGIENIC => ( qw/storage storage_type/ );
 
 sub MUNGE_CONSTRUCTOR_ARGS {
     my ($self, @args) = @_;
-    @args = $self->SUPER::MUNGE_CONSTRUCTOR_ARGS(@args);
 
-    my $object_type = $self->get_my_factory_type;
-    if (defined $object_type) {
-        my $storage_type = $self->delegate->get_storage_type_for($object_type);
+    # The superclass does nothing, so we'll skip this for performance reasons
+    # - this method is called very often.
 
-        $self->delegate->$storage_type->lazy_connect;
-        # storage will be disconnected in Class::Scaffold::App->app_finish
+    # @args = $self->SUPER::MUNGE_CONSTRUCTOR_ARGS(@args);
 
-        push @args => (storage_type => $storage_type);
+    our %cache;
+    my $extra_args;
+    unless ($extra_args = $cache{ ref $self }) {
+        my $object_type = $self->get_my_factory_type;
+        if (defined $object_type) {
+            my $storage_type =
+                $self->delegate->get_storage_type_for($object_type);
+
+            $self->delegate->$storage_type->lazy_connect;
+            # storage will be disconnected in Class::Scaffold::App->app_finish
+
+            $extra_args = $cache{ ref $self } =
+                [ storage_type => $storage_type ];
+        } else {
+            $extra_args = $cache{ ref $self } = [];
+        }
     }
-    @args;
+
+    (@args, @$extra_args);
 }
 
 

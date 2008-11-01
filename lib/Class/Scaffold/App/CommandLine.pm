@@ -9,7 +9,7 @@ use Getopt::Long;
 Getopt::Long::Configure('no_ignore_case');
 
 
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 
 
 use base 'Class::Scaffold::App';

@@ -38,9 +38,10 @@ requires:
   Test::More: 0
   Text::Table: 0
   Time::HiRes: 0
+  Vim::Tag: 0
   YAML: 0
   YAML::Active: 0
   perl: 5.6.0
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.06
+version: 0.07

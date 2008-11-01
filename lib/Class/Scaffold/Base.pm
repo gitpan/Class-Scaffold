@@ -11,7 +11,7 @@ use Data::Miscellany 'set_push';
 use Error::Hierarchy::Util 'load_class';
 
 
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 
 
 use base qw/

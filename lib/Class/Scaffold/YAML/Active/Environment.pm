@@ -8,7 +8,7 @@ use Class::Scaffold::Environment;
 use YAML::Active qw/assert_hashref hash_activate yaml_NULL/;
 
 
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 
 
 use base 'Class::Scaffold::YAML::Active';

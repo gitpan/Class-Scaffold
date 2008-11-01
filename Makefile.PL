@@ -22,6 +22,7 @@ requires 'Test::Differences';
 requires 'Test::More';
 requires 'Text::Table';
 requires 'Time::HiRes';
+requires 'Vim::Tag';
 requires 'YAML';
 requires 'YAML::Active';
 

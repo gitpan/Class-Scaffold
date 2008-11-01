@@ -7,7 +7,7 @@ use Class::Scaffold::Environment::Configurator;
 use Error ':try';
 
 
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 
 
 use base 'Class::Scaffold::Storable';

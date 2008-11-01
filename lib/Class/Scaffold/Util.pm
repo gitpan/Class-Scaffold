@@ -7,9 +7,10 @@ package Class::Scaffold::Util;
 use warnings;
 use strict;
 use Error::Hierarchy::Util 'assert_hashref';
+use Vim::Tag 'make_tag';
 
 
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 
 
 use base 'Exporter';
@@ -68,10 +69,10 @@ sub const ($@) {
     no strict 'refs';
 
     my $every_hash_name = "${name}_HASH";
-    $::PTAGS && printf "%s\t%s\t%s\n", $every_hash_name, $filename, $line;
+    make_tag $every_hash_name, $filename, $line;
     *{"${pkg}::${every_hash_name}"} = sub { %args };
 
-    $::PTAGS && printf "%s\t%s\t%s\n", $name, $filename, $line;
+    make_tag $name, $filename, $line;
     *{"${pkg}::${name}"} = sub {
         my $self = shift;
         my $hash = $self->every_hash($every_hash_name);
@@ -89,14 +90,14 @@ sub const ($@) {
 
     # have a sub that returns how many of those items there are
     my $count_name = "${name}_COUNT";
-    $::PTAGS && printf "%s\t%s\t%s\n", $count_name, $filename, $line;
+    make_tag $count_name, $filename, $line;
     *{"${pkg}::${count_name}"} = sub {
         my $self = shift;
         scalar(@{ $self->$name });
     };
 
     while (my ($key, $value) = each %args) {
-        $::PTAGS && printf "%s\t%s\t%s\n", $key, $filename, $line;
+        make_tag $key, $filename, $line;
         *{"${pkg}::${key}"} = sub { $value };
     }
 }

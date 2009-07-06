@@ -11,7 +11,7 @@ use YAML::Active qw/Load Load_inactive/;
 use Test::Builder;
 
 
-our $VERSION = '0.07';
+our $VERSION = '0.08';
 
 
 use base 'Class::Scaffold::App::Test';
@@ -201,49 +201,49 @@ Class::Scaffold::App::Test::YAMLDriven - large-scale OOP application support
 
 =over 4
 
-=item clear_current_test_def
+=item C<clear_current_test_def>
 
     $obj->clear_current_test_def;
 
 Clears the value.
 
-=item clear_expect
+=item C<clear_expect>
 
     $obj->clear_expect;
 
 Clears the value.
 
-=item clear_run_num
+=item C<clear_run_num>
 
     $obj->clear_run_num;
 
 Clears the value.
 
-=item clear_runs
+=item C<clear_runs>
 
     $obj->clear_runs;
 
 Clears the value.
 
-=item clear_test_def
+=item C<clear_test_def>
 
     $obj->clear_test_def;
 
 Deletes all keys and values from the hash.
 
-=item clear_testdir
+=item C<clear_testdir>
 
     $obj->clear_testdir;
 
 Clears the value.
 
-=item clear_testname
+=item C<clear_testname>
 
     $obj->clear_testname;
 
 Clears the value.
 
-=item current_test_def
+=item C<current_test_def>
 
     my $value = $obj->current_test_def;
     $obj->current_test_def($value);
@@ -251,26 +251,26 @@ Clears the value.
 A basic getter/setter method. If called without an argument, it returns the
 value. If called with a single argument, it sets the value.
 
-=item current_test_def_clear
+=item C<current_test_def_clear>
 
     $obj->current_test_def_clear;
 
 Clears the value.
 
-=item delete_test_def
+=item C<delete_test_def>
 
     $obj->delete_test_def(@keys);
 
 Takes a list of keys and deletes those keys from the hash.
 
-=item exists_test_def
+=item C<exists_test_def>
 
     if ($obj->exists_test_def($key)) { ... }
 
 Takes a key and returns a true value if the key exists in the hash, and a
 false value otherwise.
 
-=item expect
+=item C<expect>
 
     my $value = $obj->expect;
     $obj->expect($value);
@@ -278,19 +278,19 @@ false value otherwise.
 A basic getter/setter method. If called without an argument, it returns the
 value. If called with a single argument, it sets the value.
 
-=item expect_clear
+=item C<expect_clear>
 
     $obj->expect_clear;
 
 Clears the value.
 
-=item keys_test_def
+=item C<keys_test_def>
 
     my @keys = $obj->keys_test_def;
 
 Returns a list of all hash keys in no particular order.
 
-=item run_num
+=item C<run_num>
 
     my $value = $obj->run_num;
     $obj->run_num($value);
@@ -298,13 +298,13 @@ Returns a list of all hash keys in no particular order.
 A basic getter/setter method. If called without an argument, it returns the
 value. If called with a single argument, it sets the value.
 
-=item run_num_clear
+=item C<run_num_clear>
 
     $obj->run_num_clear;
 
 Clears the value.
 
-=item runs
+=item C<runs>
 
     my $value = $obj->runs;
     $obj->runs($value);
@@ -312,13 +312,13 @@ Clears the value.
 A basic getter/setter method. If called without an argument, it returns the
 value. If called with a single argument, it sets the value.
 
-=item runs_clear
+=item C<runs_clear>
 
     $obj->runs_clear;
 
 Clears the value.
 
-=item test_def
+=item C<test_def>
 
     my %hash     = $obj->test_def;
     my $hash_ref = $obj->test_def;
@@ -343,38 +343,38 @@ If called with exactly one hash reference, it updates the hash with the given
 key/value pairs, then returns the hash in list context, or a reference to the
 hash in scalar context.
 
-=item test_def_clear
+=item C<test_def_clear>
 
     $obj->test_def_clear;
 
 Deletes all keys and values from the hash.
 
-=item test_def_delete
+=item C<test_def_delete>
 
     $obj->test_def_delete(@keys);
 
 Takes a list of keys and deletes those keys from the hash.
 
-=item test_def_exists
+=item C<test_def_exists>
 
     if ($obj->test_def_exists($key)) { ... }
 
 Takes a key and returns a true value if the key exists in the hash, and a
 false value otherwise.
 
-=item test_def_keys
+=item C<test_def_keys>
 
     my @keys = $obj->test_def_keys;
 
 Returns a list of all hash keys in no particular order.
 
-=item test_def_values
+=item C<test_def_values>
 
     my @values = $obj->test_def_values;
 
 Returns a list of all hash values in no particular order.
 
-=item testdir
+=item C<testdir>
 
     my $value = $obj->testdir;
     $obj->testdir($value);
@@ -382,13 +382,13 @@ Returns a list of all hash values in no particular order.
 A basic getter/setter method. If called without an argument, it returns the
 value. If called with a single argument, it sets the value.
 
-=item testdir_clear
+=item C<testdir_clear>
 
     $obj->testdir_clear;
 
 Clears the value.
 
-=item testname
+=item C<testname>
 
     my $value = $obj->testname;
     $obj->testname($value);
@@ -396,13 +396,13 @@ Clears the value.
 A basic getter/setter method. If called without an argument, it returns the
 value. If called with a single argument, it sets the value.
 
-=item testname_clear
+=item C<testname_clear>
 
     $obj->testname_clear;
 
 Clears the value.
 
-=item values_test_def
+=item C<values_test_def>
 
     my @values = $obj->values_test_def;
 
@@ -559,7 +559,7 @@ The superclass L<Tie::StdHash> defines these methods and functions:
 
 =head1 TAGS
 
-If you talk about this module in blogs, on del.icio.us or anywhere else,
+If you talk about this module in blogs, on L<delicious.com> or anywhere else,
 please use the C<classscaffold> tag.
 
 =head1 VERSION 

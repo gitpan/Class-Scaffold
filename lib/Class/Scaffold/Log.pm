@@ -10,7 +10,7 @@ use Time::HiRes 'gettimeofday';
 
 
 
-our $VERSION = '0.07';
+our $VERSION = '0.08';
 
 
 use base 'Class::Scaffold::Base';
@@ -174,7 +174,7 @@ Class::Scaffold::Log - large-scale OOP application support
 
 =over 4
 
-=item instance
+=item C<instance>
 
     my $obj = Class::Scaffold::Log->instance;
     my $obj = Class::Scaffold::Log->instance(%args);
@@ -187,37 +187,37 @@ method of the same name with the given value. If called with a single hash
 reference, it is dereferenced and its key/value pairs are set as described
 before.
 
-=item clear_filename
+=item C<clear_filename>
 
     $obj->clear_filename;
 
 Clears the value.
 
-=item clear_max_level
+=item C<clear_max_level>
 
     $obj->clear_max_level;
 
 Clears the value.
 
-=item clear_output
+=item C<clear_output>
 
     $obj->clear_output;
 
 Clears the value.
 
-=item clear_pid
+=item C<clear_pid>
 
     $obj->clear_pid;
 
 Clears the boolean value by setting it to 0.
 
-=item clear_timestamp
+=item C<clear_timestamp>
 
     $obj->clear_timestamp;
 
 Clears the boolean value by setting it to 0.
 
-=item filename
+=item C<filename>
 
     my $value = $obj->filename;
     $obj->filename($value);
@@ -225,13 +225,13 @@ Clears the boolean value by setting it to 0.
 A basic getter/setter method. If called without an argument, it returns the
 value. If called with a single argument, it sets the value.
 
-=item filename_clear
+=item C<filename_clear>
 
     $obj->filename_clear;
 
 Clears the value.
 
-=item max_level
+=item C<max_level>
 
     my $value = $obj->max_level;
     $obj->max_level($value);
@@ -239,13 +239,13 @@ Clears the value.
 A basic getter/setter method. If called without an argument, it returns the
 value. If called with a single argument, it sets the value.
 
-=item max_level_clear
+=item C<max_level_clear>
 
     $obj->max_level_clear;
 
 Clears the value.
 
-=item output
+=item C<output>
 
     my $value = $obj->output;
     $obj->output($value);
@@ -253,13 +253,13 @@ Clears the value.
 A getter/setter method. If called without an argument, it returns the
 value. If called with a single argument, it appends to the current value.
 
-=item output_clear
+=item C<output_clear>
 
     $obj->output_clear;
 
 Clears the value.
 
-=item pid
+=item C<pid>
 
     $obj->pid($value);
     my $value = $obj->pid;
@@ -268,31 +268,31 @@ If called without an argument, returns the boolean value (0 or 1). If called
 with an argument, it normalizes it to the boolean value. That is, the values
 0, undef and the empty string become 0; everything else becomes 1.
 
-=item pid_clear
+=item C<pid_clear>
 
     $obj->pid_clear;
 
 Clears the boolean value by setting it to 0.
 
-=item pid_set
+=item C<pid_set>
 
     $obj->pid_set;
 
 Sets the boolean value to 1.
 
-=item set_pid
+=item C<set_pid>
 
     $obj->set_pid;
 
 Sets the boolean value to 1.
 
-=item set_timestamp
+=item C<set_timestamp>
 
     $obj->set_timestamp;
 
 Sets the boolean value to 1.
 
-=item timestamp
+=item C<timestamp>
 
     $obj->timestamp($value);
     my $value = $obj->timestamp;
@@ -301,13 +301,13 @@ If called without an argument, returns the boolean value (0 or 1). If called
 with an argument, it normalizes it to the boolean value. That is, the values
 0, undef and the empty string become 0; everything else becomes 1.
 
-=item timestamp_clear
+=item C<timestamp_clear>
 
     $obj->timestamp_clear;
 
 Clears the boolean value by setting it to 0.
 
-=item timestamp_set
+=item C<timestamp_set>
 
     $obj->timestamp_set;
 
@@ -442,7 +442,7 @@ The superclass L<Tie::StdHash> defines these methods and functions:
 
 =head1 TAGS
 
-If you talk about this module in blogs, on del.icio.us or anywhere else,
+If you talk about this module in blogs, on L<delicious.com> or anywhere else,
 please use the C<classscaffold> tag.
 
 =head1 VERSION 

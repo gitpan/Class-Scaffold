@@ -8,7 +8,7 @@ use strict;
 use warnings;
 
 
-our $VERSION = '0.07';
+our $VERSION = '0.08';
 
 
 use base 'Class::Scaffold::Base';
@@ -142,38 +142,38 @@ Class::Scaffold::Storable - large-scale OOP application support
 
 =over 4
 
-=item clear_storage_info
+=item C<clear_storage_info>
 
     $obj->clear_storage_info;
 
 Deletes all keys and values from the hash.
 
-=item clear_storage_type
+=item C<clear_storage_type>
 
     $obj->clear_storage_type;
 
 Clears the value.
 
-=item delete_storage_info
+=item C<delete_storage_info>
 
     $obj->delete_storage_info(@keys);
 
 Takes a list of keys and deletes those keys from the hash.
 
-=item exists_storage_info
+=item C<exists_storage_info>
 
     if ($obj->exists_storage_info($key)) { ... }
 
 Takes a key and returns a true value if the key exists in the hash, and a
 false value otherwise.
 
-=item keys_storage_info
+=item C<keys_storage_info>
 
     my @keys = $obj->keys_storage_info;
 
 Returns a list of all hash keys in no particular order.
 
-=item storage_info
+=item C<storage_info>
 
     my %hash     = $obj->storage_info;
     my $hash_ref = $obj->storage_info;
@@ -198,38 +198,38 @@ If called with exactly one hash reference, it updates the hash with the given
 key/value pairs, then returns the hash in list context, or a reference to the
 hash in scalar context.
 
-=item storage_info_clear
+=item C<storage_info_clear>
 
     $obj->storage_info_clear;
 
 Deletes all keys and values from the hash.
 
-=item storage_info_delete
+=item C<storage_info_delete>
 
     $obj->storage_info_delete(@keys);
 
 Takes a list of keys and deletes those keys from the hash.
 
-=item storage_info_exists
+=item C<storage_info_exists>
 
     if ($obj->storage_info_exists($key)) { ... }
 
 Takes a key and returns a true value if the key exists in the hash, and a
 false value otherwise.
 
-=item storage_info_keys
+=item C<storage_info_keys>
 
     my @keys = $obj->storage_info_keys;
 
 Returns a list of all hash keys in no particular order.
 
-=item storage_info_values
+=item C<storage_info_values>
 
     my @values = $obj->storage_info_values;
 
 Returns a list of all hash values in no particular order.
 
-=item storage_type
+=item C<storage_type>
 
     my $value = $obj->storage_type;
     $obj->storage_type($value);
@@ -237,13 +237,13 @@ Returns a list of all hash values in no particular order.
 A basic getter/setter method. If called without an argument, it returns the
 value. If called with a single argument, it sets the value.
 
-=item storage_type_clear
+=item C<storage_type_clear>
 
     $obj->storage_type_clear;
 
 Clears the value.
 
-=item values_storage_info
+=item C<values_storage_info>
 
     my @values = $obj->values_storage_info;
 
@@ -377,7 +377,7 @@ The superclass L<Tie::StdHash> defines these methods and functions:
 
 =head1 TAGS
 
-If you talk about this module in blogs, on del.icio.us or anywhere else,
+If you talk about this module in blogs, on L<delicious.com> or anywhere else,
 please use the C<classscaffold> tag.
 
 =head1 VERSION 

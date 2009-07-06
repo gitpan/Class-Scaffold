@@ -7,7 +7,7 @@ use warnings;
 use Error::Hierarchy::Util 'assert_defined';
 
 
-our $VERSION = '0.07';
+our $VERSION = '0.08';
 
 
 use base qw(
@@ -93,13 +93,13 @@ Class::Scaffold::BusinessObject - large-scale OOP application support
 
 =over 4
 
-=item clear_key_name
+=item C<clear_key_name>
 
     $obj->clear_key_name;
 
 Clears the value.
 
-=item key_name
+=item C<key_name>
 
     my $value = $obj->key_name;
     $obj->key_name($value);
@@ -107,7 +107,7 @@ Clears the value.
 A basic getter/setter method. If called without an argument, it returns the
 value. If called with a single argument, it sets the value.
 
-=item key_name_clear
+=item C<key_name_clear>
 
     $obj->key_name_clear;
 

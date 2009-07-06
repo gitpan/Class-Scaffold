@@ -1,13 +1,15 @@
 ---
-abstract: 'large-scale OOP application support'
+abstract: 'Large-scale OOP application support'
 author:
   - 'Florian Helmberger C<< <fh@univie.ac.at> >>'
 build_requires:
+  ExtUtils::MakeMaker: 6.42
   Test::CompanionClasses: 0.03
-  Test::Compile: 0
   Test::More: 0.70
+configure_requires:
+  ExtUtils::MakeMaker: 6.42
 distribution_type: module
-generated_by: 'Module::Install version 0.76'
+generated_by: 'Module::Install version 0.91'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -17,9 +19,7 @@ no_index:
   directory:
     - inc
     - t
-recommends:
-  Test::Pod: 0
-  Test::Pod::Coverage: 0
+    - xt
 requires:
   Class::Accessor::Complex: 0
   Class::Accessor::Constructor: 0
@@ -44,4 +44,4 @@ requires:
   perl: 5.6.0
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.07
+version: 0.08

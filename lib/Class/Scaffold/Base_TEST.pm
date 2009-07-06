@@ -8,7 +8,7 @@ use Error::Hierarchy::Test 'throws2_ok';
 use Test::More;
 
 
-our $VERSION = '0.07';
+our $VERSION = '0.08';
 
 
 use base 'Class::Scaffold::Test';
@@ -64,7 +64,9 @@ Class::Scaffold::Base_TEST - large-scale OOP application support
 
 =over 4
 
+=item C<run>
 
+Runs the actual tests specific to this class.
 
 =back
 

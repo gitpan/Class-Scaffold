@@ -7,7 +7,7 @@ use Test::More;
 use Test::CompanionClasses::Engine;
 
 
-our $VERSION = '0.07';
+our $VERSION = '0.08';
 
 
 use base 'Class::Scaffold::App::Test';
@@ -19,7 +19,7 @@ __PACKAGE__
 
 
 use constant DEFAULTS => (
-    lib => "$Bin/../lib",   # two levels, we live in t/embedded/
+    lib => "$Bin/../lib",
 );
 
 use constant GETOPT => ('exact');
@@ -58,25 +58,25 @@ Class::Scaffold::App::Test::Classes - large-scale OOP application support
 
 =over 4
 
-=item clear_inherited
+=item C<clear_inherited>
 
     $obj->clear_inherited;
 
 Deletes all elements from the array.
 
-=item clear_lib
+=item C<clear_lib>
 
     $obj->clear_lib;
 
 Clears the value.
 
-=item count_inherited
+=item C<count_inherited>
 
     my $count = $obj->count_inherited;
 
 Returns the number of elements in the array.
 
-=item index_inherited
+=item C<index_inherited>
 
     my $element   = $obj->index_inherited(3);
     my @elements  = $obj->index_inherited(@indices);
@@ -87,7 +87,7 @@ If only one index is given, the corresponding array element is returned. If
 several indices are given, the result is returned as an array in list context
 or as an array reference in scalar context.
 
-=item inherited
+=item C<inherited>
 
     my @values    = $obj->inherited;
     my $array_ref = $obj->inherited;
@@ -99,19 +99,19 @@ array in list context, or a reference to the array in scalar context. If
 called with arguments, it expands array references found therein and sets the
 values.
 
-=item inherited_clear
+=item C<inherited_clear>
 
     $obj->inherited_clear;
 
 Deletes all elements from the array.
 
-=item inherited_count
+=item C<inherited_count>
 
     my $count = $obj->inherited_count;
 
 Returns the number of elements in the array.
 
-=item inherited_index
+=item C<inherited_index>
 
     my $element   = $obj->inherited_index(3);
     my @elements  = $obj->inherited_index(@indices);
@@ -122,19 +122,19 @@ If only one index is given, the corresponding array element is returned. If
 several indices are given, the result is returned as an array in list context
 or as an array reference in scalar context.
 
-=item inherited_pop
+=item C<inherited_pop>
 
     my $value = $obj->inherited_pop;
 
 Pops the last element off the array, returning it.
 
-=item inherited_push
+=item C<inherited_push>
 
     $obj->inherited_push(@values);
 
 Pushes elements onto the end of the array.
 
-=item inherited_set
+=item C<inherited_set>
 
     $obj->inherited_set(1 => $x, 5 => $y);
 
@@ -142,13 +142,13 @@ Takes a list of index/value pairs and for each pair it sets the array element
 at the indicated index to the indicated value. Returns the number of elements
 that have been set.
 
-=item inherited_shift
+=item C<inherited_shift>
 
     my $value = $obj->inherited_shift;
 
 Shifts the first element off the array, returning it.
 
-=item inherited_splice
+=item C<inherited_splice>
 
     $obj->inherited_splice(2, 1, $x, $y);
     $obj->inherited_splice(-1);
@@ -168,13 +168,13 @@ offset and the length are omitted, removes everything. If the offset is past
 the end of the array, it issues a warning, and splices at the end of the
 array.
 
-=item inherited_unshift
+=item C<inherited_unshift>
 
     $obj->inherited_unshift(@values);
 
 Unshifts elements onto the beginning of the array.
 
-=item lib
+=item C<lib>
 
     my $value = $obj->lib;
     $obj->lib($value);
@@ -182,25 +182,25 @@ Unshifts elements onto the beginning of the array.
 A basic getter/setter method. If called without an argument, it returns the
 value. If called with a single argument, it sets the value.
 
-=item lib_clear
+=item C<lib_clear>
 
     $obj->lib_clear;
 
 Clears the value.
 
-=item pop_inherited
+=item C<pop_inherited>
 
     my $value = $obj->pop_inherited;
 
 Pops the last element off the array, returning it.
 
-=item push_inherited
+=item C<push_inherited>
 
     $obj->push_inherited(@values);
 
 Pushes elements onto the end of the array.
 
-=item set_inherited
+=item C<set_inherited>
 
     $obj->set_inherited(1 => $x, 5 => $y);
 
@@ -208,13 +208,13 @@ Takes a list of index/value pairs and for each pair it sets the array element
 at the indicated index to the indicated value. Returns the number of elements
 that have been set.
 
-=item shift_inherited
+=item C<shift_inherited>
 
     my $value = $obj->shift_inherited;
 
 Shifts the first element off the array, returning it.
 
-=item splice_inherited
+=item C<splice_inherited>
 
     $obj->splice_inherited(2, 1, $x, $y);
     $obj->splice_inherited(-1);
@@ -234,7 +234,7 @@ offset and the length are omitted, removes everything. If the offset is past
 the end of the array, it issues a warning, and splices at the end of the
 array.
 
-=item unshift_inherited
+=item C<unshift_inherited>
 
     $obj->unshift_inherited(@values);
 

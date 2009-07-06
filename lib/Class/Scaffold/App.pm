@@ -7,7 +7,7 @@ use Class::Scaffold::Environment::Configurator;
 use Error ':try';
 
 
-our $VERSION = '0.07';
+our $VERSION = '0.08';
 
 
 use base 'Class::Scaffold::Storable';
@@ -113,29 +113,61 @@ sub run_app {
 
 __END__
 
-
-
 =head1 NAME
 
 Class::Scaffold::App - large-scale OOP application support
 
 =head1 SYNOPSIS
 
-    Class::Scaffold::App->new;
+    use base 'Class::Scaffold::App';
+
+    sub app_code {
+        my $self = shift;
+        $self->SUPER::app_code(@_);
+        # ... application-specific tasks ...
+    }
+
+    main->new->run_app;
 
 =head1 DESCRIPTION
+
+This is the base class for applications built with the L<Class::Scaffold>
+framework, be they command-line applications or server-based applications.
+Applications will subclass this class, implement their specific tasks and call
+C<run_app()>.
 
 =head1 METHODS
 
 =over 4
 
-=item clear_initialized
+=item run_app
+
+This is the main method that application subclasses should invoke. It calls
+the other methods described here. If there is an exception, it catches and
+logs it.
+
+=item app_code
+
+Called by C<run_app()> right at the beginning. Override this method in your
+application-specific subclass to do any initialization your application needs.
+
+=item app_finish
+
+Called by C<run_app()> within a C<try>/C<catch>-block. Override this method to
+do the actual application-specific work.
+
+=item app_init
+
+Called by C<run_app()> right before the end. Override this method to do any
+cleanup your application needs.
+
+=item C<clear_initialized>
 
     $obj->clear_initialized;
 
 Clears the boolean value by setting it to 0.
 
-=item initialized
+=item C<initialized>
 
     $obj->initialized($value);
     my $value = $obj->initialized;
@@ -144,19 +176,19 @@ If called without an argument, returns the boolean value (0 or 1). If called
 with an argument, it normalizes it to the boolean value. That is, the values
 0, undef and the empty string become 0; everything else becomes 1.
 
-=item initialized_clear
+=item C<initialized_clear>
 
     $obj->initialized_clear;
 
 Clears the boolean value by setting it to 0.
 
-=item initialized_set
+=item C<initialized_set>
 
     $obj->initialized_set;
 
 Sets the boolean value to 1.
 
-=item set_initialized
+=item C<set_initialized>
 
     $obj->set_initialized;
 

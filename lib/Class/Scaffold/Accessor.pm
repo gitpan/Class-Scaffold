@@ -6,7 +6,7 @@ use Error::Hierarchy::Util 'assert_read_only';
 use Class::Scaffold::Factory::Type;
 
 
-our $VERSION = '0.07';
+our $VERSION = '0.08';
 
 
 use base qw(
@@ -78,7 +78,36 @@ Class::Scaffold::Accessor - large-scale OOP application support
 
 =over 4
 
+=item mk_framework_object_accessors
 
+Makes factory-typed accessors - see L<Class::Accessor::FactoryTyped> - and
+uses L<Class::Scaffold::Factory::Type> as the factory class.
+
+=item mk_framework_object_array_accessors
+
+Makes factory-typed array accessors - see L<Class::Accessor::FactoryTyped> -
+and uses L<Class::Scaffold::Factory::Type> as the factory class.
+
+=item mk_readonly_accessors
+
+Takes an array of strings as its argument. For each string it creates methods
+as described below, where C<*> denotes the slot name.
+
+=over 4
+
+=item C<*>
+
+This method can retrieve a value from its slot. If it receives an argument, it
+throws an exception. If called without a value, the method retrieves the value
+from the slot. There is a method to set the value - see below -, but
+separating the setter and getter methods ensures that it can't be set, for
+example, using the class' constructor.
+
+=item C<*_set>, C<set_*>
+
+Sets the slot to the given value and returns it.
+
+=back
 
 =back
 

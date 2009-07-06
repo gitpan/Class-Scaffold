@@ -7,7 +7,7 @@ use strict;
 
 
 
-our $VERSION = '0.07';
+our $VERSION = '0.08';
 
 
 # Class::Scaffold::Base inherits from this mixin, so we shouldn't use()
@@ -50,7 +50,7 @@ Class::Scaffold::Delegate::Mixin inherits from .
 
 =head1 TAGS
 
-If you talk about this module in blogs, on del.icio.us or anywhere else,
+If you talk about this module in blogs, on L<delicious.com> or anywhere else,
 please use the C<classscaffold> tag.
 
 =head1 VERSION 

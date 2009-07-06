@@ -6,7 +6,7 @@ use strict;
 use warnings;
 
 
-our $VERSION = '0.07';
+our $VERSION = '0.08';
 
 
 use base 'Class::Scaffold::Base';
@@ -65,19 +65,19 @@ Class::Scaffold::Context - large-scale OOP application support
 
 =over 4
 
-=item clear_execution
+=item C<clear_execution>
 
     $obj->clear_execution;
 
 Clears the value.
 
-=item clear_job
+=item C<clear_job>
 
     $obj->clear_job;
 
 Clears the value.
 
-=item execution
+=item C<execution>
 
     my $value = $obj->execution;
     $obj->execution($value);
@@ -85,13 +85,13 @@ Clears the value.
 A basic getter/setter method. If called without an argument, it returns the
 value. If called with a single argument, it sets the value.
 
-=item execution_clear
+=item C<execution_clear>
 
     $obj->execution_clear;
 
 Clears the value.
 
-=item job
+=item C<job>
 
     my $value = $obj->job;
     $obj->job($value);
@@ -99,7 +99,7 @@ Clears the value.
 A basic getter/setter method. If called without an argument, it returns the
 value. If called with a single argument, it sets the value.
 
-=item job_clear
+=item C<job_clear>
 
     $obj->job_clear;
 

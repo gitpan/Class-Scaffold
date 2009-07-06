@@ -3,23 +3,18 @@ package Class::Scaffold;
 use strict;
 use warnings;
 
-# Marker package so sub-distros can use it in their Build.PL's 'requires'
+# Marker package so sub-distros can use it in their Makefile.PL's 'requires'
 # section.
 
-
-our $VERSION = '0.07';
-
+our $VERSION = '0.08';
 
 1;
 
-
 __END__
-
-
 
 =head1 NAME
 
-Class::Scaffold - large-scale OOP application support
+Class::Scaffold - Large-scale OOP application support
 
 =head1 SYNOPSIS
 
@@ -34,8 +29,6 @@ Class::Scaffold - large-scale OOP application support
 
 
 =back
-
-Class::Scaffold inherits from .
 
 =head1 BUGS AND LIMITATIONS
 
@@ -73,6 +66,4 @@ Copyright 2004-2008 by the authors.
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
 
-
 =cut
-

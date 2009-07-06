@@ -6,7 +6,7 @@ use warnings;
 use strict;
 
 
-our $VERSION = '0.07';
+our $VERSION = '0.08';
 
 
 use base qw(Error::Hierarchy::Internal Class::Scaffold::Accessor);
@@ -42,7 +42,7 @@ Class::Scaffold::Exception::Loader - large-scale OOP application support
 
 =over 4
 
-=item class
+=item C<class>
 
     my $value = $obj->class;
     $obj->class($value);
@@ -50,31 +50,31 @@ Class::Scaffold::Exception::Loader - large-scale OOP application support
 A basic getter/setter method. If called without an argument, it returns the
 value. If called with a single argument, it sets the value.
 
-=item class_clear
+=item C<class_clear>
 
     $obj->class_clear;
 
 Clears the value.
 
-=item clear_class
+=item C<clear_class>
 
     $obj->clear_class;
 
 Clears the value.
 
-=item clear_message
+=item C<clear_message>
 
     $obj->clear_message;
 
 Clears the value.
 
-=item clear_origin
+=item C<clear_origin>
 
     $obj->clear_origin;
 
 Clears the value.
 
-=item message
+=item C<message>
 
     my $value = $obj->message;
     $obj->message($value);
@@ -82,13 +82,13 @@ Clears the value.
 A basic getter/setter method. If called without an argument, it returns the
 value. If called with a single argument, it sets the value.
 
-=item message_clear
+=item C<message_clear>
 
     $obj->message_clear;
 
 Clears the value.
 
-=item origin
+=item C<origin>
 
     my $value = $obj->origin;
     $obj->origin($value);
@@ -96,7 +96,7 @@ Clears the value.
 A basic getter/setter method. If called without an argument, it returns the
 value. If called with a single argument, it sets the value.
 
-=item origin_clear
+=item C<origin_clear>
 
     $obj->origin_clear;
 

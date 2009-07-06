@@ -9,7 +9,7 @@ use Getopt::Long;
 Getopt::Long::Configure('no_ignore_case');
 
 
-our $VERSION = '0.07';
+our $VERSION = '0.08';
 
 
 use base 'Class::Scaffold::App';
@@ -83,32 +83,32 @@ Class::Scaffold::App::CommandLine - large-scale OOP application support
 
 =over 4
 
-=item clear_opt
+=item C<clear_opt>
 
     $obj->clear_opt;
 
 Deletes all keys and values from the hash.
 
-=item delete_opt
+=item C<delete_opt>
 
     $obj->delete_opt(@keys);
 
 Takes a list of keys and deletes those keys from the hash.
 
-=item exists_opt
+=item C<exists_opt>
 
     if ($obj->exists_opt($key)) { ... }
 
 Takes a key and returns a true value if the key exists in the hash, and a
 false value otherwise.
 
-=item keys_opt
+=item C<keys_opt>
 
     my @keys = $obj->keys_opt;
 
 Returns a list of all hash keys in no particular order.
 
-=item opt
+=item C<opt>
 
     my %hash     = $obj->opt;
     my $hash_ref = $obj->opt;
@@ -133,38 +133,38 @@ If called with exactly one hash reference, it updates the hash with the given
 key/value pairs, then returns the hash in list context, or a reference to the
 hash in scalar context.
 
-=item opt_clear
+=item C<opt_clear>
 
     $obj->opt_clear;
 
 Deletes all keys and values from the hash.
 
-=item opt_delete
+=item C<opt_delete>
 
     $obj->opt_delete(@keys);
 
 Takes a list of keys and deletes those keys from the hash.
 
-=item opt_exists
+=item C<opt_exists>
 
     if ($obj->opt_exists($key)) { ... }
 
 Takes a key and returns a true value if the key exists in the hash, and a
 false value otherwise.
 
-=item opt_keys
+=item C<opt_keys>
 
     my @keys = $obj->opt_keys;
 
 Returns a list of all hash keys in no particular order.
 
-=item opt_values
+=item C<opt_values>
 
     my @values = $obj->opt_values;
 
 Returns a list of all hash values in no particular order.
 
-=item values_opt
+=item C<values_opt>
 
     my @values = $obj->values_opt;
 

@@ -13,7 +13,7 @@ use Class::Scaffold::Environment::Configurator::Local;
 use Error::Hierarchy::Internal::CustomMessage;
 
 
-our $VERSION = '0.07';
+our $VERSION = '0.08';
 
 
 use base 'Class::Scaffold::Accessor';
@@ -127,7 +127,7 @@ Class::Scaffold::Environment::Configurator - large-scale OOP application support
 
 =over 4
 
-=item instance
+=item C<instance>
 
     my $obj = Class::Scaffold::Environment::Configurator->instance;
     my $obj = Class::Scaffold::Environment::Configurator->instance(%args);
@@ -140,7 +140,7 @@ method of the same name with the given value. If called with a single hash
 reference, it is dereferenced and its key/value pairs are set as described
 before.
 
-=item new
+=item C<new>
 
     my $obj = Class::Scaffold::Environment::Configurator->new;
     my $obj = Class::Scaffold::Environment::Configurator->new(%args);
@@ -153,19 +153,19 @@ method of the same name with the given value. If called with a single hash
 reference, it is dereferenced and its key/value pairs are set as described
 before.
 
-=item clear_configurators
+=item C<clear_configurators>
 
     $obj->clear_configurators;
 
 Deletes all elements from the array.
 
-=item clear_local_configurator
+=item C<clear_local_configurator>
 
     $obj->clear_local_configurator;
 
 Clears the value.
 
-=item configurators
+=item C<configurators>
 
     my @values    = $obj->configurators;
     my $array_ref = $obj->configurators;
@@ -177,19 +177,19 @@ array in list context, or a reference to the array in scalar context. If
 called with arguments, it expands array references found therein and sets the
 values.
 
-=item configurators_clear
+=item C<configurators_clear>
 
     $obj->configurators_clear;
 
 Deletes all elements from the array.
 
-=item configurators_count
+=item C<configurators_count>
 
     my $count = $obj->configurators_count;
 
 Returns the number of elements in the array.
 
-=item configurators_index
+=item C<configurators_index>
 
     my $element   = $obj->configurators_index(3);
     my @elements  = $obj->configurators_index(@indices);
@@ -200,19 +200,19 @@ If only one index is given, the corresponding array element is returned. If
 several indices are given, the result is returned as an array in list context
 or as an array reference in scalar context.
 
-=item configurators_pop
+=item C<configurators_pop>
 
     my $value = $obj->configurators_pop;
 
 Pops the last element off the array, returning it.
 
-=item configurators_push
+=item C<configurators_push>
 
     $obj->configurators_push(@values);
 
 Pushes elements onto the end of the array.
 
-=item configurators_set
+=item C<configurators_set>
 
     $obj->configurators_set(1 => $x, 5 => $y);
 
@@ -220,13 +220,13 @@ Takes a list of index/value pairs and for each pair it sets the array element
 at the indicated index to the indicated value. Returns the number of elements
 that have been set.
 
-=item configurators_shift
+=item C<configurators_shift>
 
     my $value = $obj->configurators_shift;
 
 Shifts the first element off the array, returning it.
 
-=item configurators_splice
+=item C<configurators_splice>
 
     $obj->configurators_splice(2, 1, $x, $y);
     $obj->configurators_splice(-1);
@@ -246,19 +246,19 @@ offset and the length are omitted, removes everything. If the offset is past
 the end of the array, it issues a warning, and splices at the end of the
 array.
 
-=item configurators_unshift
+=item C<configurators_unshift>
 
     $obj->configurators_unshift(@values);
 
 Unshifts elements onto the beginning of the array.
 
-=item count_configurators
+=item C<count_configurators>
 
     my $count = $obj->count_configurators;
 
 Returns the number of elements in the array.
 
-=item index_configurators
+=item C<index_configurators>
 
     my $element   = $obj->index_configurators(3);
     my @elements  = $obj->index_configurators(@indices);
@@ -269,7 +269,7 @@ If only one index is given, the corresponding array element is returned. If
 several indices are given, the result is returned as an array in list context
 or as an array reference in scalar context.
 
-=item instance_instance
+=item C<instance_instance>
 
     my $obj = Class::Scaffold::Environment::Configurator->instance_instance;
     my $obj = Class::Scaffold::Environment::Configurator->instance_instance(%args);
@@ -280,7 +280,7 @@ component is initialized by calling the method of the same name with the given
 value. If called with a single hash reference, it is dereferenced and its
 key/value pairs are set as described before.
 
-=item local_configurator
+=item C<local_configurator>
 
     my $value = $obj->local_configurator;
     $obj->local_configurator($value);
@@ -288,13 +288,13 @@ key/value pairs are set as described before.
 A basic getter/setter method. If called without an argument, it returns the
 value. If called with a single argument, it sets the value.
 
-=item local_configurator_clear
+=item C<local_configurator_clear>
 
     $obj->local_configurator_clear;
 
 Clears the value.
 
-=item new_instance
+=item C<new_instance>
 
     my $obj = Class::Scaffold::Environment::Configurator->new_instance;
     my $obj = Class::Scaffold::Environment::Configurator->new_instance(%args);
@@ -305,19 +305,19 @@ component is initialized by calling the method of the same name with the given
 value. If called with a single hash reference, it is dereferenced and its
 key/value pairs are set as described before.
 
-=item pop_configurators
+=item C<pop_configurators>
 
     my $value = $obj->pop_configurators;
 
 Pops the last element off the array, returning it.
 
-=item push_configurators
+=item C<push_configurators>
 
     $obj->push_configurators(@values);
 
 Pushes elements onto the end of the array.
 
-=item set_configurators
+=item C<set_configurators>
 
     $obj->set_configurators(1 => $x, 5 => $y);
 
@@ -325,13 +325,13 @@ Takes a list of index/value pairs and for each pair it sets the array element
 at the indicated index to the indicated value. Returns the number of elements
 that have been set.
 
-=item shift_configurators
+=item C<shift_configurators>
 
     my $value = $obj->shift_configurators;
 
 Shifts the first element off the array, returning it.
 
-=item splice_configurators
+=item C<splice_configurators>
 
     $obj->splice_configurators(2, 1, $x, $y);
     $obj->splice_configurators(-1);
@@ -351,7 +351,7 @@ offset and the length are omitted, removes everything. If the offset is past
 the end of the array, it issues a warning, and splices at the end of the
 array.
 
-=item unshift_configurators
+=item C<unshift_configurators>
 
     $obj->unshift_configurators(@values);
 

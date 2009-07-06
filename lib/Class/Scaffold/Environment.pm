@@ -9,7 +9,7 @@ use Class::Scaffold::Factory::Type;
 use Vim::Tag 'make_tag';
 
 
-our $VERSION = '0.07';
+our $VERSION = '0.08';
 
 
 use base 'Class::Scaffold::Base';
@@ -299,6 +299,9 @@ sub disconnect {
 
         # remove it from the cache so we'll reconnect next time
         $self->storage_cache_delete($storage_type);
+
+        require Class::Scaffold::Storable;
+        %Class::Scaffold::Storable::cache = ();
     }
 
     our %cache;
@@ -327,45 +330,45 @@ Class::Scaffold::Environment - large-scale OOP application support
 
 =over 4
 
-=item clear_configurator
+=item C<clear_configurator>
 
     $obj->clear_configurator;
 
 Deletes the object.
 
-=item clear_context
+=item C<clear_context>
 
     $obj->clear_context;
 
 Clears the value.
 
-=item clear_multiplex_transaction_omit
+=item C<clear_multiplex_transaction_omit>
 
     $obj->clear_multiplex_transaction_omit;
 
 Deletes all keys and values from the hash. Since this is a class variable, the
 value will be changed for all instances of this class.
 
-=item clear_rollback_mode
+=item C<clear_rollback_mode>
 
     $obj->clear_rollback_mode;
 
 Clears the boolean value by setting it to 0.
 
-=item clear_storage_cache
+=item C<clear_storage_cache>
 
     $obj->clear_storage_cache;
 
 Deletes all keys and values from the hash. Since this is a class variable, the
 value will be changed for all instances of this class.
 
-=item clear_test_mode
+=item C<clear_test_mode>
 
     $obj->clear_test_mode;
 
 Clears the value.
 
-=item configurator
+=item C<configurator>
 
     my $object = $obj->configurator;
     $obj->configurator($object);
@@ -381,13 +384,13 @@ if there is no such object, a new Class::Scaffold::Environment::Configurator obj
 are passed to the constructor in this case - and stored in the configurator slot
 before returning it.
 
-=item configurator_clear
+=item C<configurator_clear>
 
     $obj->configurator_clear;
 
 Deletes the object.
 
-=item context
+=item C<context>
 
     my $value = $obj->context;
     $obj->context($value);
@@ -395,13 +398,13 @@ Deletes the object.
 A basic getter/setter method. If called without an argument, it returns the
 value. If called with a single argument, it sets the value.
 
-=item context_clear
+=item C<context_clear>
 
     $obj->context_clear;
 
 Clears the value.
 
-=item core_storage_args
+=item C<core_storage_args>
 
     $obj->core_storage_args(@args);
     $obj->core_storage_args;
@@ -411,7 +414,7 @@ If there is no such object, a new Class::Scaffold::Environment::Configurator obj
 are passed to the constructor - and stored in the configurator slot before forwarding
 core_storage_args() onto it.
 
-=item core_storage_name
+=item C<core_storage_name>
 
     $obj->core_storage_name(@args);
     $obj->core_storage_name;
@@ -421,21 +424,21 @@ If there is no such object, a new Class::Scaffold::Environment::Configurator obj
 are passed to the constructor - and stored in the configurator slot before forwarding
 core_storage_name() onto it.
 
-=item delete_multiplex_transaction_omit
+=item C<delete_multiplex_transaction_omit>
 
     $obj->delete_multiplex_transaction_omit(@keys);
 
 Takes a list of keys and deletes those keys from the hash. Since this is a
 class variable, the value will be changed for all instances of this class.
 
-=item delete_storage_cache
+=item C<delete_storage_cache>
 
     $obj->delete_storage_cache(@keys);
 
 Takes a list of keys and deletes those keys from the hash. Since this is a
 class variable, the value will be changed for all instances of this class.
 
-=item exists_multiplex_transaction_omit
+=item C<exists_multiplex_transaction_omit>
 
     if ($obj->exists_multiplex_transaction_omit($key)) { ... }
 
@@ -443,7 +446,7 @@ Takes a key and returns a true value if the key exists in the hash, and a
 false value otherwise. Since this is a class variable, the value will be
 changed for all instances of this class.
 
-=item exists_storage_cache
+=item C<exists_storage_cache>
 
     if ($obj->exists_storage_cache($key)) { ... }
 
@@ -451,21 +454,21 @@ Takes a key and returns a true value if the key exists in the hash, and a
 false value otherwise. Since this is a class variable, the value will be
 changed for all instances of this class.
 
-=item keys_multiplex_transaction_omit
+=item C<keys_multiplex_transaction_omit>
 
     my @keys = $obj->keys_multiplex_transaction_omit;
 
 Returns a list of all hash keys in no particular order. Since this is a class
 variable, the value will be changed for all instances of this class.
 
-=item keys_storage_cache
+=item C<keys_storage_cache>
 
     my @keys = $obj->keys_storage_cache;
 
 Returns a list of all hash keys in no particular order. Since this is a class
 variable, the value will be changed for all instances of this class.
 
-=item memory_storage_name
+=item C<memory_storage_name>
 
     $obj->memory_storage_name(@args);
     $obj->memory_storage_name;
@@ -475,7 +478,7 @@ If there is no such object, a new Class::Scaffold::Environment::Configurator obj
 are passed to the constructor - and stored in the configurator slot before forwarding
 memory_storage_name() onto it.
 
-=item multiplex_transaction_omit
+=item C<multiplex_transaction_omit>
 
     my %hash     = $obj->multiplex_transaction_omit;
     my $hash_ref = $obj->multiplex_transaction_omit;
@@ -503,21 +506,21 @@ hash in scalar context.
 This is a class variable, so it is shared between all instances of this class.
 Changing it in one object will change it for all other objects as well.
 
-=item multiplex_transaction_omit_clear
+=item C<multiplex_transaction_omit_clear>
 
     $obj->multiplex_transaction_omit_clear;
 
 Deletes all keys and values from the hash. Since this is a class variable, the
 value will be changed for all instances of this class.
 
-=item multiplex_transaction_omit_delete
+=item C<multiplex_transaction_omit_delete>
 
     $obj->multiplex_transaction_omit_delete(@keys);
 
 Takes a list of keys and deletes those keys from the hash. Since this is a
 class variable, the value will be changed for all instances of this class.
 
-=item multiplex_transaction_omit_exists
+=item C<multiplex_transaction_omit_exists>
 
     if ($obj->multiplex_transaction_omit_exists($key)) { ... }
 
@@ -525,21 +528,21 @@ Takes a key and returns a true value if the key exists in the hash, and a
 false value otherwise. Since this is a class variable, the value will be
 changed for all instances of this class.
 
-=item multiplex_transaction_omit_keys
+=item C<multiplex_transaction_omit_keys>
 
     my @keys = $obj->multiplex_transaction_omit_keys;
 
 Returns a list of all hash keys in no particular order. Since this is a class
 variable, the value will be changed for all instances of this class.
 
-=item multiplex_transaction_omit_values
+=item C<multiplex_transaction_omit_values>
 
     my @values = $obj->multiplex_transaction_omit_values;
 
 Returns a list of all hash values in no particular order. Since this is a
 class variable, the value will be changed for all instances of this class.
 
-=item rollback_mode
+=item C<rollback_mode>
 
     $obj->rollback_mode($value);
     my $value = $obj->rollback_mode;
@@ -548,25 +551,25 @@ If called without an argument, returns the boolean value (0 or 1). If called
 with an argument, it normalizes it to the boolean value. That is, the values
 0, undef and the empty string become 0; everything else becomes 1.
 
-=item rollback_mode_clear
+=item C<rollback_mode_clear>
 
     $obj->rollback_mode_clear;
 
 Clears the boolean value by setting it to 0.
 
-=item rollback_mode_set
+=item C<rollback_mode_set>
 
     $obj->rollback_mode_set;
 
 Sets the boolean value to 1.
 
-=item set_rollback_mode
+=item C<set_rollback_mode>
 
     $obj->set_rollback_mode;
 
 Sets the boolean value to 1.
 
-=item storage_cache
+=item C<storage_cache>
 
     my %hash     = $obj->storage_cache;
     my $hash_ref = $obj->storage_cache;
@@ -594,21 +597,21 @@ hash in scalar context.
 This is a class variable, so it is shared between all instances of this class.
 Changing it in one object will change it for all other objects as well.
 
-=item storage_cache_clear
+=item C<storage_cache_clear>
 
     $obj->storage_cache_clear;
 
 Deletes all keys and values from the hash. Since this is a class variable, the
 value will be changed for all instances of this class.
 
-=item storage_cache_delete
+=item C<storage_cache_delete>
 
     $obj->storage_cache_delete(@keys);
 
 Takes a list of keys and deletes those keys from the hash. Since this is a
 class variable, the value will be changed for all instances of this class.
 
-=item storage_cache_exists
+=item C<storage_cache_exists>
 
     if ($obj->storage_cache_exists($key)) { ... }
 
@@ -616,21 +619,21 @@ Takes a key and returns a true value if the key exists in the hash, and a
 false value otherwise. Since this is a class variable, the value will be
 changed for all instances of this class.
 
-=item storage_cache_keys
+=item C<storage_cache_keys>
 
     my @keys = $obj->storage_cache_keys;
 
 Returns a list of all hash keys in no particular order. Since this is a class
 variable, the value will be changed for all instances of this class.
 
-=item storage_cache_values
+=item C<storage_cache_values>
 
     my @values = $obj->storage_cache_values;
 
 Returns a list of all hash values in no particular order. Since this is a
 class variable, the value will be changed for all instances of this class.
 
-=item test_mode
+=item C<test_mode>
 
     my $value = $obj->test_mode;
     $obj->test_mode($value);
@@ -638,20 +641,20 @@ class variable, the value will be changed for all instances of this class.
 A basic getter/setter method. If called without an argument, it returns the
 value. If called with a single argument, it sets the value.
 
-=item test_mode_clear
+=item C<test_mode_clear>
 
     $obj->test_mode_clear;
 
 Clears the value.
 
-=item values_multiplex_transaction_omit
+=item C<values_multiplex_transaction_omit>
 
     my @values = $obj->values_multiplex_transaction_omit;
 
 Returns a list of all hash values in no particular order. Since this is a
 class variable, the value will be changed for all instances of this class.
 
-=item values_storage_cache
+=item C<values_storage_cache>
 
     my @values = $obj->values_storage_cache;
 

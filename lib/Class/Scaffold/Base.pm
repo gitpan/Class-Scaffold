@@ -11,7 +11,7 @@ use Data::Miscellany 'set_push';
 use Error::Hierarchy::Util 'load_class';
 
 
-our $VERSION = '0.07';
+our $VERSION = '0.08';
 
 
 use base qw/
@@ -149,7 +149,7 @@ Class::Scaffold::Base - large-scale OOP application support
 
 =over 4
 
-=item new
+=item C<new>
 
     my $obj = Class::Scaffold::Base->new;
     my $obj = Class::Scaffold::Base->new(%args);
@@ -159,6 +159,52 @@ list of pairs, from component name to initial value. For each pair, the named
 component is initialized by calling the method of the same name with the given
 value. If called with a single hash reference, it is dereferenced and its
 key/value pairs are set as described before.
+
+=item FIRST_CONSTRUCTOR_ARGS
+
+This method is used by the constructor to order key-value pairs that are
+passed to the newly created object's accessors - see
+L<Class::Accessor::Constructor>. This class just defines it as an empty list;
+subclasses should override it as necessary. The method exists in this class so
+even if subclasses don't override it, there's something for the constructor
+mechanism to work with.
+
+=item C<MUNGE_CONSTRUCTOR_ARGS>
+
+This method is used by the constructor to munge the constructor arguments -
+see L<Class::Accessor::Constructor>. This class' method just returns the
+arguments as is; subclasses should override it as necessary. The method exists
+in this class so even if subclasses don't override it, there's something for
+the constructor mechanism to work with.
+
+=item C<add_autoloaded_package>
+
+This class method takes a single prefix and adds it to the list - set, really
+- of packages whose methods should be autoloaded. The L<Class::Scaffold>
+framework will typically be used by an application whose classes are stored in
+and underneath a package namespace. To avoid having to load all classes
+explicitly, you can pass the namespace to this method. This class defines a
+L<UNIVERSAL::AUTOLOAD> that respects the set of classes it should autoload
+methods for.
+
+=item C<init>
+
+This method is called at the end of the constructor - see
+L<Class::Accessor::Constructor>. This class' method does nothing; subclasses
+should override it and wrap it with C<SUPER::> as necessary. The method exists
+in this class so even if subclasses don't override it, there's something for
+the constructor mechanism to work with.
+
+=item C<log>
+
+This method acts as a shortcut to L<Class::Scaffold::Log>. Instead of writing
+
+    use Class::Scaffold::Log;
+    Class::Scaffold::Log->instance->debug('foo');
+
+you can simply write
+
+    $self->log->debug('foo');
 
 =back
 

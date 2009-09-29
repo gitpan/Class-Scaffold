@@ -1,27 +1,36 @@
-package Class::Scaffold::Environment::Configurator::Local;
-
-# $Id: Local.pm 9987 2005-07-27 13:37:58Z gr $
+package Class::Scaffold::YAML::Marshall::ExceptionContainer;
 
 use warnings;
 use strict;
+use YAML::Marshall 'exception/container';
 
+use base 'Class::Scaffold::YAML::Marshall';
 
 our $VERSION = '0.09';
 
-
-use base 'Class::Scaffold::Environment::Configurator::Base';
-
-
-our %opt;    # so it can be overridden via local()
-
-
-sub AUTOLOAD {
+sub yaml_load {
     my $self = shift;
-    (my $method = our $AUTOLOAD) =~ s/.*://;
-    our %opt;
-    $opt{$method};
-}
+    my $node = $self->SUPER::yaml_load(@_);
 
+    # Expect a list of hashrefs; each hash element is an exception with a
+    # 'ref' key giving the exception class, and the rest being treated as args
+    # to give to the exception when it is being recorded. Example:
+    #
+    #  exception_container: !perl/Class::Scaffold::YAML::Active::ExceptionContainer
+    #    - ref: Class::Scaffold::Exception::Policy::Blah
+    #      property1: value1
+    #      property2: value2
+
+    my $container = $self->delegate->make_obj('exception_container');
+    for my $exception (@$node) {
+        # Copy because we delete (so as to not mess up YAML references)
+        my %args = %$exception;
+        my $class = delete $args{ref};
+
+        $container->record($class, %args);
+    }
+    $container;
+}
 
 1;
 
@@ -32,11 +41,11 @@ __END__
 
 =head1 NAME
 
-Class::Scaffold::Environment::Configurator::Local - large-scale OOP application support
+Class::Scaffold::YAML::Marshall::ExceptionContainer - large-scale OOP application support
 
 =head1 SYNOPSIS
 
-    Class::Scaffold::Environment::Configurator::Local->new;
+    Class::Scaffold::YAML::Marshall::ExceptionContainer->new;
 
 =head1 DESCRIPTION
 
@@ -48,13 +57,8 @@ Class::Scaffold::Environment::Configurator::Local - large-scale OOP application 
 
 =back
 
-Class::Scaffold::Environment::Configurator::Local inherits from
-L<Class::Scaffold::Environment::Configurator::Base>.
-
-The superclass L<Class::Scaffold::Environment::Configurator::Base> defines
-these methods and functions:
-
-    DEFAULTS(), DESTROY()
+Class::Scaffold::YAML::Marshall::ExceptionContainer inherits from
+L<Class::Scaffold::Base>.
 
 The superclass L<Class::Scaffold::Base> defines these methods and
 functions:

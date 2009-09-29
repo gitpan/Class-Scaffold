@@ -7,7 +7,7 @@ use Class::Scaffold::Environment::Configurator;
 use Error ':try';
 
 
-our $VERSION = '0.08';
+our $VERSION = '0.09';
 
 
 use base 'Class::Scaffold::Storable';
@@ -42,19 +42,16 @@ sub app_init {
     # special string "local" is given, we try to find the conf file.
     # Otherwise use the one given in an environment variable.
 
-    my $conf_file = $configurator->conf;
-    $conf_file = '' unless defined $conf_file;
-    if ($conf_file eq 'local' ||
-        ($conf_file eq '' && $ENV{CF_CONF} eq 'local')) {
+    my $conf_file_spec = $configurator->conf || $ENV{CF_CONF} || '';
+    for my $conf_file (split ';', $conf_file_spec) {
+        if ($conf_file eq 'local') {
+            # only load if needed
+            require Class::Scaffold::Introspect;
+            $conf_file = Class::Scaffold::Introspect::find_conf_file();
+        }
 
-        # only load if needed
-        require Class::Scaffold::Introspect;
-        $conf_file = Class::Scaffold::Introspect::find_conf_file();
+        $configurator->add_configurator(file => $conf_file);
     }
-
-    $conf_file ||= $ENV{CF_CONF};
-
-    $configurator->add_configurator(file => $conf_file);
 
     $self->log->max_level(1 + ($configurator->verbose || 0));
 
@@ -362,7 +359,7 @@ Marcel GrE<uuml>nauer, C<< <marcel@cpan.org> >>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2004-2008 by the authors.
+Copyright 2004-2009 by the authors.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

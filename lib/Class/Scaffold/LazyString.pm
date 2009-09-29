@@ -10,7 +10,7 @@ use warnings;
 
 use base 'Exporter';
 
-our $VERSION = '0.08';
+our $VERSION = '0.09';
 
 our @EXPORT = qw(lazy_string);
 

@@ -9,7 +9,7 @@ use Class::Scaffold::Factory::Type;
 use Vim::Tag 'make_tag';
 
 
-our $VERSION = '0.08';
+our $VERSION = '0.09';
 
 
 use base 'Class::Scaffold::Base';
@@ -41,6 +41,7 @@ Class::Scaffold::Factory::Type->register_factory_type(
     exception_container => 'Class::Scaffold::Exception::Container',
     result              => 'Data::Storage::DBI::Result',
     storage_statement   => 'Data::Storage::Statement',
+    test_util_loader    => 'Class::Scaffold::Test::UtilLoader',
 );
 
 
@@ -98,7 +99,8 @@ sub get_class_name_for {
 sub isa_type {
     my ($self, $object, $object_type) = @_;
     return unless UNIVERSAL::can($object, 'get_my_factory_type');
-    $object->get_my_factory_type eq $object_type;
+    my $factory_type = $object->get_my_factory_type;
+    defined $factory_type ? $factory_type eq $object_type : 0;
 }
 
 
@@ -819,7 +821,7 @@ Marcel GrE<uuml>nauer, C<< <marcel@cpan.org> >>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2004-2008 by the authors.
+Copyright 2004-2009 by the authors.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

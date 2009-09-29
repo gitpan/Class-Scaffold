@@ -1,5 +1,13 @@
 Revision history for Perl extension Class-Scaffold
 
+0.09 Tue Sep 29 15:56:27 MSZ 2009 (Marcel Gruenauer <marcel@cpan.org>)
+    - repo maintenance
+    - added author requirements; fixed auxiliary files
+    - better YAML loader handling
+    - support for YAML::Marshall; YAMLDriven tests need to explicitly request 'use_yaml_active: 1' now
+    - C::S::App::Test::YAMLDriven: make_plan now just returns number of tests, plan() happens above
+    - C::S::App: support for several conf files; C::S::Environment: isa_type now handles the case where there's no factory type
+
 0.08 Mon Jul  6 13:23:27 CEST 2009 (Marcel Gruenauer <marcel@cpan.org>)
      - added extra tests (xt/)
      - doc fixes

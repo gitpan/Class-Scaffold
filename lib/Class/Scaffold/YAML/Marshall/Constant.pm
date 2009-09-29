@@ -1,27 +1,19 @@
-package Class::Scaffold::Environment::Configurator::Local;
-
-# $Id: Local.pm 9987 2005-07-27 13:37:58Z gr $
+package Class::Scaffold::YAML::Marshall::Constant;
 
 use warnings;
 use strict;
+use YAML::Marshall 'constant';
 
+use base 'Class::Scaffold::YAML::Marshall';
 
 our $VERSION = '0.09';
 
-
-use base 'Class::Scaffold::Environment::Configurator::Base';
-
-
-our %opt;    # so it can be overridden via local()
-
-
-sub AUTOLOAD {
+sub yaml_load {
     my $self = shift;
-    (my $method = our $AUTOLOAD) =~ s/.*://;
-    our %opt;
-    $opt{$method};
+    my $node = $self->SUPER::yaml_load(@_);
+    my $method = $$node;
+    $self->delegate->$method;
 }
-
 
 1;
 
@@ -32,11 +24,11 @@ __END__
 
 =head1 NAME
 
-Class::Scaffold::Environment::Configurator::Local - large-scale OOP application support
+Class::Scaffold::YAML::Marshall::Constant - large-scale OOP application support
 
 =head1 SYNOPSIS
 
-    Class::Scaffold::Environment::Configurator::Local->new;
+    Class::Scaffold::YAML::Marshall::Constant->new;
 
 =head1 DESCRIPTION
 
@@ -48,13 +40,8 @@ Class::Scaffold::Environment::Configurator::Local - large-scale OOP application 
 
 =back
 
-Class::Scaffold::Environment::Configurator::Local inherits from
-L<Class::Scaffold::Environment::Configurator::Base>.
-
-The superclass L<Class::Scaffold::Environment::Configurator::Base> defines
-these methods and functions:
-
-    DEFAULTS(), DESTROY()
+Class::Scaffold::YAML::Marshall::Constant inherits from
+L<Class::Scaffold::Base>.
 
 The superclass L<Class::Scaffold::Base> defines these methods and
 functions:

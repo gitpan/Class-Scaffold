@@ -1,30 +1,16 @@
-package Class::Scaffold::Environment::Configurator::Local;
-
-# $Id: Local.pm 9987 2005-07-27 13:37:58Z gr $
+package Class::Scaffold::YAML::Marshall::PID;
 
 use warnings;
 use strict;
+use YAML::Marshall 'pid';
 
+use base 'Class::Scaffold::YAML::Marshall';
 
 our $VERSION = '0.09';
 
-
-use base 'Class::Scaffold::Environment::Configurator::Base';
-
-
-our %opt;    # so it can be overridden via local()
-
-
-sub AUTOLOAD {
-    my $self = shift;
-    (my $method = our $AUTOLOAD) =~ s/.*://;
-    our %opt;
-    $opt{$method};
-}
-
+sub yaml_load { $$ }
 
 1;
-
 
 __END__
 
@@ -32,11 +18,11 @@ __END__
 
 =head1 NAME
 
-Class::Scaffold::Environment::Configurator::Local - large-scale OOP application support
+Class::Scaffold::YAML::Marshall::PID - large-scale OOP application support
 
 =head1 SYNOPSIS
 
-    Class::Scaffold::Environment::Configurator::Local->new;
+    Class::Scaffold::YAML::Marshall::PID->new;
 
 =head1 DESCRIPTION
 
@@ -48,13 +34,8 @@ Class::Scaffold::Environment::Configurator::Local - large-scale OOP application 
 
 =back
 
-Class::Scaffold::Environment::Configurator::Local inherits from
-L<Class::Scaffold::Environment::Configurator::Base>.
-
-The superclass L<Class::Scaffold::Environment::Configurator::Base> defines
-these methods and functions:
-
-    DEFAULTS(), DESTROY()
+Class::Scaffold::YAML::Marshall::PID inherits from
+L<Class::Scaffold::Base>.
 
 The superclass L<Class::Scaffold::Base> defines these methods and
 functions:

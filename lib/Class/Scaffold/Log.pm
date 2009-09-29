@@ -8,13 +8,9 @@ use Carp;
 use IO::File;
 use Time::HiRes 'gettimeofday';
 
-
-
-our $VERSION = '0.08';
-
+our $VERSION = '0.09';
 
 use base 'Class::Scaffold::Base';
-
 
 __PACKAGE__
     ->mk_singleton(qw(instance))
@@ -22,11 +18,9 @@ __PACKAGE__
     ->mk_boolean_accessors(qw(pid timestamp))
     ->mk_concat_accessors(qw(output));
 
-
 use constant DEFAULTS => (
     max_level => 1,
 );
-
 
 sub init {
     my $self = shift;
@@ -481,7 +475,7 @@ Heinz Ekker C<< <ek@univie.ac.at> >>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2004-2008 by Marcel GrE<uuml>nauer
+Copyright 2004-2009 by Marcel GrE<uuml>nauer
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

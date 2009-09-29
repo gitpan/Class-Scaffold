@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 
-our $VERSION = '0.08';
+our $VERSION = '0.09';
 
 
 use base 'Class::Scaffold::App::CommandLine';
@@ -13,6 +13,7 @@ use base 'Class::Scaffold::App::CommandLine';
 sub app_code {
     my $self = shift;
     $self->SUPER::app_code(@_);
+    $self->delegate->make_obj('test_util_loader');
     $self->delegate->set_rollback_mode;
     $self->delegate->test_mode(1);
 
@@ -227,7 +228,7 @@ Marcel GrE<uuml>nauer, C<< <marcel@cpan.org> >>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2004-2008 by the authors.
+Copyright 2004-2009 by the authors.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

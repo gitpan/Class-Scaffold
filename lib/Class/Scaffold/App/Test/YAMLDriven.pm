@@ -7,11 +7,10 @@ use Class::Scaffold::App;
 use Error::Hierarchy::Util 'assert_defined';
 use String::FlexMatch;           # in case some tests need it
 use Test::More;
-use YAML::Active qw/Load Load_inactive/;
 use Test::Builder;
 
 
-our $VERSION = '0.08';
+our $VERSION = '0.09';
 
 
 use base 'Class::Scaffold::App::Test';
@@ -45,7 +44,8 @@ sub app_code {
     $self->SUPER::app_code(@_);
 
     $self->read_test_defs;
-    $self->make_plan;
+
+    plan tests => $self->make_plan;
 
     for my $testname (sort $self->test_def_keys) {
         next if $testname eq SHARED;
@@ -82,25 +82,37 @@ sub read_test_defs {
     }, $testdir);
 
     for my $name (sort keys %file) {
-        print "# Loading test file $name\n";
+        note "Loading test file $name";
 
         (my $tests_yaml = do { local (@ARGV, $/) = $file{$name}; <> })
             =~ s/%%PID%%/sprintf("%06d", $$)/ge;
         $tests_yaml =~ s/%%CNT%%/sprintf("%03d", ++(our $cnt))/ge;
 
-        # Check whether the test wants to be skipped. Quick check with a regex
-        # because YAML::Load is expensive. Only then decide whether to use
-        # Load() or Load_inactive(). To use Load() on a test that wants to be
-        # skipped would be a bad idea as it might be work in progress; it will
-        # be skipped for a reason.
+        # Quick regex check whether the test wants to be skipped. To use
+        # Load() on a test that wants to be skipped would be a bad idea as it
+        # might be work in progress; it will be skipped for a reason.
 
         if ($tests_yaml =~ /^skip:\s*1/m) {
-            print "#    Test wants to be skipped, no activation\n";
-            $self->test_def($name => Load_inactive($tests_yaml));
+            note 'Test wants to be skipped, no activation';
         } else {
             # support for value classes
             local $Class::Value::SkipChecks = 1;
-            $self->test_def($name => Load($tests_yaml));
+
+            # require(), not use(), YAML classes because YAML and YAML::Active
+            # might conflict.
+
+            my $test_def;
+            if ($tests_yaml =~ /^use_yaml_active:\s*1/m) {
+                note 'Loading with YAML::Active.pm';
+                require YAML::Active;
+                $test_def = YAML::Active::Load($tests_yaml);
+            } else {
+                require YAML;
+                $test_def = YAML::Load($tests_yaml);
+                # note explain $test_def;
+            }
+
+            $self->test_def($name => $test_def);
         }
     }
 }
@@ -135,7 +147,7 @@ sub make_plan {
         }
     }
 
-    plan tests => $plan;
+    $plan;
 }
 
 
@@ -598,7 +610,7 @@ Heinz Ekker C<< <ek@univie.ac.at> >>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2004-2008 by Marcel GrE<uuml>nauer
+Copyright 2004-2009 by Marcel GrE<uuml>nauer
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

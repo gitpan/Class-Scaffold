@@ -3,14 +3,18 @@ Changes
 etc/SMOKEconf.yaml
 inc/Module/AutoInstall.pm
 inc/Module/Install.pm
+inc/Module/Install/AuthorRequires.pm
 inc/Module/Install/AutoInstall.pm
 inc/Module/Install/Base.pm
+inc/Module/Install/Bugtracker.pm
 inc/Module/Install/Can.pm
 inc/Module/Install/ExtraTests.pm
 inc/Module/Install/Fetch.pm
+inc/Module/Install/Homepage.pm
 inc/Module/Install/Include.pm
 inc/Module/Install/Makefile.pm
 inc/Module/Install/Metadata.pm
+inc/Module/Install/Repository.pm
 inc/Module/Install/Win32.pm
 inc/Module/Install/WriteAll.pm
 inc/Test/CompanionClasses.pm
@@ -51,6 +55,7 @@ lib/Class/Scaffold/Storable.pm
 lib/Class/Scaffold/Storable_TEST.pm
 lib/Class/Scaffold/Test.pm
 lib/Class/Scaffold/Test/Inherited.pm
+lib/Class/Scaffold/Test/UtilLoader.pm
 lib/Class/Scaffold/Util.pm
 lib/Class/Scaffold/YAML/Active.pm
 lib/Class/Scaffold/YAML/Active/Array.pm
@@ -59,6 +64,11 @@ lib/Class/Scaffold/YAML/Active/Environment.pm
 lib/Class/Scaffold/YAML/Active/Exception.pm
 lib/Class/Scaffold/YAML/Active/ExceptionContainer.pm
 lib/Class/Scaffold/YAML/Active/Hash.pm
+lib/Class/Scaffold/YAML/Marshall.pm
+lib/Class/Scaffold/YAML/Marshall/Concat.pm
+lib/Class/Scaffold/YAML/Marshall/Constant.pm
+lib/Class/Scaffold/YAML/Marshall/ExceptionContainer.pm
+lib/Class/Scaffold/YAML/Marshall/PID.pm
 LICENSE
 Makefile.PL
 MANIFEST			This list of files

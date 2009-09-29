@@ -1,25 +1,27 @@
-package Class::Scaffold;
+package Class::Scaffold::YAML::Marshall;
 
-use strict;
 use warnings;
-use 5.006;
+use strict;
 
-# Marker package so sub-distros can use it in their Makefile.PL's 'requires'
-# section.
+# So that we get a delegate() method
+use base 'Class::Scaffold::Storable';
 
 our $VERSION = '0.09';
 
 1;
 
+
 __END__
+
+
 
 =head1 NAME
 
-Class::Scaffold - Large-scale OOP application support
+Class::Scaffold::YAML::Marshall - large-scale OOP application support
 
 =head1 SYNOPSIS
 
-    Class::Scaffold->new;
+    Class::Scaffold::YAML::Marshall->new;
 
 =head1 DESCRIPTION
 
@@ -27,10 +29,7 @@ Class::Scaffold - Large-scale OOP application support
 
 =over 4
 
-
-
 =back
-
 =head1 BUGS AND LIMITATIONS
 
 No bugs have been reported.
@@ -48,21 +47,13 @@ The latest version of this module is available from the Comprehensive Perl
 Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a CPAN
 site near you. Or see <http://www.perl.com/CPAN/authors/id/M/MA/MARCEL/>.
 
-=head1 AUTHORS
-
-Florian Helmberger C<< <fh@univie.ac.at> >>
-
-Achim Adam C<< <ac@univie.ac.at> >>
-
-Mark Hofstetter C<< <mh@univie.ac.at> >>
-
-Heinz Ekker C<< <ek@univie.ac.at> >>
+=head1 AUTHOR
 
 Marcel GrE<uuml>nauer, C<< <marcel@cpan.org> >>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2004-2009 by the authors.
+Copyright 2004-2009 by the author.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

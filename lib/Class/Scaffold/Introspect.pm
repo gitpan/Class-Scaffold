@@ -8,7 +8,7 @@ use File::Spec::Functions qw/curdir updir rootdir rel2abs/;
 use Sys::Hostname;
 
 
-our $VERSION = '0.08';
+our $VERSION = '0.09';
 
 
 use base 'Exporter';
@@ -136,7 +136,7 @@ Marcel GrE<uuml>nauer, C<< <marcel@cpan.org> >>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2004-2008 by the authors.
+Copyright 2004-2009 by the authors.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

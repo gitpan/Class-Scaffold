@@ -1,13 +1,11 @@
 package Class::Scaffold::Delegate::Mixin;
 
-# $Id: Mixin.pm 9981 2005-07-27 06:52:47Z gr $
-
 use warnings;
 use strict;
 
 
 
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 
 # Class::Scaffold::Base inherits from this mixin, so we shouldn't use()

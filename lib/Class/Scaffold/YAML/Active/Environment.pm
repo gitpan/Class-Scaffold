@@ -1,14 +1,12 @@
 package Class::Scaffold::YAML::Active::Environment;
 
-# $Id: Environment.pm 9206 2005-06-15 14:07:06Z rts $
-
 use warnings;
 use strict;
 use Class::Scaffold::Environment;
 use YAML::Active qw/assert_hashref hash_activate yaml_NULL/;
 
 
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 
 use base 'Class::Scaffold::YAML::Active';

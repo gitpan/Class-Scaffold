@@ -1,15 +1,14 @@
 package Class::Scaffold::Environment;
 
-# $Id: Environment.pm 13666 2007-11-07 07:53:28Z gr $
-
 use warnings;
 use strict;
 use Error::Hierarchy::Util 'load_class';
 use Class::Scaffold::Factory::Type;
+use Property::Lookup;
 use Vim::Tag 'make_tag';
 
 
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 
 use base 'Class::Scaffold::Base';
@@ -22,7 +21,7 @@ __PACKAGE__
     ->mk_scalar_accessors(qw(test_mode context))
     ->mk_boolean_accessors(qw(rollback_mode))
     ->mk_class_hash_accessors(qw(storage_cache multiplex_transaction_omit))
-    ->mk_object_accessors('Class::Scaffold::Environment::Configurator' => 
+    ->mk_object_accessors('Property::Lookup' => 
         { slot => 'configurator',
           comp_mthds => [
               qw(core_storage_name core_storage_args memory_storage_name)
@@ -70,7 +69,13 @@ sub setenv {
 } # end of closure
 
 
-sub setup {}
+sub setup {
+    my $self = shift;
+    my $h = $self->every_hash('CONFIGURATOR_DEFAULTS');
+    $self->configurator->default_layer->hash(
+        $self->every_hash('CONFIGURATOR_DEFAULTS')
+    );
+}
 
 
 # ----------------------------------------------------------------------
@@ -310,6 +315,11 @@ sub disconnect {
     $cache{get_storage_type_for} = {};
 }
 
+
+# Check configuration values for consistency. Empty, but it exists so
+# subclasses can call SUPER::check()
+
+sub check {}
 
 1;
 

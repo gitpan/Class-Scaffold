@@ -1,14 +1,12 @@
 package Class::Scaffold::Test;
 
-# $Id: Test.pm 13666 2007-11-07 07:53:28Z gr $
-
 use strict;
 use warnings;
 use Test::More;
 use Class::Value;  # see run() below
 
 
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 
 # Also inherit from Class::Scaffold::Base so we get a delegate; put it first

@@ -1,12 +1,10 @@
 package Class::Scaffold::Exception::NoSuchFactoryHandler;
 
-# $Id: NoSuchHandler.pm 13644 2007-10-18 21:27:45Z gr $
-
 use warnings;
 use strict;
 
 
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 
 use base 'Class::Scaffold::Exception';

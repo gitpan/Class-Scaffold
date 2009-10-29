@@ -1,14 +1,12 @@
 package Class::Scaffold::Log;
 
-# $Id: Log.pm 13653 2007-10-22 09:11:20Z gr $
-
 use warnings;
 use strict;
 use Carp;
 use IO::File;
 use Time::HiRes 'gettimeofday';
 
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 use base 'Class::Scaffold::Base';
 

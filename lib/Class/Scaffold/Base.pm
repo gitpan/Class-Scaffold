@@ -1,7 +1,5 @@
 package Class::Scaffold::Base;
 
-# $Id: Base.pm 13653 2007-10-22 09:11:20Z gr $
-
 # base class for all classes of the class framework.
 # Everything should subclass this.
 
@@ -11,7 +9,7 @@ use Data::Miscellany 'set_push';
 use Error::Hierarchy::Util 'load_class';
 
 
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 
 use base qw/

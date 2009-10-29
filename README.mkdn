@@ -1,27 +1,51 @@
-This is the Perl module Class::Scaffold.
+# NAME
 
-## Installation
+Class::Scaffold - Large-scale OOP application support
 
-Class::Scaffold installation is straightforward. If your CPAN shell is set up,
-you should just be able to do
+# SYNOPSIS
 
-    % cpan Class::Scaffold
+    Class::Scaffold->new;
 
-Download it, unpack it, then build it as per the usual:
+# DESCRIPTION
 
-    % perl Makefile.PL
-    % make && make test
+# METHODS
 
-Then install it:
 
-    % make install
 
-## Documentation
 
-Class::Scaffold documentation is available as in POD. So you can do:
 
-    % perldoc Class::Scaffold
+# BUGS AND LIMITATIONS
 
-to read the documentation online with your favorite pager.
+No bugs have been reported.
 
-Marcel Gruenauer
+Please report any bugs or feature requests through the web interface at
+<http://rt.cpan.org>.
+
+# INSTALLATION
+
+See perlmodinstall for information and options on installing Perl modules.
+
+# AVAILABILITY
+
+The latest version of this module is available from the Comprehensive Perl
+Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a CPAN
+site near you. Or see <http://www.perl.com/CPAN/authors/id/M/MA/MARCEL/>.
+
+# AUTHORS
+
+Florian Helmberger `<fh@univie.ac.at>`
+
+Achim Adam `<ac@univie.ac.at>`
+
+Mark Hofstetter `<mh@univie.ac.at>`
+
+Heinz Ekker `<ek@univie.ac.at>`
+
+Marcel Gr&uuml;nauer, `<marcel@cpan.org>`
+
+# COPYRIGHT AND LICENSE
+
+Copyright 2004-2009 by the authors.
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.

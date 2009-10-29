@@ -1,12 +1,10 @@
 package Class::Scaffold::Test::Inherited;
 
-# $Id: Inherited.pm 11614 2006-06-10 19:34:28Z rts $
-
 use warnings;
 use strict;
 
 
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 
 use base 'Class::Scaffold::Base';

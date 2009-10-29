@@ -1,7 +1,5 @@
 package Class::Scaffold::Util;
 
-# $Id: Util.pm 11643 2006-06-13 13:16:28Z gr $
-
 # Package holding various useful functions.
 
 use warnings;
@@ -10,7 +8,7 @@ use Error::Hierarchy::Util 'assert_hashref';
 use Vim::Tag 'make_tag';
 
 
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 
 use base 'Exporter';

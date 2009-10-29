@@ -1,14 +1,12 @@
 package Class::Scaffold::YAML::Active::Hash;
 
-# $Id: Hash.pm 9206 2005-06-15 14:07:06Z rts $
-
 # Base class for YAML::Active plugins
 
 use warnings;
 use strict;
 
 
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 
 use base qw(

@@ -1,13 +1,11 @@
 package Class::Scaffold::YAML::Active::ExceptionContainer;
 
-# $Id: ExceptionContainer.pm 13653 2007-10-22 09:11:20Z gr $
-
 use warnings;
 use strict;
 use YAML::Active qw/assert_arrayref array_activate/;
 
 
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 
 use base 'Class::Scaffold::YAML::Active';

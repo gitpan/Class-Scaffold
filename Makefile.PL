@@ -3,6 +3,8 @@ include 'Module::AutoInstall';
 
 name 'Class-Scaffold';
 all_from 'lib/Class/Scaffold.pm';
+readme_from_pod;
+readme_markdown_from_pod;
 
 auto_set_homepage;
 auto_set_bugtracker;
@@ -19,6 +21,7 @@ requires 'Data::Miscellany';
 requires 'Data::Storage' => '0.02';
 requires 'DBI';
 requires 'Error::Hierarchy';
+requires 'Property::Lookup';
 requires 'String::FlexMatch';
 requires 'Term::Shell::Enhanced';
 requires 'Test::Differences';

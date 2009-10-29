@@ -14,11 +14,15 @@ inc/Module/Install/Homepage.pm
 inc/Module/Install/Include.pm
 inc/Module/Install/Makefile.pm
 inc/Module/Install/Metadata.pm
+inc/Module/Install/ReadmeFromPod.pm
+inc/Module/Install/ReadmeMarkdownFromPod.pm
 inc/Module/Install/Repository.pm
 inc/Module/Install/Win32.pm
 inc/Module/Install/WriteAll.pm
+inc/Pod/Markdown.pm
 inc/Test/CompanionClasses.pm
 inc/Test/More.pm
+INSTALL
 lib/Class/Scaffold.pm
 lib/Class/Scaffold/Accessor.pm
 lib/Class/Scaffold/App.pm
@@ -32,11 +36,6 @@ lib/Class/Scaffold/BusinessObject.pm
 lib/Class/Scaffold/Context.pm
 lib/Class/Scaffold/Delegate/Mixin.pm
 lib/Class/Scaffold/Environment.pm
-lib/Class/Scaffold/Environment/Configurator.pm
-lib/Class/Scaffold/Environment/Configurator/Base.pm
-lib/Class/Scaffold/Environment/Configurator/File.pm
-lib/Class/Scaffold/Environment/Configurator/Getopt.pm
-lib/Class/Scaffold/Environment/Configurator/Local.pm
 lib/Class/Scaffold/Environment_TEST.pm
 lib/Class/Scaffold/Exception.pm
 lib/Class/Scaffold/Exception/Business.pm

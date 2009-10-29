@@ -3,13 +3,11 @@ package Class::Scaffold::HierarchicalDirty;
 use strict;
 use warnings;
 
-# $Id: HierarchicalDirty.pm 13653 2007-10-22 09:11:20Z gr $
-#
 # Mixin that multiplexes the dirty flag among its subobjects using
 # Class::Accessor::FactoryTyped's introspection support
 
 
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 
 sub dirty {

@@ -1,12 +1,5 @@
 #!/usr/bin/env perl
 
-# Copyright (c) 2003-2007 University of Vienna.
-#
-# All rights reserved.  This software is protected by copyright.  Use,
-# modification and distribution is limited according to terms of agreements.
-
-# $Id: person_name.t 13669 2007-11-07 20:54:41Z gr $
-#
 # test value_person_name_full framework objects in the context of
 # Registry-NICAT, which uses a specific character set for that object
 
@@ -33,8 +26,8 @@ sub app_init {
         },
     );
 
-    %Class::Scaffold::Environment::Configurator::Local::opt = (
-        %Class::Scaffold::Environment::Configurator::Local::opt,
+    %Property::Lookup::Local::opt = (
+        %Property::Lookup::Local::opt,
         %local_conf,
     );
 }

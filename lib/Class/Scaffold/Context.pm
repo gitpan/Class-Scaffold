@@ -1,12 +1,10 @@
 package Class::Scaffold::Context;
 
-# $Id: Charset.pm 9275 2005-06-21 13:58:39Z gr $
-
 use strict;
 use warnings;
 
 
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 
 use base 'Class::Scaffold::Base';

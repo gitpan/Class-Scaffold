@@ -1,14 +1,12 @@
 package Class::Scaffold::Exception::Container;
 
-# $Id: Container.pm 9275 2005-06-21 13:58:39Z gr $
-
 # implements a container object.
 
 use strict;
 use warnings;
 
 
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 
 # It's ok to inherit from Class::Scaffold::Storable as well; new() will be

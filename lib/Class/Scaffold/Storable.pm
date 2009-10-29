@@ -1,14 +1,12 @@
 package Class::Scaffold::Storable;
 
-# $Id: Storable.pm 13653 2007-10-22 09:11:20Z gr $
-
 # base class for all framework classes that support a storage.
 
 use strict;
 use warnings;
 
 
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 
 use base 'Class::Scaffold::Base';

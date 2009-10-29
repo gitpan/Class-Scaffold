@@ -1,13 +1,11 @@
 package Class::Scaffold::Exception::Util;
 
-# $Id: Util.pm 13653 2007-10-22 09:11:20Z gr $
-
 use strict;
 use warnings;
 use Error::Hierarchy::Util 'assert_class';
 
 
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 
 use base 'Exporter';

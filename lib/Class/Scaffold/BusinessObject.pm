@@ -1,13 +1,11 @@
 package Class::Scaffold::BusinessObject;
 
-# $Id: BusinessObject.pm 13653 2007-10-22 09:11:20Z gr $
-
 use strict;
 use warnings;
 use Error::Hierarchy::Util 'assert_defined';
 
 
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 
 use base qw(

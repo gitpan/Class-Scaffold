@@ -1,7 +1,5 @@
 package Class::Scaffold::Exception::Business;
 
-# $Id: Business.pm 9206 2005-06-15 14:07:06Z rts $
-
 # Marker class to differentiate business exceptions from internal
 # exceptions.
 
@@ -9,7 +7,7 @@ use warnings;
 use strict;
 
 
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 
 use base 'Class::Scaffold::Exception';

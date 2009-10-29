@@ -1,7 +1,5 @@
 #!/usr/bin/env perl
 
-# $Id: cf_dumpenv 11254 2006-04-25 11:43:10Z gr $
-#
 # Examples:
 #
 #   cf_dumpenv Class--Scaffold--Environment
@@ -17,7 +15,7 @@ use strict;
 use Getopt::Long;
 
 
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 
 sub ptag_find {

@@ -6,7 +6,7 @@ use YAML::Marshall 'concat';
 
 use base 'Class::Scaffold::YAML::Marshall';
 
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 sub yaml_load {
     my $self = shift;

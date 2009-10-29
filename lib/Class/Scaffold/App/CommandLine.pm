@@ -3,13 +3,13 @@ package Class::Scaffold::App::CommandLine;
 use strict;
 use warnings;
 use Class::Scaffold::Environment;
-use Class::Scaffold::Environment::Configurator;
+use Property::Lookup;
 
 use Getopt::Long;
 Getopt::Long::Configure('no_ignore_case');
 
 
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 
 use base 'Class::Scaffold::App';
@@ -44,12 +44,11 @@ sub app_init {
     usage(1) if $opt{help};
     usage(-exitstatus => 0, -verbose => 2) if $opt{man};
 
-    # Add the getopt configurator before the superclass has a chance to add
-    # the file configurator; this way, getopt definitions take precedence over
-    # what's in the conf file.
+    # Add a hash configurator layer for getopt before the superclass has a
+    # chance to add the file configurator; this way, getopt definitions take
+    # precedence over what's in the conf file.
 
-    Class::Scaffold::Environment::Configurator->instance->
-        add_configurator(getopt => \%opt);
+    Property::Lookup->instance->add_layer(hash => \%opt);
     $self->opt(%opt);
 
     $self->SUPER::app_init(@_);

@@ -1,12 +1,10 @@
 package Class::Scaffold::Exception::Loader;
 
-# $Id: Loader.pm 13653 2007-10-22 09:11:20Z gr $
-
 use warnings;
 use strict;
 
 
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 
 use base qw(Error::Hierarchy::Internal Class::Scaffold::Accessor);

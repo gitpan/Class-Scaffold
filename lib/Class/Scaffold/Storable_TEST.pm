@@ -1,14 +1,12 @@
 package Class::Scaffold::Storable_TEST;
 
-# $Id: Storable_TEST.pm 11275 2006-04-26 10:53:05Z gr $
-
 use strict;
 use warnings;
 use Error::Hierarchy::Test 'throws2_ok';
 use Test::More;
 
 
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 
 use base 'Class::Scaffold::Test';

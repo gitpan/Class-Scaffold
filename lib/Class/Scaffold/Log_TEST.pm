@@ -1,13 +1,11 @@
 package Class::Scaffold::Log_TEST;
 
-# $Id: Log_TEST.pm 12992 2007-03-20 14:52:19Z gr $
-
 use strict;
 use warnings;
 use Test::More;
 
 
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 
 use base 'Class::Scaffold::Test';

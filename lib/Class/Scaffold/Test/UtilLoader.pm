@@ -10,7 +10,7 @@ use Class::Scaffold::YAML::Marshall::PID;
 # So that we can ->make_obj('test_util_loader')
 use base 'Class::Scaffold::Storable';
 
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 # This module doesn't do anything except load other classes necessary for
 # tests. It is being loaded in Class::Scaffold::App::Test. It is mapped to the

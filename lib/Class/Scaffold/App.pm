@@ -3,11 +3,11 @@ package Class::Scaffold::App;
 use strict;
 use warnings;
 use Class::Scaffold::Environment;
-use Class::Scaffold::Environment::Configurator;
+use Property::Lookup;
 use Error ':try';
 
 
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 
 use base 'Class::Scaffold::Storable';
@@ -34,7 +34,7 @@ sub app_init {
     return if $self->initialized;
     $self->initialized(1);
 
-    my $configurator = Class::Scaffold::Environment::Configurator->instance;
+    my $configurator = Property::Lookup->instance;
 
     # If a subclass added a getopt configurator, we can ask it for the
     # location of the conf file, in case the user specified '--conf' on the
@@ -50,7 +50,7 @@ sub app_init {
             $conf_file = Class::Scaffold::Introspect::find_conf_file();
         }
 
-        $configurator->add_configurator(file => $conf_file);
+        $configurator->add_layer(file => $conf_file);
     }
 
     $self->log->max_level(1 + ($configurator->verbose || 0));

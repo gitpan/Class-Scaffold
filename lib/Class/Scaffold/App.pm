@@ -7,7 +7,7 @@ use Property::Lookup;
 use Error ':try';
 
 
-our $VERSION = '0.10';
+our $VERSION = '0.11';
 
 
 use base 'Class::Scaffold::Storable';

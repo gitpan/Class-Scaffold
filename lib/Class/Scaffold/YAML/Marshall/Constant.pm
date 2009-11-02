@@ -6,7 +6,7 @@ use YAML::Marshall 'constant';
 
 use base 'Class::Scaffold::YAML::Marshall';
 
-our $VERSION = '0.10';
+our $VERSION = '0.11';
 
 sub yaml_load {
     my $self = shift;

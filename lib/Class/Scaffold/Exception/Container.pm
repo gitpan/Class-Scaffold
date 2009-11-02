@@ -6,7 +6,7 @@ use strict;
 use warnings;
 
 
-our $VERSION = '0.10';
+our $VERSION = '0.11';
 
 
 # It's ok to inherit from Class::Scaffold::Storable as well; new() will be

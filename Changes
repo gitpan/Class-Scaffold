@@ -1,5 +1,9 @@
 Revision history for Perl extension Class-Scaffold
 
+0.11 Mon 2009.11.02 17:59:15 CET (Marcel Gruenauer <marcel@cpan.org>)
+    - C::S::App::Test::YAMLDriven now has run_test(), which runs the abstract
+      run_subtest() in a subtest.
+
 0.10 Sat 2009.10.24 23:20:43 CEST (Marcel Gruenauer <marcel@cpan.org>)
     - configurator mechanism is now handled by Property::Lookup
     - 'getopt' configurator layer is now just 'hash'

@@ -10,7 +10,7 @@ use Test::More;
 use Test::Builder;
 
 
-our $VERSION = '0.10';
+our $VERSION = '0.11';
 
 
 use base 'Class::Scaffold::App::Test';
@@ -21,7 +21,7 @@ $Error::Debug = 1;   # to trigger a stacktrace on an exception
 
 
 __PACKAGE__
-    ->mk_abstract_accessors(qw(run_test plan_test))
+    ->mk_abstract_accessors(qw(run_subtest plan_test))
     ->mk_hash_accessors(qw(test_def))
     ->mk_scalar_accessors(qw(
         testdir testname expect run_num runs current_test_def
@@ -126,28 +126,12 @@ sub should_skip_testname {
 
 sub make_plan {
     my $self = shift;
-    my $plan = 0;
 
-    # Each YAML file produces a number of tests, except for the shared
-    # file, which is expected to only contain YAML::Active objects for
+    # Each YAML file produces either a skip or a subtest, except for the
+    # shared file, which is expected to only contain YAML::Active objects for
     # setup.
 
-    for my $name (sort $self->test_def_keys) {
-        next if $name eq SHARED;
-        for my $run (1..$self->runs) {
-
-            # If a test def specifies that it wants to be skipped, just plan
-            # one test - a pass.
-
-            if ($self->should_skip_testname($name)) {
-                $plan++;
-            } else {
-                $plan += $self->plan_test($self->test_def($name), $run);
-            }
-        }
-    }
-
-    $plan;
+    $self->runs * (grep { $_ ne SHARED } $self->test_def_keys);
 }
 
 
@@ -180,6 +164,15 @@ sub execute_test_def {
 }
 
 
+sub run_test {
+    my $self = shift;
+    subtest $self->testname, sub {
+        plan tests => $self->plan_test($self->current_test_def, $self->run_num);
+        $self->run_subtest;
+    };
+}
+
+
 sub named_test {
     my ($self, $suffix) = @_;
     sprintf '%s: %s', $self->testname, $suffix;
@@ -188,7 +181,7 @@ sub named_test {
 
 sub todo_skip_test {
     my $self = shift;
-    Test::Builder->new->todo_skip($self->named_test('wants to be skipped'), 1);
+    Test::Builder->new->todo_skip('wants to be skipped', 1);
 }
 
 

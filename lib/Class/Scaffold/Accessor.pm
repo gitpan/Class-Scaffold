@@ -6,7 +6,7 @@ use Error::Hierarchy::Util 'assert_read_only';
 use Class::Scaffold::Factory::Type;
 
 
-our $VERSION = '0.10';
+our $VERSION = '0.11';
 
 
 use base qw(

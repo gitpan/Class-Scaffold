@@ -6,7 +6,7 @@ use Carp;
 use IO::File;
 use Time::HiRes 'gettimeofday';
 
-our $VERSION = '0.10';
+our $VERSION = '0.11';
 
 use base 'Class::Scaffold::Base';
 

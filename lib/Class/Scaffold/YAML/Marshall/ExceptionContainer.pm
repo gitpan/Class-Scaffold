@@ -6,7 +6,7 @@ use YAML::Marshall 'exception/container';
 
 use base 'Class::Scaffold::YAML::Marshall';
 
-our $VERSION = '0.11';
+our $VERSION = '0.12';
 
 sub yaml_load {
     my $self = shift;

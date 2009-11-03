@@ -2,15 +2,16 @@ package Class::Scaffold::App::Test::YAMLDriven;
 
 use strict;
 use warnings;
-use File::Find;
 use Class::Scaffold::App;
 use Error::Hierarchy::Util 'assert_defined';
+use File::Find;
+use List::Util 'shuffle';
 use String::FlexMatch;           # in case some tests need it
 use Test::More;
 use Test::Builder;
 
 
-our $VERSION = '0.11';
+our $VERSION = '0.12';
 
 
 use base 'Class::Scaffold::App::Test';
@@ -30,6 +31,9 @@ __PACKAGE__
 
 use constant SHARED => '00shared.yaml';
 
+use constant GETOPT => (qw/
+    shuffle reverse
+/);
 
 # 'runs' is the number of stage runs per test file ensure idempotency
 
@@ -47,7 +51,7 @@ sub app_code {
 
     plan tests => $self->make_plan;
 
-    for my $testname (sort $self->test_def_keys) {
+    for my $testname ($self->ordered_test_def_keys) {
         next if $testname eq SHARED;
         $self->execute_test_def($testname);
     }
@@ -117,6 +121,23 @@ sub read_test_defs {
     }
 }
 
+
+sub ordered_test_def_keys {
+    my $self = shift;
+    my @tests;
+    if ($self->opt->{shuffle}) {
+        note 'test order: shuffle';
+        @tests = shuffle $self->test_def_keys;
+    } elsif ($self->opt->{reverse}) {
+        note 'test order: reverse';
+        @tests = reverse sort $self->test_def_keys;
+    } else {
+        note 'test order: sort';
+        @tests = sort $self->test_def_keys;
+        # Perl::Critic complains about "return sort ... "
+    }
+    @tests;
+}
 
 sub should_skip_testname {
     my ($self, $testname) = @_;

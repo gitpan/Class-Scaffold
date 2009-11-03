@@ -6,7 +6,7 @@ use Error::Hierarchy::Test 'throws2_ok';
 use Test::More;
 
 
-our $VERSION = '0.11';
+our $VERSION = '0.12';
 
 
 use base 'Class::Scaffold::Test';

@@ -8,7 +8,7 @@ use File::Spec::Functions qw/curdir updir rootdir rel2abs/;
 use Sys::Hostname;
 
 
-our $VERSION = '0.11';
+our $VERSION = '0.12';
 
 
 use base 'Exporter';

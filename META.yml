@@ -4,8 +4,8 @@ author:
   - 'Florian Helmberger C<< <fh@univie.ac.at> >>'
 build_requires:
   ExtUtils::MakeMaker: 6.42
-  Test::CompanionClasses: 0.03
-  Test::More: 0.70
+  Test::CompanionClasses: 0.05
+  Test::More: 0.94
 configure_requires:
   ExtUtils::MakeMaker: 6.42
 distribution_type: module
@@ -32,6 +32,7 @@ requires:
   Data::Miscellany: 0
   Data::Storage: 0.02
   Error::Hierarchy: 0
+  List::Util: 0
   Property::Lookup: 0
   String::FlexMatch: 0
   Term::Shell::Enhanced: 0
@@ -48,4 +49,4 @@ resources:
   homepage: http://search.cpan.org/dist/Class-Scaffold/
   license: http://dev.perl.org/licenses/
   repository: git://github.com/hanekomu/class-scaffold.git
-version: 0.11
+version: 0.12

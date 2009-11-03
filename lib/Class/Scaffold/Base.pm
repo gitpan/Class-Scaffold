@@ -9,7 +9,7 @@ use Data::Miscellany 'set_push';
 use Error::Hierarchy::Util 'load_class';
 
 
-our $VERSION = '0.11';
+our $VERSION = '0.12';
 
 
 use base qw/

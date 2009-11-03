@@ -5,7 +5,7 @@ use warnings;
 use Error::Hierarchy::Util 'assert_class';
 
 
-our $VERSION = '0.11';
+our $VERSION = '0.12';
 
 
 use base 'Exporter';

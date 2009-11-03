@@ -8,7 +8,7 @@ use Property::Lookup;
 use Vim::Tag 'make_tag';
 
 
-our $VERSION = '0.11';
+our $VERSION = '0.12';
 
 
 use base 'Class::Scaffold::Base';

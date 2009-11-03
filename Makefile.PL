@@ -21,6 +21,7 @@ requires 'Data::Miscellany';
 requires 'Data::Storage' => '0.02';
 requires 'DBI';
 requires 'Error::Hierarchy';
+requires 'List::Util';
 requires 'Property::Lookup';
 requires 'String::FlexMatch';
 requires 'Term::Shell::Enhanced';
@@ -32,8 +33,8 @@ requires 'Vim::Tag';
 requires 'YAML' => '0.70';
 requires 'YAML::Active';
 
-test_requires 'Test::CompanionClasses' => '0.03';
-test_requires 'Test::More' => '0.70';
+test_requires 'Test::CompanionClasses' => '0.05';
+test_requires 'Test::More' => '0.94';
 extra_tests;
 
 author_requires 'ShipIt';

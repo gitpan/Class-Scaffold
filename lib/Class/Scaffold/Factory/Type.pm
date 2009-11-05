@@ -4,11 +4,34 @@ use warnings;
 use strict;
 
 
-our $VERSION = '0.12';
+our $VERSION = '0.13';
 
 
 use base 'Class::Factory::Enhanced';
 
+
+sub import {
+    my ($class, $spec) = @_;
+    return unless defined $spec && $spec eq ':all';
+    my $pkg = caller;
+    for my $symbol (Class::Scaffold::Factory::Type->get_registered_types) {
+        my $factory_class = Class::Scaffold::Factory::Type->
+            get_registered_class($symbol);
+        no strict 'refs';
+        my $target = "${pkg}::obj_${symbol}";
+        *$target = sub () { $factory_class };
+    }
+}
+
+
+# override this method with a caching version; it's called very often
+
+sub make_object_for_type {
+    my ($self, $object_type, @args) = @_;
+    our %cache;
+    my $class = $cache{$object_type} ||= $self->get_factory_class($object_type);
+    $class->new(@args);
+}
 
 # no warnings
 sub factory_log {}

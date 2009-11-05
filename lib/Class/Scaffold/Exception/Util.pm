@@ -5,7 +5,7 @@ use warnings;
 use Error::Hierarchy::Util 'assert_class';
 
 
-our $VERSION = '0.12';
+our $VERSION = '0.13';
 
 
 use base 'Exporter';
@@ -23,9 +23,11 @@ our @EXPORT_OK = @{ $EXPORT_TAGS{all} = [ map { @$_ } values %EXPORT_TAGS ] };
 sub assert_object_type ($$) {
     my ($obj, $object_type_const) = @_;
     local $Error::Depth = $Error::Depth + 1;
-    assert_class($obj, Class::Scaffold::Environment->getenv->
-        get_class_name_for($object_type_const)
-    );
+    our $cached_env ||= Class::Scaffold::Environment->getenv;
+    our %cache;
+    $cache{$object_type_const} ||=
+        $cached_env->get_class_name_for($object_type_const);
+    assert_class($obj, $cache{$object_type_const});
 }
 
 

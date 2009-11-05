@@ -7,7 +7,7 @@ use 5.006;
 # Marker package so sub-distros can use it in their Makefile.PL's 'requires'
 # section.
 
-our $VERSION = '0.12';
+our $VERSION = '0.13';
 
 1;
 

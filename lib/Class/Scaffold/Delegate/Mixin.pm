@@ -5,7 +5,7 @@ use strict;
 
 
 
-our $VERSION = '0.12';
+our $VERSION = '0.13';
 
 
 # Class::Scaffold::Base inherits from this mixin, so we shouldn't use()

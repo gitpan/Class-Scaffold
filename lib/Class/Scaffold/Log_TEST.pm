@@ -5,7 +5,7 @@ use warnings;
 use Test::More;
 
 
-our $VERSION = '0.12';
+our $VERSION = '0.13';
 
 
 use base 'Class::Scaffold::Test';

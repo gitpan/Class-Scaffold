@@ -5,7 +5,7 @@ use strict;
 use YAML::Active qw/assert_arrayref array_activate/;
 
 
-our $VERSION = '0.12';
+our $VERSION = '0.13';
 
 
 use base 'Class::Scaffold::YAML::Active';

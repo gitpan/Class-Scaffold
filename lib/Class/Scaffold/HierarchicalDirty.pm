@@ -7,7 +7,7 @@ use warnings;
 # Class::Accessor::FactoryTyped's introspection support
 
 
-our $VERSION = '0.13';
+our $VERSION = '0.14';
 
 
 sub dirty {

@@ -6,7 +6,7 @@ use Test::More;
 use Class::Value;  # see run() below
 
 
-our $VERSION = '0.13';
+our $VERSION = '0.14';
 
 
 # Also inherit from Class::Scaffold::Base so we get a delegate; put it first

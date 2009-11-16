@@ -6,7 +6,7 @@ use strict;
 use warnings;
 
 
-our $VERSION = '0.13';
+our $VERSION = '0.14';
 
 
 use base 'Class::Scaffold::Base';
@@ -64,6 +64,14 @@ use constant HYGIENIC => ( qw/storage storage_type/ );
 
 sub MUNGE_CONSTRUCTOR_ARGS {
     my ($self, @args) = @_;
+
+    # needed in order to mix object creation of a given class with and without
+    # explicitly setting the storage object for it (Erik P. Ostlyngen, NORID):
+
+    if (@args % 2 == 0) {
+        my %args = @args;
+        return %args if $args{storage_type};
+    }
 
     # The superclass does nothing, so we'll skip this for performance reasons
     # - this method is called very often.

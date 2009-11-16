@@ -11,7 +11,7 @@ use Test::More;
 use Test::Builder;
 
 
-our $VERSION = '0.13';
+our $VERSION = '0.14';
 
 
 use base 'Class::Scaffold::App::Test';

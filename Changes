@@ -1,5 +1,9 @@
 Revision history for Perl extension Class-Scaffold
 
+0.14 Mon 2009.11.16 11:17:38 CET (Marcel Gruenauer <marcel@cpan.org>)
+    - C::S::Storable: shortcut MUNGE_CONSTRUCTOR_ARGS if storage_type arg is
+      present
+
 0.13 Wed 2009.11.04 23:45:02 CET (Marcel Gruenauer <marcel@cpan.org>)
     - C::S::Factory::Type got an import function that provides direct access
       functions so it is easier and faster than '$self->delegate->make_obj()'

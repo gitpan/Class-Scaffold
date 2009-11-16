@@ -49,4 +49,4 @@ resources:
   homepage: http://search.cpan.org/dist/Class-Scaffold/
   license: http://dev.perl.org/licenses/
   repository: git://github.com/hanekomu/class-scaffold.git
-version: 0.13
+version: 0.14

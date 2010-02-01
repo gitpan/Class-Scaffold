@@ -1,31 +1,23 @@
 package Class::Scaffold::Factory::Type;
-
 use warnings;
 use strict;
-
-
-our $VERSION = '0.14';
-
-
+our $VERSION = '0.15';
 use base 'Class::Factory::Enhanced';
-
 
 sub import {
     my ($class, $spec) = @_;
     return unless defined $spec && $spec eq ':all';
     my $pkg = caller;
     for my $symbol (Class::Scaffold::Factory::Type->get_registered_types) {
-        my $factory_class = Class::Scaffold::Factory::Type->
-            get_registered_class($symbol);
+        my $factory_class =
+          Class::Scaffold::Factory::Type->get_registered_class($symbol);
         no strict 'refs';
         my $target = "${pkg}::obj_${symbol}";
         *$target = sub () { $factory_class };
     }
 }
 
-
 # override this method with a caching version; it's called very often
-
 sub make_object_for_type {
     my ($self, $object_type, @args) = @_;
     our %cache;
@@ -34,12 +26,17 @@ sub make_object_for_type {
 }
 
 # no warnings
-sub factory_log {}
+sub factory_log { }
 
-
+sub register_factory_type {
+    my ($item, @args) = @_;
+    $item->SUPER::register_factory_type(@args);
+    return unless $::PTAGS;
+    while (my ($factory_type, $package) = splice @args, 0, 2) {
+        $::PTAGS->add_tag("csft--$factory_type", "filename_for:$package", 1);
+    }
+}
 1;
-
-
 __END__
 
 

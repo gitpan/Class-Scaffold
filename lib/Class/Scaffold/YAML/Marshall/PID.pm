@@ -6,7 +6,7 @@ use YAML::Marshall 'pid';
 
 use base 'Class::Scaffold::YAML::Marshall';
 
-our $VERSION = '0.14';
+our $VERSION = '0.15';
 
 sub yaml_load { $$ }
 

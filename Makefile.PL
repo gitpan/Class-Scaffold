@@ -20,6 +20,7 @@ requires 'Data::Inherited';
 requires 'Data::Miscellany';
 requires 'Data::Storage' => '0.02';
 requires 'DBI';
+requires 'Devel::Caller';
 requires 'Error::Hierarchy';
 requires 'List::Util';
 requires 'Property::Lookup';

@@ -9,9 +9,10 @@ use List::Util 'shuffle';
 use String::FlexMatch;           # in case some tests need it
 use Test::More;
 use Test::Builder;
+use Encode;
 
 
-our $VERSION = '0.14';
+our $VERSION = '0.15';
 
 
 use base 'Class::Scaffold::App::Test';
@@ -112,7 +113,26 @@ sub read_test_defs {
                 $test_def = YAML::Active::Load($tests_yaml);
             } else {
                 require YAML;
-                $test_def = YAML::Load($tests_yaml);
+
+                # Erik P. Ostlyngen writes:
+                #
+                # There seems to be a difference in the behaviour of YAML and
+                # YAML::XS when it comes to wide characters. YAML::Load()
+                # wants the string to be a perl wide character string whereas
+                # YAML::XS::Load() wants a string of bytes which it tries to
+                # utf-8 decode afterwards.
+                #
+                # This is a problem in Class::Scaffold::App::Test::YAMLDriven
+                # because it uses both of the two YAML modules. So if we're
+                # writing our tests with the use_yaml_active tag, we can
+                # include utf-8 in the document. But if we instead use YAML
+                # with the marshall classes, we cannot use utf-8 directly.
+                #
+                # I think it would be a good idea to support utf-8 encoding
+                # both in yaml-active and yaml-marshall documents and in the
+                # same way. This could easily be fixed with [decode_utf8()].
+
+                $test_def = YAML::Load(decode_utf8($tests_yaml));
                 # note explain $test_def;
             }
 

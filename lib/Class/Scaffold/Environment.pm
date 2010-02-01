@@ -5,10 +5,9 @@ use strict;
 use Error::Hierarchy::Util 'load_class';
 use Class::Scaffold::Factory::Type;
 use Property::Lookup;
-use Vim::Tag 'make_tag';
 
 
-our $VERSION = '0.14';
+our $VERSION = '0.15';
 
 
 use base 'Class::Scaffold::Base';
@@ -116,7 +115,7 @@ sub gen_class_hash_accessor (@) {
         my $hash;   # will be cached here
 
         no strict 'refs';
-        make_tag $method, __FILE__, __LINE__+1;
+        $::PTAGS && $::PTAGS->add_tag($method, __FILE__, __LINE__+1);
         *$method = sub {
             local $DB::sub = local *__ANON__ =
                 sprintf "%s::%s", __PACKAGE__, $method
@@ -130,7 +129,7 @@ sub gen_class_hash_accessor (@) {
         # so FOO_CLASS_NAME() will return the whole every_hash
 
         $method = sprintf '%s_CLASS_NAME' => lc $prefix;
-        make_tag $method, __FILE__, __LINE__+1;
+        $::PTAGS && $::PTAGS->add_tag($method, __FILE__, __LINE__+1);
         *$method = sub {
             local $DB::sub = local *__ANON__ =
                 sprintf "%s::%s", __PACKAGE__, $method
@@ -141,7 +140,7 @@ sub gen_class_hash_accessor (@) {
         };
 
         $method = sprintf 'release_%s_class_name_hash' => lc $prefix;
-        make_tag $method, __FILE__, __LINE__+1;
+        $::PTAGS && $::PTAGS->add_tag($method, __FILE__, __LINE__+1);
         *$method = sub {
             local $DB::sub = local *__ANON__ =
                 sprintf "%s::%s", __PACKAGE__, $method

@@ -9,7 +9,7 @@ use Getopt::Long;
 Getopt::Long::Configure('no_ignore_case');
 
 
-our $VERSION = '0.14';
+our $VERSION = '0.15';
 
 
 use base 'Class::Scaffold::App';
@@ -27,6 +27,8 @@ use constant GETOPT => (qw/
     help man logfile|log=s verbose|v+ dryrun conf=s version|V environment
 /);
 
+use constant GETOPT_DEFAULTS => ();
+
 
 sub usage {
     my $self = shift;
@@ -39,10 +41,16 @@ sub app_init {
     my $self = shift;
     my %opt;
 
-    GetOptions(\%opt, $self->every_list('GETOPT')) or usage(2);
+    GetOptions(\%opt, $self->every_list('GETOPT')) or $self->usage(2);
 
-    usage(1) if $opt{help};
-    usage(-exitstatus => 0, -verbose => 2) if $opt{man};
+    $self->usage(1) if $opt{help};
+    $self->usage(-exitstatus => 0, -verbose => 2) if $opt{man};
+
+    my %defaults = $self->every_hash('GETOPT_DEFAULTS');
+    while (my ($key, $value) = each %defaults) {
+        next if defined $opt{$key};
+        $opt{$key} = $value;
+    }
 
     # Add a hash configurator layer for getopt before the superclass has a
     # chance to add the file configurator; this way, getopt definitions take

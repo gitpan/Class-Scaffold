@@ -6,7 +6,7 @@ use strict;
 # So that we get a delegate() method
 use base 'Class::Scaffold::Storable';
 
-our $VERSION = '0.14';
+our $VERSION = '0.15';
 
 1;
 

@@ -31,6 +31,7 @@ requires:
   Data::Inherited: 0
   Data::Miscellany: 0
   Data::Storage: 0.02
+  Devel::Caller: 0
   Error::Hierarchy: 0
   List::Util: 0
   Property::Lookup: 0
@@ -49,4 +50,4 @@ resources:
   homepage: http://search.cpan.org/dist/Class-Scaffold/
   license: http://dev.perl.org/licenses/
   repository: git://github.com/hanekomu/class-scaffold.git
-version: 0.14
+version: 0.15

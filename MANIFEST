@@ -33,6 +33,7 @@ lib/Class/Scaffold/App/Test/YAMLDriven.pm
 lib/Class/Scaffold/Base.pm
 lib/Class/Scaffold/Base_TEST.pm
 lib/Class/Scaffold/BusinessObject.pm
+lib/Class/Scaffold/ConstantImporter.pm
 lib/Class/Scaffold/Context.pm
 lib/Class/Scaffold/Delegate/Mixin.pm
 lib/Class/Scaffold/Environment.pm

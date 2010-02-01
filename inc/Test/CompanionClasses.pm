@@ -6,7 +6,7 @@ use strict;
 use Test::CompanionClasses::Engine;
 use Getopt::Long;
 use base 'Exporter';
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 our @EXPORT  = ('run_tests');
 
 sub run_tests {

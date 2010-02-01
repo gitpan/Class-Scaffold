@@ -1,4 +1,11 @@
 Revision history for Perl extension Class-Scaffold
+0.15 Mon 2010.02.01 17:35:27 CET (Marcel Gruenauer <marcel@cpan.org>)
+    - C::S::App::CommandLine: added support for GETOPT_DEFAULTS
+    - added constant importer to avoid all those 'self->delegate->...' calls
+    - C::S::App::CommandLine: call usage() like a method
+    - C::S::App::Test::YAMLDriven: decode utf8 before YAML::Load to make it the
+      same as YAML::XS::Load
+    - convert to new-style PTAGS handling (see Vim::Tag)
 
 0.14 Mon 2009.11.16 11:17:38 CET (Marcel Gruenauer <marcel@cpan.org>)
     - C::S::Storable: shortcut MUNGE_CONSTRUCTOR_ARGS if storage_type arg is

@@ -6,7 +6,7 @@ use Error;   # to get $Error::Depth;
 use Error::Hierarchy::Util qw/assert_defined load_class/;
 
 
-our $VERSION = '0.14';
+our $VERSION = '0.15';
 
 
 use base 'Class::Scaffold::Storable';

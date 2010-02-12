@@ -2,7 +2,7 @@ package Class::Scaffold::ConstantImporter;
 use warnings;
 use strict;
 use Devel::Caller qw(caller_args);
-our $VERSION = '0.15';
+our $VERSION = '0.16';
 
 sub import {
     my $pkg     = shift;

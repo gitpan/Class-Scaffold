@@ -1,26 +1,15 @@
 package Class::Scaffold::YAML::Active::Hash;
 
 # Base class for YAML::Active plugins
-
 use warnings;
 use strict;
-
-
-our $VERSION = '0.15';
-
-
+our $VERSION = '0.16';
 use base qw(
-    Class::Scaffold::Storable
-    YAML::Active::Plugin::Hash
+  Class::Scaffold::Storable
+  YAML::Active::Plugin::Hash
 );
-
-
 1;
-
-
 __END__
-
-
 
 =head1 NAME
 
@@ -35,8 +24,6 @@ Class::Scaffold::YAML::Active::Hash - large-scale OOP application support
 =head1 METHODS
 
 =over 4
-
-
 
 =back
 
@@ -223,7 +210,6 @@ Copyright 2004-2009 by the authors.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
-
 
 =cut
 

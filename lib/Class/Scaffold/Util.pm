@@ -1,24 +1,13 @@
 package Class::Scaffold::Util;
 
 # Package holding various useful functions.
-
 use warnings;
 use strict;
 use Error::Hierarchy::Util 'assert_hashref';
-
-
-our $VERSION = '0.15';
-
-
-use base 'Exporter';
-
-
-our %EXPORT_TAGS = (
-    util => [ qw/hash_delta const/ ],
-);
-
+our $VERSION = '0.16';
+use Exporter qw(import);
+our %EXPORT_TAGS = (util => [qw/hash_delta const/],);
 our @EXPORT_OK = @{ $EXPORT_TAGS{all} = [ map { @$_ } values %EXPORT_TAGS ] };
-
 
 # generates the delta for two given hashrefs.
 # returns three hashrefs containing the elements of the given hashrefs
@@ -26,18 +15,15 @@ our @EXPORT_OK = @{ $EXPORT_TAGS{all} = [ map { @$_ } values %EXPORT_TAGS ] };
 #   1. inserted
 #   2. updated
 #   3. deleted
-
 sub hash_delta {
     my ($this, $that) = @_;
     my ($insert, $delete, $update);
-
     $this = {} unless defined $this;
     $that = {} unless defined $that;
-
-    assert_hashref $this, sprintf
-        "hash_delta: \$this isn't a hashref, it's a %s", ref $this;
-    assert_hashref $that, sprintf
-        "hash_delta: \$that isn't a hashref, it's a %s", ref $that;
+    assert_hashref $this,
+      sprintf "hash_delta: \$this isn't a hashref, it's a %s", ref $this;
+    assert_hashref $that,
+      sprintf "hash_delta: \$that isn't a hashref, it's a %s", ref $that;
 
     # get extinct keys.
     for (keys %$this) {
@@ -46,6 +32,7 @@ sub hash_delta {
 
     # get new keys.
     for (keys %$that) {
+
         # and catch updated keys also.
         if (exists $this->{$_}) {
             $update->{$_} = $that->{$_};
@@ -53,32 +40,28 @@ sub hash_delta {
             $insert->{$_} = $that->{$_};
         }
     }
-
     return ($insert, $update, $delete);
 }
-
 
 sub const ($@) {
     my $name = shift;
     my %args = @_;
-
-    my ($pkg, $filename, $line) = (caller)[0..2];
+    my ($pkg, $filename, $line) = (caller)[ 0 .. 2 ];
     no strict 'refs';
-
     my $every_hash_name = "${name}_HASH";
     $::PTAGS && $::PTAGS->add_tag($every_hash_name, $filename, $line);
     *{"${pkg}::${every_hash_name}"} = sub { %args };
-
     $::PTAGS && $::PTAGS->add_tag($name, $filename, $line);
     *{"${pkg}::${name}"} = sub {
         my $self = shift;
         my $hash = $self->every_hash($every_hash_name);
         if (@_) {
             my $key = shift;
-            $hash->{$key} || $hash->{_AUTO} || throw
-                Error::Hierarchy::Internal::CustomMessage(custom_message =>
-                    "neither key [$key] nor [_AUTO] in $every_hash_name");
-
+            $hash->{$key}
+              || $hash->{_AUTO}
+              || throw Error::Hierarchy::Internal::CustomMessage(
+                custom_message =>
+                  "neither key [$key] nor [_AUTO] in $every_hash_name");
         } else {
             my @val = values %$hash;
             return wantarray ? @val : \@val;
@@ -92,20 +75,13 @@ sub const ($@) {
         my $self = shift;
         scalar(@{ $self->$name });
     };
-
     while (my ($key, $value) = each %args) {
         $::PTAGS && $::PTAGS->add_tag($key, $filename, $line);
         *{"${pkg}::${key}"} = sub { $value };
     }
 }
-
-
 1;
-
-
 __END__
-
-
 
 =head1 NAME
 
@@ -121,16 +97,7 @@ Class::Scaffold::Util - large-scale OOP application support
 
 =over 4
 
-
-
 =back
-
-Class::Scaffold::Util inherits from L<Exporter>.
-
-The superclass L<Exporter> defines these methods and functions:
-
-    as_heavy(), export(), export_fail(), export_ok_tags(), export_tags(),
-    export_to_level(), import(), require_version()
 
 =head1 BUGS AND LIMITATIONS
 
@@ -167,7 +134,6 @@ Copyright 2004-2009 by the authors.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
-
 
 =cut
 

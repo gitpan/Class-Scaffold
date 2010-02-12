@@ -1,23 +1,12 @@
 package Class::Scaffold::Exception::NoSuchFactoryHandler;
-
 use warnings;
 use strict;
-
-
-our $VERSION = '0.15';
-
-
+our $VERSION = '0.16';
 use base 'Class::Scaffold::Exception';
-
-
 __PACKAGE__->mk_accessors(qw(handler_type spec));
-
-
 use constant default_message =>
-    'Factory lookup failure for handler type [%s], spec [%s]';
-
-use constant PROPERTIES => ( qw/handler_type spec/ );
-
+  'Factory lookup failure for handler type [%s], spec [%s]';
+use constant PROPERTIES => (qw/handler_type spec/);
 
 sub init {
     my $self = shift;
@@ -27,18 +16,11 @@ sub init {
     # to report the abstract method that threw this exception itself,
     # rather we want to report its caller, i.e. the one that called the
     # abstract method. So we use +2.
-
     local $Error::Depth = $Error::Depth + 2;
     $self->SUPER::init(@_);
 }
-
-
 1;
-
-
 __END__
-
-
 
 =head1 NAME
 
@@ -53,8 +35,6 @@ Class::Scaffold::Exception::NoSuchFactoryHandler - large-scale OOP application s
 =head1 METHODS
 
 =over 4
-
-
 
 =back
 
@@ -246,7 +226,6 @@ Copyright 2004-2009 by the authors.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
-
 
 =cut
 

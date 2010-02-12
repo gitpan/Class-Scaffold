@@ -1,19 +1,12 @@
 package Class::Scaffold::YAML::Marshall;
-
 use warnings;
 use strict;
 
 # So that we get a delegate() method
 use base 'Class::Scaffold::Storable';
-
-our $VERSION = '0.15';
-
+our $VERSION = '0.16';
 1;
-
-
 __END__
-
-
 
 =head1 NAME
 

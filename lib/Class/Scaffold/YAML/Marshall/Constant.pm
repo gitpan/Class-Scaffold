@@ -1,26 +1,18 @@
 package Class::Scaffold::YAML::Marshall::Constant;
-
 use warnings;
 use strict;
 use YAML::Marshall 'constant';
-
 use base 'Class::Scaffold::YAML::Marshall';
-
-our $VERSION = '0.15';
+our $VERSION = '0.16';
 
 sub yaml_load {
-    my $self = shift;
-    my $node = $self->SUPER::yaml_load(@_);
+    my $self   = shift;
+    my $node   = $self->SUPER::yaml_load(@_);
     my $method = $$node;
     $self->delegate->$method;
 }
-
 1;
-
-
 __END__
-
-
 
 =head1 NAME
 
@@ -35,8 +27,6 @@ Class::Scaffold::YAML::Marshall::Constant - large-scale OOP application support
 =head1 METHODS
 
 =over 4
-
-
 
 =back
 
@@ -201,7 +191,6 @@ Copyright 2004-2009 by the authors.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
-
 
 =cut
 

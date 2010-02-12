@@ -1,30 +1,18 @@
 package Class::Scaffold::Delegate::Mixin;
-
 use warnings;
 use strict;
-
-
-
-our $VERSION = '0.15';
-
+our $VERSION = '0.16';
 
 # Class::Scaffold::Base inherits from this mixin, so we shouldn't use()
 # Class::Scaffold::Environment, which inherits from
 # Class::Scaffold::Base, creating redefined() warnings. So we just
 # require() it here.
-
 sub delegate {
     require Class::Scaffold::Environment;
-    Class::Scaffold::Environment->getenv
+    Class::Scaffold::Environment->getenv;
 }
-
-
 1;
-
-
 __END__
-
-
 
 =head1 NAME
 
@@ -39,8 +27,6 @@ Class::Scaffold::Delegate::Mixin - large-scale OOP application support
 =head1 METHODS
 
 =over 4
-
-
 
 =back
 
@@ -91,7 +77,6 @@ Copyright 2004-2009 by Marcel GrE<uuml>nauer
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
-
 
 =cut
 

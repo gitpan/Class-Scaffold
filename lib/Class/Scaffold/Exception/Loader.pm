@@ -1,30 +1,13 @@
 package Class::Scaffold::Exception::Loader;
-
 use warnings;
 use strict;
-
-
-our $VERSION = '0.15';
-
-
+our $VERSION = '0.16';
 use base qw(Error::Hierarchy::Internal Class::Scaffold::Accessor);
-
-
 __PACKAGE__->mk_scalar_accessors(qw(class origin message));
-
-
 use constant default_message => "Can't load [%s], (%s) %s";
-
-
 sub properties { $_[0]->SUPER::properties, qw/class origin message/ }
-
-
 1;
-
-
 __END__
-
-
 
 =head1 NAME
 
@@ -232,7 +215,6 @@ Copyright 2004-2009 by the authors.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
-
 
 =cut
 

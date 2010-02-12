@@ -1,104 +1,77 @@
 package Class::Scaffold::Environment;
-
 use warnings;
 use strict;
 use Error::Hierarchy::Util 'load_class';
 use Class::Scaffold::Factory::Type;
 use Property::Lookup;
-
-
-our $VERSION = '0.15';
-
-
+our $VERSION = '0.16';
 use base 'Class::Scaffold::Base';
 Class::Scaffold::Base->add_autoloaded_package('Class::Scaffold::');
 
 # ptags: /(\bconst\b[ \t]+(\w+))/
-
-
-__PACKAGE__
-    ->mk_scalar_accessors(qw(test_mode context))
-    ->mk_boolean_accessors(qw(rollback_mode))
-    ->mk_class_hash_accessors(qw(storage_cache multiplex_transaction_omit))
-    ->mk_object_accessors('Property::Lookup' => 
-        { slot => 'configurator',
-          comp_mthds => [
-              qw(core_storage_name core_storage_args memory_storage_name)
-          ]
-        },
-    );
-
-
-
-use constant DEFAULTS => (
-    test_mode => (defined $ENV{TEST_MODE} && $ENV{TEST_MODE} == 1),
-);
-
-
+__PACKAGE__->mk_scalar_accessors(qw(test_mode context))
+  ->mk_boolean_accessors(qw(rollback_mode))
+  ->mk_class_hash_accessors(qw(storage_cache multiplex_transaction_omit))
+  ->mk_object_accessors(
+    'Property::Lookup' => {
+        slot => 'configurator',
+        comp_mthds =>
+          [ qw(core_storage_name core_storage_args memory_storage_name) ]
+    },
+  );
+use constant DEFAULTS =>
+  (test_mode => (defined $ENV{TEST_MODE} && $ENV{TEST_MODE} == 1),);
 Class::Scaffold::Factory::Type->register_factory_type(
     exception_container => 'Class::Scaffold::Exception::Container',
     result              => 'Data::Storage::DBI::Result',
     storage_statement   => 'Data::Storage::Statement',
     test_util_loader    => 'Class::Scaffold::Test::UtilLoader',
 );
+{    # closure over $env so that it really is private
+    my $env;
+    sub getenv { $env }
 
+    sub setenv {
+        my ($self, $newenv, @args) = @_;
+        return $env = $newenv
+          if ref $newenv
+              && UNIVERSAL::isa($newenv, 'Class::Scaffold::Environment');
+        unless (ref $newenv) {
 
-{ # closure over $env so that it really is private
-
-my $env;
-
-sub getenv { $env }
-
-sub setenv {
-    my ($self, $newenv, @args) = @_;
-    return $env = $newenv if
-        ref $newenv && UNIVERSAL::isa($newenv, 'Class::Scaffold::Environment');
-
-    unless (ref $newenv) {
-        # it's a string containing the class name
-        load_class $newenv, 1;
-        return $env = $newenv->new(@args);
+            # it's a string containing the class name
+            load_class $newenv, 1;
+            return $env = $newenv->new(@args);
+        }
+        throw Error::Hierarchy::Internal::CustomMessage(
+            custom_message => "Invalid environment specification [$newenv]",);
     }
-
-    throw Error::Hierarchy::Internal::CustomMessage(
-        custom_message => "Invalid environment specification [$newenv]",
-    );
-}
-
-} # end of closure
-
+}    # end of closure
 
 sub setup {
     my $self = shift;
-    my $h = $self->every_hash('CONFIGURATOR_DEFAULTS');
+    my $h    = $self->every_hash('CONFIGURATOR_DEFAULTS');
     $self->configurator->default_layer->hash(
-        $self->every_hash('CONFIGURATOR_DEFAULTS')
-    );
+        $self->every_hash('CONFIGURATOR_DEFAULTS'));
 }
-
 
 # ----------------------------------------------------------------------
 # class name-related code
-
-
 use constant STORAGE_CLASS_NAME_HASH => (
+
     # storage names
     STG_NULL     => 'Data::Storage::Null',
     STG_NULL_DBI => 'Data::Storage::DBI',    # for testing
 );
-
 
 sub make_obj {
     my $self = shift;
     Class::Scaffold::Factory::Type->make_object_for_type(@_);
 }
 
-
 sub get_class_name_for {
     my ($self, $object_type) = @_;
     Class::Scaffold::Factory::Type->get_factory_class($object_type);
 }
-
 
 sub isa_type {
     my ($self, $object, $object_type) = @_;
@@ -107,78 +80,65 @@ sub isa_type {
     defined $factory_type ? $factory_type eq $object_type : 0;
 }
 
-
 sub gen_class_hash_accessor (@) {
     for my $prefix (@_) {
-        my $method          = sprintf 'get_%s_class_name_for' => lc $prefix;
+        my $method = sprintf 'get_%s_class_name_for' => lc $prefix;
         my $every_hash_name = sprintf '%s_CLASS_NAME_HASH', $prefix;
-        my $hash;   # will be cached here
-
+        my $hash;    # will be cached here
         no strict 'refs';
-        $::PTAGS && $::PTAGS->add_tag($method, __FILE__, __LINE__+1);
+        $::PTAGS && $::PTAGS->add_tag($method, __FILE__, __LINE__ + 1);
         *$method = sub {
-            local $DB::sub = local *__ANON__ =
-                sprintf "%s::%s", __PACKAGE__, $method
-                if defined &DB::DB && !$Devel::DProf::VERSION;
+            local $DB::sub = local *__ANON__ = sprintf "%s::%s", __PACKAGE__,
+              $method
+              if defined &DB::DB && !$Devel::DProf::VERSION;
             my ($self, $key) = @_;
             $hash ||= $self->every_hash($every_hash_name);
             $hash->{$key} || $hash->{_AUTO};
         };
 
-
         # so FOO_CLASS_NAME() will return the whole every_hash
-
         $method = sprintf '%s_CLASS_NAME' => lc $prefix;
-        $::PTAGS && $::PTAGS->add_tag($method, __FILE__, __LINE__+1);
+        $::PTAGS && $::PTAGS->add_tag($method, __FILE__, __LINE__ + 1);
         *$method = sub {
-            local $DB::sub = local *__ANON__ =
-                sprintf "%s::%s", __PACKAGE__, $method
-                if defined &DB::DB && !$Devel::DProf::VERSION;
+            local $DB::sub = local *__ANON__ = sprintf "%s::%s", __PACKAGE__,
+              $method
+              if defined &DB::DB && !$Devel::DProf::VERSION;
             my $self = shift;
             $hash ||= $self->every_hash($every_hash_name);
             wantarray ? %$hash : $hash;
         };
-
         $method = sprintf 'release_%s_class_name_hash' => lc $prefix;
-        $::PTAGS && $::PTAGS->add_tag($method, __FILE__, __LINE__+1);
+        $::PTAGS && $::PTAGS->add_tag($method, __FILE__, __LINE__ + 1);
         *$method = sub {
-            local $DB::sub = local *__ANON__ =
-                sprintf "%s::%s", __PACKAGE__, $method
-                if defined &DB::DB && !$Devel::DProf::VERSION;
+            local $DB::sub = local *__ANON__ = sprintf "%s::%s", __PACKAGE__,
+              $method
+              if defined &DB::DB && !$Devel::DProf::VERSION;
             undef $hash;
         };
     }
 }
-
 gen_class_hash_accessor('STORAGE');
-
 
 sub load_cached_class_for_type {
     my ($self, $object_type_const) = @_;
 
     # Cache for efficiency reasons; the environment is the core of the whole
     # framework.
-
     our %cache;
     my $class = $self->get_class_name_for($object_type_const);
-
     unless (defined($class) && length($class)) {
         throw Error::Hierarchy::Internal::CustomMessage(custom_message =>
-            "Can't find class for object type [$object_type_const]",
-        );
+              "Can't find class for object type [$object_type_const]",);
     }
-
     load_class $class, $self->test_mode;
     $class;
 }
-
 
 sub storage_for_type {
     my ($self, $object_type) = @_;
     my $storage_type = $self->get_storage_type_for($object_type);
     $self->$storage_type;
 }
-
 
 # When running class tests in non-final distributions, which storage should we
 # use? Ideally, every distribution (but especially the non-final ones like
@@ -189,10 +149,8 @@ sub storage_for_type {
 # that need a storage will skip() the tests if the storage is abstract.
 # Problem: we need to ask all the object types' storages used in a test code
 # block, as different objects types could use different storages. For example:
-
 #    skip(...) unless
 #        $self->delegate->all_storages_are_implemented(qw/person command .../);
-
 sub all_storages_are_implemented {
     my ($self, @object_types) = @_;
     for my $object_type (@object_types) {
@@ -201,84 +159,67 @@ sub all_storages_are_implemented {
     1;
 }
 
-
 # Have a special method for making delegate objects, because delegates will be
 # cached (i.e., pseudo-singletons) and don't need storages and extra args and
 # such.
-
 sub make_delegate {
     my ($self, $object_type_const, @args) = @_;
     our %cache;
     $cache{delegate}{$object_type_const} ||=
-        $self->make_obj($object_type_const, @args);
+      $self->make_obj($object_type_const, @args);
 }
-
 
 # ----------------------------------------------------------------------
 # storage-related code
-
-use constant STORAGE_TYPE_HASH => (
-    _AUTO => 'core_storage',
-);
-
+use constant STORAGE_TYPE_HASH => (_AUTO => 'core_storage',);
 
 sub get_storage_type_for {
     my ($self, $key) = @_;
-
     our %cache;
     return $cache{get_storage_type_for}{$key}
-        if exists $cache{get_storage_type_for}{$key};
-
+      if exists $cache{get_storage_type_for}{$key};
     my $storage_type_for = $self->every_hash('STORAGE_TYPE_HASH');
-    $cache{get_storage_type_for}{$key} =
-        $storage_type_for->{$key} || $storage_type_for->{_AUTO};
+    $cache{get_storage_type_for}{$key} = $storage_type_for->{$key}
+      || $storage_type_for->{_AUTO};
 }
-
 
 sub make_storage_object {
     my $self         = shift;
     my $storage_name = shift;
     my %args =
         @_ == 1
-            ? defined $_[0]
-                ? ref $_[0] eq 'HASH'
-                    ? %{$_[0]}
-                    : @_
-                : ()
-            : @_;
+      ? defined $_[0]
+          ? ref $_[0] eq 'HASH'
+              ? %{ $_[0] }
+              : @_
+          : ()
+      : @_;
     if (my $class = $self->get_storage_class_name_for($storage_name)) {
         load_class $class, $self->test_mode;
         return $class->new(%args);
     }
-
     throw Error::Hierarchy::Internal::CustomMessage(
-        custom_message => "Invalid storage name [$storage_name]",
-    );
+        custom_message => "Invalid storage name [$storage_name]",);
 }
-
 
 sub core_storage {
     my $self = shift;
-    $self->storage_cache->{core_storage} ||= $self->make_storage_object(
-        $self->core_storage_name, $self->core_storage_args);
+    $self->storage_cache->{core_storage} ||=
+      $self->make_storage_object($self->core_storage_name,
+        $self->core_storage_args);
 }
-
 
 sub memory_storage {
     my $self = shift;
-    $self->storage_cache->{memory_storage} ||= $self->make_storage_object(
-        $self->memory_storage_name);
+    $self->storage_cache->{memory_storage} ||=
+      $self->make_storage_object($self->memory_storage_name);
 }
-
-
 
 # Forward some special methods onto all cached storages. Some storages could
 # be a bit special - we don't want to rollback or disconnect from them when
 # calling the multiplexing rollback() and disconnect() methods below, so we
 # ignore them when multiplexing. For example, mutex storages (see
 # Data-Conveyor for the concept).
-
-
 sub rollback {
     my $self = shift;
     while (my ($storage_type, $storage) = each %{ $self->storage_cache }) {
@@ -286,7 +227,6 @@ sub rollback {
         $storage->rollback;
     }
 }
-
 
 sub commit {
     my $self = shift;
@@ -296,7 +236,6 @@ sub commit {
     }
 }
 
-
 sub disconnect {
     my $self = shift;
     while (my ($storage_type, $storage) = each %{ $self->storage_cache }) {
@@ -305,27 +244,18 @@ sub disconnect {
 
         # remove it from the cache so we'll reconnect next time
         $self->storage_cache_delete($storage_type);
-
         require Class::Scaffold::Storable;
         %Class::Scaffold::Storable::cache = ();
     }
-
     our %cache;
     $cache{get_storage_type_for} = {};
 }
 
-
 # Check configuration values for consistency. Empty, but it exists so
 # subclasses can call SUPER::check()
-
-sub check {}
-
+sub check { }
 1;
-
-
 __END__
-
-
 
 =head1 NAME
 
@@ -674,131 +604,6 @@ class variable, the value will be changed for all instances of this class.
 
 =back
 
-Class::Scaffold::Environment inherits from L<Class::Scaffold::Base>.
-
-The superclass L<Class::Scaffold::Base> defines these methods and
-functions:
-
-    new(), FIRST_CONSTRUCTOR_ARGS(), MUNGE_CONSTRUCTOR_ARGS(),
-    add_autoloaded_package(), init(), log()
-
-The superclass L<Data::Inherited> defines these methods and functions:
-
-    every_hash(), every_list(), flush_every_cache_by_key()
-
-The superclass L<Data::Comparable> defines these methods and functions:
-
-    comparable(), comparable_scalar(), dump_comparable(),
-    prepare_comparable(), yaml_dump_comparable()
-
-The superclass L<Class::Scaffold::Delegate::Mixin> defines these methods
-and functions:
-
-    delegate()
-
-The superclass L<Class::Scaffold::Accessor> defines these methods and
-functions:
-
-    mk_framework_object_accessors(), mk_framework_object_array_accessors(),
-    mk_readonly_accessors()
-
-The superclass L<Class::Accessor::Complex> defines these methods and
-functions:
-
-    mk_abstract_accessors(), mk_array_accessors(), mk_boolean_accessors(),
-    mk_class_array_accessors(), mk_class_hash_accessors(),
-    mk_class_scalar_accessors(), mk_concat_accessors(),
-    mk_forward_accessors(), mk_hash_accessors(), mk_integer_accessors(),
-    mk_new(), mk_object_accessors(), mk_scalar_accessors(),
-    mk_set_accessors(), mk_singleton()
-
-The superclass L<Class::Accessor> defines these methods and functions:
-
-    _carp(), _croak(), _mk_accessors(), accessor_name_for(),
-    best_practice_accessor_name_for(), best_practice_mutator_name_for(),
-    follow_best_practice(), get(), make_accessor(), make_ro_accessor(),
-    make_wo_accessor(), mk_accessors(), mk_ro_accessors(),
-    mk_wo_accessors(), mutator_name_for(), set()
-
-The superclass L<Class::Accessor::Installer> defines these methods and
-functions:
-
-    install_accessor()
-
-The superclass L<Class::Accessor::Constructor> defines these methods and
-functions:
-
-    _make_constructor(), mk_constructor(), mk_constructor_with_dirty(),
-    mk_singleton_constructor()
-
-The superclass L<Class::Accessor::FactoryTyped> defines these methods and
-functions:
-
-    clear_factory_typed_accessors(), clear_factory_typed_array_accessors(),
-    count_factory_typed_accessors(), count_factory_typed_array_accessors(),
-    factory_typed_accessors(), factory_typed_accessors_clear(),
-    factory_typed_accessors_count(), factory_typed_accessors_index(),
-    factory_typed_accessors_pop(), factory_typed_accessors_push(),
-    factory_typed_accessors_set(), factory_typed_accessors_shift(),
-    factory_typed_accessors_splice(), factory_typed_accessors_unshift(),
-    factory_typed_array_accessors(), factory_typed_array_accessors_clear(),
-    factory_typed_array_accessors_count(),
-    factory_typed_array_accessors_index(),
-    factory_typed_array_accessors_pop(),
-    factory_typed_array_accessors_push(),
-    factory_typed_array_accessors_set(),
-    factory_typed_array_accessors_shift(),
-    factory_typed_array_accessors_splice(),
-    factory_typed_array_accessors_unshift(),
-    index_factory_typed_accessors(), index_factory_typed_array_accessors(),
-    mk_factory_typed_accessors(), mk_factory_typed_array_accessors(),
-    pop_factory_typed_accessors(), pop_factory_typed_array_accessors(),
-    push_factory_typed_accessors(), push_factory_typed_array_accessors(),
-    set_factory_typed_accessors(), set_factory_typed_array_accessors(),
-    shift_factory_typed_accessors(), shift_factory_typed_array_accessors(),
-    splice_factory_typed_accessors(),
-    splice_factory_typed_array_accessors(),
-    unshift_factory_typed_accessors(),
-    unshift_factory_typed_array_accessors()
-
-The superclass L<Class::Scaffold::Factory::Type> defines these methods and
-functions:
-
-    factory_log()
-
-The superclass L<Class::Factory::Enhanced> defines these methods and
-functions:
-
-    add_factory_type(), make_object_for_type(), register_factory_type()
-
-The superclass L<Class::Factory> defines these methods and functions:
-
-    factory_error(), get_factory_class(), get_factory_type_for(),
-    get_loaded_classes(), get_loaded_types(), get_my_factory(),
-    get_my_factory_type(), get_registered_class(),
-    get_registered_classes(), get_registered_types(),
-    remove_factory_type(), unregister_factory_type()
-
-The superclass L<Class::Accessor::Constructor::Base> defines these methods
-and functions:
-
-    STORE(), clear_dirty(), clear_hygienic(), clear_unhygienic(),
-    contains_hygienic(), contains_unhygienic(), delete_hygienic(),
-    delete_unhygienic(), dirty(), dirty_clear(), dirty_set(),
-    elements_hygienic(), elements_unhygienic(), hygienic(),
-    hygienic_clear(), hygienic_contains(), hygienic_delete(),
-    hygienic_elements(), hygienic_insert(), hygienic_is_empty(),
-    hygienic_size(), insert_hygienic(), insert_unhygienic(),
-    is_empty_hygienic(), is_empty_unhygienic(), set_dirty(),
-    size_hygienic(), size_unhygienic(), unhygienic(), unhygienic_clear(),
-    unhygienic_contains(), unhygienic_delete(), unhygienic_elements(),
-    unhygienic_insert(), unhygienic_is_empty(), unhygienic_size()
-
-The superclass L<Tie::StdHash> defines these methods and functions:
-
-    CLEAR(), DELETE(), EXISTS(), FETCH(), FIRSTKEY(), NEXTKEY(), SCALAR(),
-    TIEHASH()
-
 =head1 BUGS AND LIMITATIONS
 
 No bugs have been reported.
@@ -834,7 +639,6 @@ Copyright 2004-2009 by the authors.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
-
 
 =cut
 

@@ -1,68 +1,48 @@
 package Class::Scaffold::Accessor;
-
 use warnings;
 use strict;
 use Error::Hierarchy::Util 'assert_read_only';
 use Class::Scaffold::Factory::Type;
-
-
-our $VERSION = '0.15';
-
-
+our $VERSION = '0.16';
 use base qw(
-    Class::Accessor::Complex
-    Class::Accessor::Constructor
-    Class::Accessor::FactoryTyped
+  Class::Accessor::Complex
+  Class::Accessor::Constructor
+  Class::Accessor::FactoryTyped
 );
-
 
 sub mk_framework_object_accessors {
     my ($self, @args) = @_;
-    $self->mk_factory_typed_accessors(
-        'Class::Scaffold::Factory::Type', @args);
+    $self->mk_factory_typed_accessors('Class::Scaffold::Factory::Type', @args);
 }
-
 
 sub mk_framework_object_array_accessors {
     my ($self, @args) = @_;
-    $self->mk_factory_typed_array_accessors(
-        'Class::Scaffold::Factory::Type', @args);
+    $self->mk_factory_typed_array_accessors('Class::Scaffold::Factory::Type',
+        @args);
 }
-
 
 sub mk_readonly_accessors {
     my ($self, @fields) = @_;
     my $class = ref $self || $self;
-
     for my $field (@fields) {
         no strict 'refs';
-
         *{"${class}::${field}"} = sub {
             local $DB::sub = local *__ANON__ = "${class}::${field}"
-                if defined &DB::DB && !$Devel::DProf::VERSION;
+              if defined &DB::DB && !$Devel::DProf::VERSION;
             my $self = shift;
             assert_read_only(@_);
             $self->{$field};
         };
-
-        *{"${class}::set_${field}"} =
-        *{"${class}::${field}_set"} = sub {
+        *{"${class}::set_${field}"} = *{"${class}::${field}_set"} = sub {
             local $DB::sub = local *__ANON__ = "${class}::${field}_set"
-                if defined &DB::DB && !$Devel::DProf::VERSION;
+              if defined &DB::DB && !$Devel::DProf::VERSION;
             $_[0]->{$field} = $_[1];
         };
     }
-
-    $self;  # for chaining
+    $self;    # for chaining
 }
-
-
 1;
-
-
 __END__
-
-
 
 =head1 NAME
 
@@ -111,72 +91,6 @@ Sets the slot to the given value and returns it.
 
 =back
 
-Class::Scaffold::Accessor inherits from L<Class::Accessor::Complex>,
-L<Class::Accessor::Constructor>, and L<Class::Accessor::FactoryTyped>.
-
-The superclass L<Class::Accessor::Complex> defines these methods and
-functions:
-
-    mk_abstract_accessors(), mk_array_accessors(), mk_boolean_accessors(),
-    mk_class_array_accessors(), mk_class_hash_accessors(),
-    mk_class_scalar_accessors(), mk_concat_accessors(),
-    mk_forward_accessors(), mk_hash_accessors(), mk_integer_accessors(),
-    mk_new(), mk_object_accessors(), mk_scalar_accessors(),
-    mk_set_accessors(), mk_singleton()
-
-The superclass L<Class::Accessor> defines these methods and functions:
-
-    new(), _carp(), _croak(), _mk_accessors(), accessor_name_for(),
-    best_practice_accessor_name_for(), best_practice_mutator_name_for(),
-    follow_best_practice(), get(), make_accessor(), make_ro_accessor(),
-    make_wo_accessor(), mk_accessors(), mk_ro_accessors(),
-    mk_wo_accessors(), mutator_name_for(), set()
-
-The superclass L<Class::Accessor::Installer> defines these methods and
-functions:
-
-    install_accessor()
-
-The superclass L<Class::Accessor::Constructor> defines these methods and
-functions:
-
-    _make_constructor(), mk_constructor(), mk_constructor_with_dirty(),
-    mk_singleton_constructor()
-
-The superclass L<Data::Inherited> defines these methods and functions:
-
-    every_hash(), every_list(), flush_every_cache_by_key()
-
-The superclass L<Class::Accessor::FactoryTyped> defines these methods and
-functions:
-
-    clear_factory_typed_accessors(), clear_factory_typed_array_accessors(),
-    count_factory_typed_accessors(), count_factory_typed_array_accessors(),
-    factory_typed_accessors(), factory_typed_accessors_clear(),
-    factory_typed_accessors_count(), factory_typed_accessors_index(),
-    factory_typed_accessors_pop(), factory_typed_accessors_push(),
-    factory_typed_accessors_set(), factory_typed_accessors_shift(),
-    factory_typed_accessors_splice(), factory_typed_accessors_unshift(),
-    factory_typed_array_accessors(), factory_typed_array_accessors_clear(),
-    factory_typed_array_accessors_count(),
-    factory_typed_array_accessors_index(),
-    factory_typed_array_accessors_pop(),
-    factory_typed_array_accessors_push(),
-    factory_typed_array_accessors_set(),
-    factory_typed_array_accessors_shift(),
-    factory_typed_array_accessors_splice(),
-    factory_typed_array_accessors_unshift(),
-    index_factory_typed_accessors(), index_factory_typed_array_accessors(),
-    mk_factory_typed_accessors(), mk_factory_typed_array_accessors(),
-    pop_factory_typed_accessors(), pop_factory_typed_array_accessors(),
-    push_factory_typed_accessors(), push_factory_typed_array_accessors(),
-    set_factory_typed_accessors(), set_factory_typed_array_accessors(),
-    shift_factory_typed_accessors(), shift_factory_typed_array_accessors(),
-    splice_factory_typed_accessors(),
-    splice_factory_typed_array_accessors(),
-    unshift_factory_typed_accessors(),
-    unshift_factory_typed_array_accessors()
-
 =head1 BUGS AND LIMITATIONS
 
 No bugs have been reported.
@@ -212,7 +126,6 @@ Copyright 2004-2009 by the authors.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
-
 
 =cut
 

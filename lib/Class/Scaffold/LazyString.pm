@@ -1,18 +1,11 @@
 package Class::Scaffold::LazyString;
-
 use strict;
 use warnings;
-
-use base 'Exporter';
-
-our $VERSION = '0.15';
-
-our @EXPORT = qw(lazy_string);
-
+use Exporter qw(import);
+our $VERSION = '0.16';
+our @EXPORT  = qw(lazy_string);
 sub lazy_string { bless { code => shift }, 'Class::Scaffold::LazyString::Code' }
 
 package Class::Scaffold::LazyString::Code;
 use overload '""' => sub { $_[0]->{code}->() };
-
 1;
-

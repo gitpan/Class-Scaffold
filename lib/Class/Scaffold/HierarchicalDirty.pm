@@ -1,38 +1,27 @@
 package Class::Scaffold::HierarchicalDirty;
-
 use strict;
 use warnings;
 
 # Mixin that multiplexes the dirty flag among its subobjects using
 # Class::Accessor::FactoryTyped's introspection support
-
-
-our $VERSION = '0.15';
-
+our $VERSION = '0.16';
 
 sub dirty {
     my $self = shift;
-
     for my $attr (Class::Scaffold::Accessor->factory_typed_accessors) {
         return 1 if $self->$attr->dirty;
     }
-
     for my $attr (Class::Scaffold::Accessor->factory_typed_array_accessors) {
         for my $element ($self->$attr) {
             return 1 if $element->dirty;
         }
     }
-
     return 0;
 }
 
-
 sub set_dirty {
     my $self = shift;
-
-    $self->$_->set_dirty for
-        Class::Scaffold::Accessor->factory_typed_accessors;
-
+    $self->$_->set_dirty for Class::Scaffold::Accessor->factory_typed_accessors;
     for my $attr (Class::Scaffold::Accessor->factory_typed_array_accessors) {
         for my $element ($self->$attr) {
             $element->set_dirty;
@@ -40,27 +29,18 @@ sub set_dirty {
     }
 }
 
-
 sub clear_dirty {
     my $self = shift;
-
-    $self->$_->clear_dirty for
-        Class::Scaffold::Accessor->factory_typed_accessors;
-
+    $self->$_->clear_dirty
+      for Class::Scaffold::Accessor->factory_typed_accessors;
     for my $attr (Class::Scaffold::Accessor->factory_typed_array_accessors) {
         for my $element ($self->$attr) {
             $element->clear_dirty;
         }
     }
 }
-
-
 1;
-
-
 __END__
-
-
 
 =head1 NAME
 
@@ -75,8 +55,6 @@ Class::Scaffold::HierarchicalDirty - large-scale OOP application support
 =head1 METHODS
 
 =over 4
-
-
 
 =back
 
@@ -117,7 +95,6 @@ Copyright 2004-2009 by the authors.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
-
 
 =cut
 

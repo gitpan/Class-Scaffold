@@ -1,14 +1,8 @@
 package Class::Scaffold::App::Test;
-
 use strict;
 use warnings;
-
-
-our $VERSION = '0.15';
-
-
+our $VERSION = '0.16';
 use base 'Class::Scaffold::App::CommandLine';
-
 
 sub app_code {
     my $self = shift;
@@ -19,17 +13,10 @@ sub app_code {
 
     # We're not going through Environment's make_obj(), so we have
     # to connect manually.
-
     $self->delegate->core_storage->test_setup;
 }
-
-
 1;
-
-
 __END__
-
-
 
 =head1 NAME
 
@@ -44,8 +31,6 @@ Class::Scaffold::App::Test - large-scale OOP application support
 =head1 METHODS
 
 =over 4
-
-
 
 =back
 
@@ -232,7 +217,6 @@ Copyright 2004-2009 by the authors.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
-
 
 =cut
 

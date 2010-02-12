@@ -1,25 +1,17 @@
 package Class::Scaffold::YAML::Marshall::Concat;
-
 use warnings;
 use strict;
 use YAML::Marshall 'concat';
-
 use base 'Class::Scaffold::YAML::Marshall';
-
-our $VERSION = '0.15';
+our $VERSION = '0.16';
 
 sub yaml_load {
     my $self = shift;
     my $node = $self->SUPER::yaml_load(@_);
     join '' => @$node;
 }
-
 1;
-
-
 __END__
-
-
 
 =head1 NAME
 
@@ -34,8 +26,6 @@ Class::Scaffold::YAML::Marshall::Concat - large-scale OOP application support
 =head1 METHODS
 
 =over 4
-
-
 
 =back
 
@@ -200,7 +190,6 @@ Copyright 2004-2009 by the authors.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
-
 
 =cut
 

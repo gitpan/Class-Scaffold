@@ -1,29 +1,14 @@
 package Class::Scaffold::App::Test::Classes;
-
 use warnings;
 use strict;
 use FindBin '$Bin';
 use Test::More;
 use Test::CompanionClasses::Engine;
-
-
-our $VERSION = '0.15';
-
-
+our $VERSION = '0.16';
 use base 'Class::Scaffold::App::Test';
-
-
-__PACKAGE__
-    ->mk_array_accessors(qw(inherited))
-    ->mk_scalar_accessors(qw(lib));
-
-
-use constant DEFAULTS => (
-    lib => "$Bin/../lib",
-);
-
+__PACKAGE__->mk_array_accessors(qw(inherited))->mk_scalar_accessors(qw(lib));
+use constant DEFAULTS => (lib => "$Bin/../lib",);
 use constant GETOPT => ('exact');
-
 
 sub app_code {
     my $self = shift;
@@ -31,18 +16,12 @@ sub app_code {
     Test::CompanionClasses::Engine->new->run_tests(
         exact     => $self->opt->{exact},
         lib       => $self->lib,
-        filter    => [ @ARGV ],
+        filter    => [@ARGV],
         inherited => [ $self->inherited ],
     );
 }
-
-
 1;
-
-
 __END__
-
-
 
 =head1 NAME
 
@@ -425,7 +404,6 @@ Copyright 2004-2009 by the authors.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
-
 
 =cut
 

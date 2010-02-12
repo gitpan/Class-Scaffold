@@ -2,23 +2,12 @@ package Class::Scaffold::Exception::Business;
 
 # Marker class to differentiate business exceptions from internal
 # exceptions.
-
 use warnings;
 use strict;
-
-
-our $VERSION = '0.15';
-
-
+our $VERSION = '0.16';
 use base 'Class::Scaffold::Exception';
-
-
 1;
-
-
 __END__
-
-
 
 =head1 NAME
 
@@ -33,8 +22,6 @@ Class::Scaffold::Exception::Business - large-scale OOP application support
 =head1 METHODS
 
 =over 4
-
-
 
 =back
 
@@ -226,7 +213,6 @@ Copyright 2004-2009 by the authors.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
-
 
 =cut
 

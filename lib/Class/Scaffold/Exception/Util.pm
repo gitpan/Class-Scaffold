@@ -1,42 +1,24 @@
 package Class::Scaffold::Exception::Util;
-
 use strict;
 use warnings;
 use Error::Hierarchy::Util 'assert_class';
-
-
-our $VERSION = '0.15';
-
-
-use base 'Exporter';
-
-
-our %EXPORT_TAGS = (
-    misc => [ qw{assert_object_type} ],
-);
-
+our $VERSION = '0.16';
+use Exporter qw(import);
+our %EXPORT_TAGS = (misc => [qw{assert_object_type}],);
 our @EXPORT_OK = @{ $EXPORT_TAGS{all} = [ map { @$_ } values %EXPORT_TAGS ] };
 
-
 # pass an OBJ_* constant to this method
-
 sub assert_object_type ($$) {
     my ($obj, $object_type_const) = @_;
     local $Error::Depth = $Error::Depth + 1;
     our $cached_env ||= Class::Scaffold::Environment->getenv;
     our %cache;
     $cache{$object_type_const} ||=
-        $cached_env->get_class_name_for($object_type_const);
+      $cached_env->get_class_name_for($object_type_const);
     assert_class($obj, $cache{$object_type_const});
 }
-
-
 1;
-
-
 __END__
-
-
 
 =head1 NAME
 
@@ -52,16 +34,7 @@ Class::Scaffold::Exception::Util - large-scale OOP application support
 
 =over 4
 
-
-
 =back
-
-Class::Scaffold::Exception::Util inherits from L<Exporter>.
-
-The superclass L<Exporter> defines these methods and functions:
-
-    as_heavy(), export(), export_fail(), export_ok_tags(), export_tags(),
-    export_to_level(), import(), require_version()
 
 =head1 BUGS AND LIMITATIONS
 
@@ -98,7 +71,6 @@ Copyright 2004-2009 by the authors.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
-
 
 =cut
 

@@ -1,43 +1,34 @@
 package Class::Scaffold::YAML::Marshall::ExceptionContainer;
-
 use warnings;
 use strict;
 use YAML::Marshall 'exception/container';
-
 use base 'Class::Scaffold::YAML::Marshall';
-
-our $VERSION = '0.15';
+our $VERSION = '0.16';
 
 sub yaml_load {
     my $self = shift;
     my $node = $self->SUPER::yaml_load(@_);
 
-    # Expect a list of hashrefs; each hash element is an exception with a
-    # 'ref' key giving the exception class, and the rest being treated as args
-    # to give to the exception when it is being recorded. Example:
-    #
-    #  exception_container: !perl/Class::Scaffold::YAML::Active::ExceptionContainer
-    #    - ref: Class::Scaffold::Exception::Policy::Blah
-    #      property1: value1
-    #      property2: value2
-
+ # Expect a list of hashrefs; each hash element is an exception with a
+ # 'ref' key giving the exception class, and the rest being treated as args
+ # to give to the exception when it is being recorded. Example:
+ #
+ #  exception_container: !perl/Class::Scaffold::YAML::Active::ExceptionContainer
+ #    - ref: Class::Scaffold::Exception::Policy::Blah
+ #      property1: value1
+ #      property2: value2
     my $container = $self->delegate->make_obj('exception_container');
     for my $exception (@$node) {
-        # Copy because we delete (so as to not mess up YAML references)
-        my %args = %$exception;
-        my $class = delete $args{ref};
 
+        # Copy because we delete (so as to not mess up YAML references)
+        my %args  = %$exception;
+        my $class = delete $args{ref};
         $container->record($class, %args);
     }
     $container;
 }
-
 1;
-
-
 __END__
-
-
 
 =head1 NAME
 
@@ -52,8 +43,6 @@ Class::Scaffold::YAML::Marshall::ExceptionContainer - large-scale OOP applicatio
 =head1 METHODS
 
 =over 4
-
-
 
 =back
 
@@ -218,7 +207,6 @@ Copyright 2004-2009 by the authors.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
-
 
 =cut
 

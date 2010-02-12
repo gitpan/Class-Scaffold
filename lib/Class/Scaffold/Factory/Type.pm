@@ -1,7 +1,7 @@
 package Class::Scaffold::Factory::Type;
 use warnings;
 use strict;
-our $VERSION = '0.15';
+our $VERSION = '0.16';
 use base 'Class::Factory::Enhanced';
 
 sub import {
@@ -39,8 +39,6 @@ sub register_factory_type {
 1;
 __END__
 
-
-
 =head1 NAME
 
 Class::Scaffold::Factory::Type - large-scale OOP application support
@@ -55,24 +53,7 @@ Class::Scaffold::Factory::Type - large-scale OOP application support
 
 =over 4
 
-
-
 =back
-
-Class::Scaffold::Factory::Type inherits from L<Class::Factory::Enhanced>.
-
-The superclass L<Class::Factory::Enhanced> defines these methods and
-functions:
-
-    add_factory_type(), make_object_for_type(), register_factory_type()
-
-The superclass L<Class::Factory> defines these methods and functions:
-
-    new(), factory_error(), get_factory_class(), get_factory_type_for(),
-    get_loaded_classes(), get_loaded_types(), get_my_factory(),
-    get_my_factory_type(), get_registered_class(),
-    get_registered_classes(), get_registered_types(), init(),
-    remove_factory_type(), unregister_factory_type()
 
 =head1 BUGS AND LIMITATIONS
 
@@ -109,7 +90,6 @@ Copyright 2004-2009 by the authors.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
-
 
 =cut
 

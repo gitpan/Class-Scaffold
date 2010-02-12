@@ -1,16 +1,12 @@
 package Class::Scaffold;
-
 use strict;
 use warnings;
 use 5.006;
 
 # Marker package so sub-distros can use it in their Makefile.PL's 'requires'
 # section.
-
-our $VERSION = '0.15';
-
+our $VERSION = '0.16';
 1;
-
 __END__
 
 =head1 NAME
@@ -26,8 +22,6 @@ Class::Scaffold - Large-scale OOP application support
 =head1 METHODS
 
 =over 4
-
-
 
 =back
 

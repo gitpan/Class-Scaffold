@@ -1,63 +1,47 @@
 package Class::Scaffold::App::Test::YAMLDriven;
-
 use strict;
 use warnings;
 use Class::Scaffold::App;
 use Error::Hierarchy::Util 'assert_defined';
 use File::Find;
 use List::Util 'shuffle';
-use String::FlexMatch;           # in case some tests need it
+use String::FlexMatch;    # in case some tests need it
 use Test::More;
 use Test::Builder;
 use Encode;
-
-
-our $VERSION = '0.15';
-
-
+our $VERSION = '0.16';
 use base 'Class::Scaffold::App::Test';
-
-
 use Error;
-$Error::Debug = 1;   # to trigger a stacktrace on an exception
-
-
-__PACKAGE__
-    ->mk_abstract_accessors(qw(run_subtest plan_test))
-    ->mk_hash_accessors(qw(test_def))
-    ->mk_scalar_accessors(qw(
-        testdir testname expect run_num runs current_test_def
-    ));
-
-
+$Error::Debug = 1;        # to trigger a stacktrace on an exception
+__PACKAGE__->mk_abstract_accessors(qw(run_subtest plan_test))
+  ->mk_hash_accessors(qw(test_def))->mk_scalar_accessors(
+    qw(
+      testdir testname expect run_num runs current_test_def
+      )
+  );
 use constant SHARED => '00shared.yaml';
-
-use constant GETOPT => (qw/
-    shuffle reverse
-/);
+use constant GETOPT => (
+    qw/
+      shuffle reverse
+      /
+);
 
 # 'runs' is the number of stage runs per test file ensure idempotency
-
 use constant DEFAULTS => (
     runs    => 1,
     testdir => '.',
 );
 
-
 sub app_code {
     my $self = shift;
     $self->SUPER::app_code(@_);
-
     $self->read_test_defs;
-
     plan tests => $self->make_plan;
-
     for my $testname ($self->ordered_test_def_keys) {
         next if $testname eq SHARED;
         $self->execute_test_def($testname);
     }
 }
-
 
 sub read_test_defs {
     my $self = shift;
@@ -68,7 +52,6 @@ sub read_test_defs {
     # the policy tests whose name contains 'unnamed' or '99', you'd use:
     #
     #   perl t/10Policy.t unnamed 99
-
     my $name_filter = join '|' => map { "\Q$_\E" } @ARGV;
     my $testdir = $self->testdir;
 
@@ -76,36 +59,36 @@ sub read_test_defs {
     # hash sorted by name. This separation is necessary because some test
     # files depend on others, but find() doesn't ensure that the files are
     # returned in sorted order.
-
     my %file;
-    find(sub {
-        return unless -f && /\.yaml$/;
-
-        (my $name = $File::Find::name) =~ s!^$testdir/!!;
-        return if $name ne SHARED && $name_filter && $name !~ /$name_filter/o;
-        $file{$name} = $File::Find::name;
-    }, $testdir);
-
+    find(
+        sub {
+            return unless -f && /\.yaml$/;
+            (my $name = $File::Find::name) =~ s!^$testdir/!!;
+            return
+              if $name ne SHARED && $name_filter && $name !~ /$name_filter/o;
+            $file{$name} = $File::Find::name;
+        },
+        $testdir
+    );
     for my $name (sort keys %file) {
         note "Loading test file $name";
-
-        (my $tests_yaml = do { local (@ARGV, $/) = $file{$name}; <> })
-            =~ s/%%PID%%/sprintf("%06d", $$)/ge;
+        (   my $tests_yaml =
+              do { local (@ARGV, $/) = $file{$name}; <> }
+        ) =~ s/%%PID%%/sprintf("%06d", $$)/ge;
         $tests_yaml =~ s/%%CNT%%/sprintf("%03d", ++(our $cnt))/ge;
 
         # Quick regex check whether the test wants to be skipped. To use
         # Load() on a test that wants to be skipped would be a bad idea as it
         # might be work in progress; it will be skipped for a reason.
-
         if ($tests_yaml =~ /^skip:\s*1/m) {
             note 'Test wants to be skipped, no activation';
         } else {
+
             # support for value classes
             local $Class::Value::SkipChecks = 1;
 
             # require(), not use(), YAML classes because YAML and YAML::Active
             # might conflict.
-
             my $test_def;
             if ($tests_yaml =~ /^use_yaml_active:\s*1/m) {
                 note 'Loading with YAML::Active.pm';
@@ -131,16 +114,14 @@ sub read_test_defs {
                 # I think it would be a good idea to support utf-8 encoding
                 # both in yaml-active and yaml-marshall documents and in the
                 # same way. This could easily be fixed with [decode_utf8()].
-
                 $test_def = YAML::Load(decode_utf8($tests_yaml));
+
                 # note explain $test_def;
             }
-
             $self->test_def($name => $test_def);
         }
     }
 }
-
 
 sub ordered_test_def_keys {
     my $self = shift;
@@ -154,6 +135,7 @@ sub ordered_test_def_keys {
     } else {
         note 'test order: sort';
         @tests = sort $self->test_def_keys;
+
         # Perl::Critic complains about "return sort ... "
     }
     @tests;
@@ -164,38 +146,30 @@ sub should_skip_testname {
     $self->test_def($testname)->{skip};
 }
 
-
 sub make_plan {
     my $self = shift;
 
     # Each YAML file produces either a skip or a subtest, except for the
     # shared file, which is expected to only contain YAML::Active objects for
     # setup.
-
     $self->runs * (grep { $_ ne SHARED } $self->test_def_keys);
 }
 
-
 sub execute_test_def {
     my ($self, $testname) = @_;
-
     assert_defined $testname, 'called without testname';
 
     # In case subclasses need to do special things, like multiple tickets in a
     # test definition:
-
     $self->current_test_def($self->test_def($testname));
-
     $self->expect($self->current_test_def->{expect} || {});
-
-    for my $run (1..$self->runs) {
+    for my $run (1 .. $self->runs) {
         $self->run_num($run);
         $self->testname(
             sprintf('%s run %d of %d', $testname, $run, $self->runs));
 
         # If the current test def specifies that it wants to be skipped, just
         # pass.
-
         if ($self->should_skip_testname($testname)) {
             $self->todo_skip_test;
         } else {
@@ -203,7 +177,6 @@ sub execute_test_def {
         }
     }
 }
-
 
 sub run_test {
     my $self = shift;
@@ -213,25 +186,17 @@ sub run_test {
     };
 }
 
-
 sub named_test {
     my ($self, $suffix) = @_;
     sprintf '%s: %s', $self->testname, $suffix;
 }
 
-
 sub todo_skip_test {
     my $self = shift;
     Test::Builder->new->todo_skip('wants to be skipped', 1);
 }
-
-
 1;
-
-
 __END__
-
-
 
 =head1 NAME
 
@@ -648,7 +613,6 @@ Copyright 2004-2009 by Marcel GrE<uuml>nauer
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
-
 
 =cut
 

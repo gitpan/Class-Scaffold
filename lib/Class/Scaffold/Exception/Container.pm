@@ -1,32 +1,21 @@
 package Class::Scaffold::Exception::Container;
 
 # implements a container object.
-
 use strict;
 use warnings;
-
-
-our $VERSION = '0.15';
-
+our $VERSION = '0.16';
 
 # It's ok to inherit from Class::Scaffold::Storable as well; new() will be
 # found in Error::Hierarchy first. For the exception class itself, to inherit
 # from Class::Scaffold::Base would be enough, but there might be subclasses
 # that need the 'storage' accessor - Class::Scaffold::Exception::Container, for
 # example.
-
 use base qw(
-    Error::Hierarchy::Container
-    Class::Scaffold::Storable
+  Error::Hierarchy::Container
+  Class::Scaffold::Storable
 );
-
-
 1;
-
-
 __END__
-
-
 
 =head1 NAME
 
@@ -41,8 +30,6 @@ Class::Scaffold::Exception::Container - large-scale OOP application support
 =head1 METHODS
 
 =over 4
-
-
 
 =back
 
@@ -241,7 +228,6 @@ Copyright 2004-2009 by the authors.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
-
 
 =cut
 

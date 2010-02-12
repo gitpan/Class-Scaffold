@@ -1,5 +1,4 @@
 package Class::Scaffold::Test::UtilLoader;
-
 use warnings;
 use strict;
 use Class::Scaffold::YAML::Marshall::Constant;
@@ -9,21 +8,15 @@ use Class::Scaffold::YAML::Marshall::PID;
 
 # So that we can ->make_obj('test_util_loader')
 use base 'Class::Scaffold::Storable';
-
-our $VERSION = '0.15';
+our $VERSION = '0.16';
 
 # This module doesn't do anything except load other classes necessary for
 # tests. It is being loaded in Class::Scaffold::App::Test. It is mapped to the
 # 'test_util_loader' object type in Class::Scaffold::Environment. So
 # distributions based on Class::Scaffold can define their own test util loader
 # class and tell the environment about it.
-
 1;
-
-
 __END__
-
-
 
 =head1 NAME
 

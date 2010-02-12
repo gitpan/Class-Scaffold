@@ -1,36 +1,23 @@
 package Class::Scaffold::YAML::Active::Environment;
-
 use warnings;
 use strict;
 use Class::Scaffold::Environment;
 use YAML::Active qw/assert_hashref hash_activate yaml_NULL/;
-
-
-our $VERSION = '0.15';
-
-
+our $VERSION = '0.16';
 use base 'Class::Scaffold::YAML::Active';
-
 
 sub yaml_activate {
     my ($self, $phase) = @_;
     assert_hashref($self);
     my $hash = hash_activate($self, $phase);
-
     my $env = Class::Scaffold::Environment->getenv;
     while (my ($key, $value) = each %$hash) {
         $env->{$key} = $value;
     }
     yaml_NULL();
 }
-
-
 1;
-
-
 __END__
-
-
 
 =head1 NAME
 
@@ -45,8 +32,6 @@ Class::Scaffold::YAML::Active::Environment - large-scale OOP application support
 =head1 METHODS
 
 =over 4
-
-
 
 =back
 
@@ -221,7 +206,6 @@ Copyright 2004-2009 by the authors.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
-
 
 =cut
 

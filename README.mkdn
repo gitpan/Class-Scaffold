@@ -10,10 +10,6 @@ Class::Scaffold - Large-scale OOP application support
 
 # METHODS
 
-
-
-
-
 # BUGS AND LIMITATIONS
 
 No bugs have been reported.

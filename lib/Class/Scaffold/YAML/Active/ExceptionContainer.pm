@@ -1,30 +1,23 @@
 package Class::Scaffold::YAML::Active::ExceptionContainer;
-
 use warnings;
 use strict;
 use YAML::Active qw/assert_arrayref array_activate/;
-
-
-our $VERSION = '0.15';
-
-
+our $VERSION = '0.16';
 use base 'Class::Scaffold::YAML::Active';
-
 
 sub yaml_activate {
     my ($self, $phase) = @_;
     assert_arrayref($self);
     my $exceptions = array_activate($self, $phase);
 
-    # Expect a list of hashrefs; each hash element is an exception with a
-    # 'ref' key giving the exception class, and the rest being treated as args
-    # to give to the exception when it is being recorded. Example:
-    #
-    #  exception_container: !perl/Class::Scaffold::YAML::Active::ExceptionContainer
-    #    - ref: Class::Scaffold::Exception::Policy::Blah
-    #      property1: value1
-    #      property2: value2
-
+ # Expect a list of hashrefs; each hash element is an exception with a
+ # 'ref' key giving the exception class, and the rest being treated as args
+ # to give to the exception when it is being recorded. Example:
+ #
+ #  exception_container: !perl/Class::Scaffold::YAML::Active::ExceptionContainer
+ #    - ref: Class::Scaffold::Exception::Policy::Blah
+ #      property1: value1
+ #      property2: value2
     my $container = $self->delegate->make_obj('exception_container');
     for my $exception (@$exceptions) {
         my $class = $exception->{ref};
@@ -33,14 +26,8 @@ sub yaml_activate {
     }
     $container;
 }
-
-
 1;
-
-
 __END__
-
-
 
 =head1 NAME
 
@@ -55,8 +42,6 @@ Class::Scaffold::YAML::Active::ExceptionContainer - large-scale OOP application 
 =head1 METHODS
 
 =over 4
-
-
 
 =back
 
@@ -231,7 +216,6 @@ Copyright 2004-2009 by the authors.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
-
 
 =cut
 

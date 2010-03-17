@@ -1,11 +1,14 @@
-package Class::Scaffold::Environment;
+use 5.008;
 use warnings;
 use strict;
+
+package Class::Scaffold::Environment;
+our $VERSION = '1.100760';
+# ABSTRACT: Base class for framework environment classes
 use Error::Hierarchy::Util 'load_class';
 use Class::Scaffold::Factory::Type;
 use Property::Lookup;
-our $VERSION = '0.16';
-use base 'Class::Scaffold::Base';
+use parent 'Class::Scaffold::Base';
 Class::Scaffold::Base->add_autoloaded_package('Class::Scaffold::');
 
 # ptags: /(\bconst\b[ \t]+(\w+))/
@@ -255,390 +258,146 @@ sub disconnect {
 # subclasses can call SUPER::check()
 sub check { }
 1;
+
+
 __END__
+=pod
 
 =head1 NAME
 
-Class::Scaffold::Environment - large-scale OOP application support
+Class::Scaffold::Environment - Base class for framework environment classes
 
-=head1 SYNOPSIS
+=head1 VERSION
 
-    Class::Scaffold::Environment->new;
-
-=head1 DESCRIPTION
+version 1.100760
 
 =head1 METHODS
 
-=over 4
+=head2 all_storages_are_implemented
 
-=item C<clear_configurator>
+FIXME
 
-    $obj->clear_configurator;
+=head2 check
 
-Deletes the object.
+FIXME
 
-=item C<clear_context>
+=head2 commit
 
-    $obj->clear_context;
+FIXME
 
-Clears the value.
+=head2 core_storage
 
-=item C<clear_multiplex_transaction_omit>
+FIXME
 
-    $obj->clear_multiplex_transaction_omit;
+=head2 disconnect
 
-Deletes all keys and values from the hash. Since this is a class variable, the
-value will be changed for all instances of this class.
+FIXME
 
-=item C<clear_rollback_mode>
+=head2 gen_class_hash_accessor
 
-    $obj->clear_rollback_mode;
+FIXME
 
-Clears the boolean value by setting it to 0.
+=head2 get_class_name_for
 
-=item C<clear_storage_cache>
+FIXME
 
-    $obj->clear_storage_cache;
+=head2 get_storage_class_name_for
 
-Deletes all keys and values from the hash. Since this is a class variable, the
-value will be changed for all instances of this class.
+FIXME
 
-=item C<clear_test_mode>
+=head2 get_storage_type_for
 
-    $obj->clear_test_mode;
+FIXME
 
-Clears the value.
+=head2 getenv
 
-=item C<configurator>
+FIXME
 
-    my $object = $obj->configurator;
-    $obj->configurator($object);
-    $obj->configurator(@args);
+=head2 isa_type
 
-If called with an argument object of type Class::Scaffold::Environment::Configurator it sets the object; further
-arguments are discarded. If called with arguments but the first argument is
-not an object of type Class::Scaffold::Environment::Configurator, a new object of type Class::Scaffold::Environment::Configurator is constructed and the
-arguments are passed to the constructor.
+FIXME
 
-If called without arguments, it returns the Class::Scaffold::Environment::Configurator object stored in this slot;
-if there is no such object, a new Class::Scaffold::Environment::Configurator object is constructed - no arguments
-are passed to the constructor in this case - and stored in the configurator slot
-before returning it.
+=head2 load_cached_class_for_type
 
-=item C<configurator_clear>
+FIXME
 
-    $obj->configurator_clear;
+=head2 make_delegate
 
-Deletes the object.
+FIXME
 
-=item C<context>
+=head2 make_obj
 
-    my $value = $obj->context;
-    $obj->context($value);
+FIXME
 
-A basic getter/setter method. If called without an argument, it returns the
-value. If called with a single argument, it sets the value.
+=head2 make_storage_object
 
-=item C<context_clear>
+FIXME
 
-    $obj->context_clear;
+=head2 memory_storage
 
-Clears the value.
+FIXME
 
-=item C<core_storage_args>
+=head2 release_storage_class_name_hash
 
-    $obj->core_storage_args(@args);
-    $obj->core_storage_args;
+FIXME
 
-Calls core_storage_args() with the given arguments on the object stored in the configurator slot.
-If there is no such object, a new Class::Scaffold::Environment::Configurator object is constructed - no arguments
-are passed to the constructor - and stored in the configurator slot before forwarding
-core_storage_args() onto it.
+=head2 rollback
 
-=item C<core_storage_name>
+FIXME
 
-    $obj->core_storage_name(@args);
-    $obj->core_storage_name;
+=head2 setenv
 
-Calls core_storage_name() with the given arguments on the object stored in the configurator slot.
-If there is no such object, a new Class::Scaffold::Environment::Configurator object is constructed - no arguments
-are passed to the constructor - and stored in the configurator slot before forwarding
-core_storage_name() onto it.
+FIXME
 
-=item C<delete_multiplex_transaction_omit>
+=head2 setup
 
-    $obj->delete_multiplex_transaction_omit(@keys);
+FIXME
 
-Takes a list of keys and deletes those keys from the hash. Since this is a
-class variable, the value will be changed for all instances of this class.
+=head2 storage_CLASS_NAME
 
-=item C<delete_storage_cache>
+FIXME
 
-    $obj->delete_storage_cache(@keys);
+=head2 storage_for_type
 
-Takes a list of keys and deletes those keys from the hash. Since this is a
-class variable, the value will be changed for all instances of this class.
+FIXME
 
-=item C<exists_multiplex_transaction_omit>
+=head1 INSTALLATION
 
-    if ($obj->exists_multiplex_transaction_omit($key)) { ... }
-
-Takes a key and returns a true value if the key exists in the hash, and a
-false value otherwise. Since this is a class variable, the value will be
-changed for all instances of this class.
-
-=item C<exists_storage_cache>
-
-    if ($obj->exists_storage_cache($key)) { ... }
-
-Takes a key and returns a true value if the key exists in the hash, and a
-false value otherwise. Since this is a class variable, the value will be
-changed for all instances of this class.
-
-=item C<keys_multiplex_transaction_omit>
-
-    my @keys = $obj->keys_multiplex_transaction_omit;
-
-Returns a list of all hash keys in no particular order. Since this is a class
-variable, the value will be changed for all instances of this class.
-
-=item C<keys_storage_cache>
-
-    my @keys = $obj->keys_storage_cache;
-
-Returns a list of all hash keys in no particular order. Since this is a class
-variable, the value will be changed for all instances of this class.
-
-=item C<memory_storage_name>
-
-    $obj->memory_storage_name(@args);
-    $obj->memory_storage_name;
-
-Calls memory_storage_name() with the given arguments on the object stored in the configurator slot.
-If there is no such object, a new Class::Scaffold::Environment::Configurator object is constructed - no arguments
-are passed to the constructor - and stored in the configurator slot before forwarding
-memory_storage_name() onto it.
-
-=item C<multiplex_transaction_omit>
-
-    my %hash     = $obj->multiplex_transaction_omit;
-    my $hash_ref = $obj->multiplex_transaction_omit;
-    my $value    = $obj->multiplex_transaction_omit($key);
-    my @values   = $obj->multiplex_transaction_omit([ qw(foo bar) ]);
-    $obj->multiplex_transaction_omit(%other_hash);
-    $obj->multiplex_transaction_omit(foo => 23, bar => 42);
-
-Get or set the hash values. If called without arguments, it returns the hash
-in list context, or a reference to the hash in scalar context. If called
-with a list of key/value pairs, it sets each key to its corresponding value,
-then returns the hash as described before.
-
-If called with exactly one key, it returns the corresponding value.
-
-If called with exactly one array reference, it returns an array whose elements
-are the values corresponding to the keys in the argument array, in the same
-order. The resulting list is returned as an array in list context, or a
-reference to the array in scalar context.
-
-If called with exactly one hash reference, it updates the hash with the given
-key/value pairs, then returns the hash in list context, or a reference to the
-hash in scalar context.
-
-This is a class variable, so it is shared between all instances of this class.
-Changing it in one object will change it for all other objects as well.
-
-=item C<multiplex_transaction_omit_clear>
-
-    $obj->multiplex_transaction_omit_clear;
-
-Deletes all keys and values from the hash. Since this is a class variable, the
-value will be changed for all instances of this class.
-
-=item C<multiplex_transaction_omit_delete>
-
-    $obj->multiplex_transaction_omit_delete(@keys);
-
-Takes a list of keys and deletes those keys from the hash. Since this is a
-class variable, the value will be changed for all instances of this class.
-
-=item C<multiplex_transaction_omit_exists>
-
-    if ($obj->multiplex_transaction_omit_exists($key)) { ... }
-
-Takes a key and returns a true value if the key exists in the hash, and a
-false value otherwise. Since this is a class variable, the value will be
-changed for all instances of this class.
-
-=item C<multiplex_transaction_omit_keys>
-
-    my @keys = $obj->multiplex_transaction_omit_keys;
-
-Returns a list of all hash keys in no particular order. Since this is a class
-variable, the value will be changed for all instances of this class.
-
-=item C<multiplex_transaction_omit_values>
-
-    my @values = $obj->multiplex_transaction_omit_values;
-
-Returns a list of all hash values in no particular order. Since this is a
-class variable, the value will be changed for all instances of this class.
-
-=item C<rollback_mode>
-
-    $obj->rollback_mode($value);
-    my $value = $obj->rollback_mode;
-
-If called without an argument, returns the boolean value (0 or 1). If called
-with an argument, it normalizes it to the boolean value. That is, the values
-0, undef and the empty string become 0; everything else becomes 1.
-
-=item C<rollback_mode_clear>
-
-    $obj->rollback_mode_clear;
-
-Clears the boolean value by setting it to 0.
-
-=item C<rollback_mode_set>
-
-    $obj->rollback_mode_set;
-
-Sets the boolean value to 1.
-
-=item C<set_rollback_mode>
-
-    $obj->set_rollback_mode;
-
-Sets the boolean value to 1.
-
-=item C<storage_cache>
-
-    my %hash     = $obj->storage_cache;
-    my $hash_ref = $obj->storage_cache;
-    my $value    = $obj->storage_cache($key);
-    my @values   = $obj->storage_cache([ qw(foo bar) ]);
-    $obj->storage_cache(%other_hash);
-    $obj->storage_cache(foo => 23, bar => 42);
-
-Get or set the hash values. If called without arguments, it returns the hash
-in list context, or a reference to the hash in scalar context. If called
-with a list of key/value pairs, it sets each key to its corresponding value,
-then returns the hash as described before.
-
-If called with exactly one key, it returns the corresponding value.
-
-If called with exactly one array reference, it returns an array whose elements
-are the values corresponding to the keys in the argument array, in the same
-order. The resulting list is returned as an array in list context, or a
-reference to the array in scalar context.
-
-If called with exactly one hash reference, it updates the hash with the given
-key/value pairs, then returns the hash in list context, or a reference to the
-hash in scalar context.
-
-This is a class variable, so it is shared between all instances of this class.
-Changing it in one object will change it for all other objects as well.
-
-=item C<storage_cache_clear>
-
-    $obj->storage_cache_clear;
-
-Deletes all keys and values from the hash. Since this is a class variable, the
-value will be changed for all instances of this class.
-
-=item C<storage_cache_delete>
-
-    $obj->storage_cache_delete(@keys);
-
-Takes a list of keys and deletes those keys from the hash. Since this is a
-class variable, the value will be changed for all instances of this class.
-
-=item C<storage_cache_exists>
-
-    if ($obj->storage_cache_exists($key)) { ... }
-
-Takes a key and returns a true value if the key exists in the hash, and a
-false value otherwise. Since this is a class variable, the value will be
-changed for all instances of this class.
-
-=item C<storage_cache_keys>
-
-    my @keys = $obj->storage_cache_keys;
-
-Returns a list of all hash keys in no particular order. Since this is a class
-variable, the value will be changed for all instances of this class.
-
-=item C<storage_cache_values>
-
-    my @values = $obj->storage_cache_values;
-
-Returns a list of all hash values in no particular order. Since this is a
-class variable, the value will be changed for all instances of this class.
-
-=item C<test_mode>
-
-    my $value = $obj->test_mode;
-    $obj->test_mode($value);
-
-A basic getter/setter method. If called without an argument, it returns the
-value. If called with a single argument, it sets the value.
-
-=item C<test_mode_clear>
-
-    $obj->test_mode_clear;
-
-Clears the value.
-
-=item C<values_multiplex_transaction_omit>
-
-    my @values = $obj->values_multiplex_transaction_omit;
-
-Returns a list of all hash values in no particular order. Since this is a
-class variable, the value will be changed for all instances of this class.
-
-=item C<values_storage_cache>
-
-    my @values = $obj->values_storage_cache;
-
-Returns a list of all hash values in no particular order. Since this is a
-class variable, the value will be changed for all instances of this class.
-
-=back
+See perlmodinstall for information and options on installing Perl modules.
 
 =head1 BUGS AND LIMITATIONS
 
 No bugs have been reported.
 
 Please report any bugs or feature requests through the web interface at
-L<http://rt.cpan.org>.
-
-=head1 INSTALLATION
-
-See perlmodinstall for information and options on installing Perl modules.
+L<http://rt.cpan.org/Public/Dist/Display.html?Name=Class-Scaffold>.
 
 =head1 AVAILABILITY
 
 The latest version of this module is available from the Comprehensive Perl
-Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a CPAN
-site near you. Or see <http://www.perl.com/CPAN/authors/id/M/MA/MARCEL/>.
+Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
+site near you, or see
+L<http://search.cpan.org/dist/Class-Scaffold/>.
+
+The development version lives at
+L<http://github.com/hanekomu/Class-Scaffold/>.
+Instead of sending patches, please fork this project using the standard git
+and github infrastructure.
 
 =head1 AUTHORS
 
-Florian Helmberger C<< <fh@univie.ac.at> >>
-
-Achim Adam C<< <ac@univie.ac.at> >>
-
-Mark Hofstetter C<< <mh@univie.ac.at> >>
-
-Heinz Ekker C<< <ek@univie.ac.at> >>
-
-Marcel GrE<uuml>nauer, C<< <marcel@cpan.org> >>
+  Marcel Gruenauer <marcel@cpan.org>
+  Florian Helmberger <fh@univie.ac.at>
+  Achim Adam <ac@univie.ac.at>
+  Mark Hofstetter <mh@univie.ac.at>
+  Heinz Ekker <ek@univie.ac.at>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2004-2009 by the authors.
+This software is copyright (c) 2008 by Marcel Gruenauer.
 
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut
 

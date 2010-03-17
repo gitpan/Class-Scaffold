@@ -1,10 +1,13 @@
-package Class::Scaffold::Accessor;
+use 5.008;
 use warnings;
 use strict;
+
+package Class::Scaffold::Accessor;
+our $VERSION = '1.100760';
+# ABSTRACT: Construct framework-specific accessors
 use Error::Hierarchy::Util 'assert_read_only';
 use Class::Scaffold::Factory::Type;
-our $VERSION = '0.16';
-use base qw(
+use parent qw(
   Class::Accessor::Complex
   Class::Accessor::Constructor
   Class::Accessor::FactoryTyped
@@ -42,33 +45,32 @@ sub mk_readonly_accessors {
     $self;    # for chaining
 }
 1;
+
+
 __END__
+=pod
 
 =head1 NAME
 
-Class::Scaffold::Accessor - large-scale OOP application support
+Class::Scaffold::Accessor - Construct framework-specific accessors
 
-=head1 SYNOPSIS
+=head1 VERSION
 
-    Class::Scaffold::Accessor->new;
-
-=head1 DESCRIPTION
+version 1.100760
 
 =head1 METHODS
 
-=over 4
-
-=item mk_framework_object_accessors
+=head2 mk_framework_object_accessors
 
 Makes factory-typed accessors - see L<Class::Accessor::FactoryTyped> - and
 uses L<Class::Scaffold::Factory::Type> as the factory class.
 
-=item mk_framework_object_array_accessors
+=head2 mk_framework_object_array_accessors
 
 Makes factory-typed array accessors - see L<Class::Accessor::FactoryTyped> -
 and uses L<Class::Scaffold::Factory::Type> as the factory class.
 
-=item mk_readonly_accessors
+=head2 mk_readonly_accessors
 
 Takes an array of strings as its argument. For each string it creates methods
 as described below, where C<*> denotes the slot name.
@@ -89,43 +91,43 @@ Sets the slot to the given value and returns it.
 
 =back
 
-=back
+=head1 INSTALLATION
+
+See perlmodinstall for information and options on installing Perl modules.
 
 =head1 BUGS AND LIMITATIONS
 
 No bugs have been reported.
 
 Please report any bugs or feature requests through the web interface at
-L<http://rt.cpan.org>.
-
-=head1 INSTALLATION
-
-See perlmodinstall for information and options on installing Perl modules.
+L<http://rt.cpan.org/Public/Dist/Display.html?Name=Class-Scaffold>.
 
 =head1 AVAILABILITY
 
 The latest version of this module is available from the Comprehensive Perl
-Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a CPAN
-site near you. Or see <http://www.perl.com/CPAN/authors/id/M/MA/MARCEL/>.
+Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
+site near you, or see
+L<http://search.cpan.org/dist/Class-Scaffold/>.
+
+The development version lives at
+L<http://github.com/hanekomu/Class-Scaffold/>.
+Instead of sending patches, please fork this project using the standard git
+and github infrastructure.
 
 =head1 AUTHORS
 
-Florian Helmberger C<< <fh@univie.ac.at> >>
-
-Achim Adam C<< <ac@univie.ac.at> >>
-
-Mark Hofstetter C<< <mh@univie.ac.at> >>
-
-Heinz Ekker C<< <ek@univie.ac.at> >>
-
-Marcel GrE<uuml>nauer, C<< <marcel@cpan.org> >>
+  Marcel Gruenauer <marcel@cpan.org>
+  Florian Helmberger <fh@univie.ac.at>
+  Achim Adam <ac@univie.ac.at>
+  Mark Hofstetter <mh@univie.ac.at>
+  Heinz Ekker <ek@univie.ac.at>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2004-2009 by the authors.
+This software is copyright (c) 2008 by Marcel Gruenauer.
 
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut
 

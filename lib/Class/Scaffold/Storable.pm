@@ -1,10 +1,12 @@
-package Class::Scaffold::Storable;
-
-# base class for all framework classes that support a storage.
-use strict;
+use 5.008;
 use warnings;
-our $VERSION = '0.16';
-use base 'Class::Scaffold::Base';
+use strict;
+
+package Class::Scaffold::Storable;
+our $VERSION = '1.100760';
+
+# ABSTRACT: Base class for all framework classes that support a storage.
+use parent 'Class::Scaffold::Base';
 __PACKAGE__->mk_scalar_accessors(qw(storage_type))
   ->mk_hash_accessors(qw(storage_info));
 
@@ -101,167 +103,66 @@ sub id {
     }
 }
 1;
+
+
 __END__
+=pod
 
 =head1 NAME
 
-Class::Scaffold::Storable - large-scale OOP application support
+Class::Scaffold::Storable - Base class for all framework classes that support a storage.
 
-=head1 SYNOPSIS
+=head1 VERSION
 
-    Class::Scaffold::Storable->new;
-
-=head1 DESCRIPTION
+version 1.100760
 
 =head1 METHODS
 
-=over 4
+=head2 id
 
-=item C<clear_storage_info>
+FIXME
 
-    $obj->clear_storage_info;
+=head2 storage
 
-Deletes all keys and values from the hash.
-
-=item C<clear_storage_type>
-
-    $obj->clear_storage_type;
-
-Clears the value.
-
-=item C<delete_storage_info>
-
-    $obj->delete_storage_info(@keys);
-
-Takes a list of keys and deletes those keys from the hash.
-
-=item C<exists_storage_info>
-
-    if ($obj->exists_storage_info($key)) { ... }
-
-Takes a key and returns a true value if the key exists in the hash, and a
-false value otherwise.
-
-=item C<keys_storage_info>
-
-    my @keys = $obj->keys_storage_info;
-
-Returns a list of all hash keys in no particular order.
-
-=item C<storage_info>
-
-    my %hash     = $obj->storage_info;
-    my $hash_ref = $obj->storage_info;
-    my $value    = $obj->storage_info($key);
-    my @values   = $obj->storage_info([ qw(foo bar) ]);
-    $obj->storage_info(%other_hash);
-    $obj->storage_info(foo => 23, bar => 42);
-
-Get or set the hash values. If called without arguments, it returns the hash
-in list context, or a reference to the hash in scalar context. If called
-with a list of key/value pairs, it sets each key to its corresponding value,
-then returns the hash as described before.
-
-If called with exactly one key, it returns the corresponding value.
-
-If called with exactly one array reference, it returns an array whose elements
-are the values corresponding to the keys in the argument array, in the same
-order. The resulting list is returned as an array in list context, or a
-reference to the array in scalar context.
-
-If called with exactly one hash reference, it updates the hash with the given
-key/value pairs, then returns the hash in list context, or a reference to the
-hash in scalar context.
-
-=item C<storage_info_clear>
-
-    $obj->storage_info_clear;
-
-Deletes all keys and values from the hash.
-
-=item C<storage_info_delete>
-
-    $obj->storage_info_delete(@keys);
-
-Takes a list of keys and deletes those keys from the hash.
-
-=item C<storage_info_exists>
-
-    if ($obj->storage_info_exists($key)) { ... }
-
-Takes a key and returns a true value if the key exists in the hash, and a
-false value otherwise.
-
-=item C<storage_info_keys>
-
-    my @keys = $obj->storage_info_keys;
-
-Returns a list of all hash keys in no particular order.
-
-=item C<storage_info_values>
-
-    my @values = $obj->storage_info_values;
-
-Returns a list of all hash values in no particular order.
-
-=item C<storage_type>
-
-    my $value = $obj->storage_type;
-    $obj->storage_type($value);
-
-A basic getter/setter method. If called without an argument, it returns the
-value. If called with a single argument, it sets the value.
-
-=item C<storage_type_clear>
-
-    $obj->storage_type_clear;
-
-Clears the value.
-
-=item C<values_storage_info>
-
-    my @values = $obj->values_storage_info;
-
-Returns a list of all hash values in no particular order.
-
-=back
-
-=head1 BUGS AND LIMITATIONS
-
-No bugs have been reported.
-
-Please report any bugs or feature requests to
-C<<bug-class-scaffold@rt.cpan.org>>, or through the web interface at
-L<http://rt.cpan.org>.
+FIXME
 
 =head1 INSTALLATION
 
 See perlmodinstall for information and options on installing Perl modules.
 
+=head1 BUGS AND LIMITATIONS
+
+No bugs have been reported.
+
+Please report any bugs or feature requests through the web interface at
+L<http://rt.cpan.org/Public/Dist/Display.html?Name=Class-Scaffold>.
+
 =head1 AVAILABILITY
 
 The latest version of this module is available from the Comprehensive Perl
-Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a CPAN
-site near you. Or see <http://www.perl.com/CPAN/authors/id/M/MA/MARCEL/>.
+Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
+site near you, or see
+L<http://search.cpan.org/dist/Class-Scaffold/>.
+
+The development version lives at
+L<http://github.com/hanekomu/Class-Scaffold/>.
+Instead of sending patches, please fork this project using the standard git
+and github infrastructure.
 
 =head1 AUTHORS
 
-Marcel GrE<uuml>nauer, C<< <marcel@cpan.org> >>
-
-Florian Helmberger C<< <fh@univie.ac.at> >>
-
-Achim Adam C<< <ac@univie.ac.at> >>
-
-Mark Hofstetter C<< <mh@univie.ac.at> >>
-
-Heinz Ekker C<< <ek@univie.ac.at> >>
+  Marcel Gruenauer <marcel@cpan.org>
+  Florian Helmberger <fh@univie.ac.at>
+  Achim Adam <ac@univie.ac.at>
+  Mark Hofstetter <mh@univie.ac.at>
+  Heinz Ekker <ek@univie.ac.at>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2004-2009 by Marcel GrE<uuml>nauer
+This software is copyright (c) 2008 by Marcel Gruenauer.
 
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut
 

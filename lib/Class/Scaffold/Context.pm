@@ -1,8 +1,11 @@
-package Class::Scaffold::Context;
-use strict;
+use 5.008;
 use warnings;
-our $VERSION = '0.16';
-use base 'Class::Scaffold::Base';
+use strict;
+
+package Class::Scaffold::Context;
+our $VERSION = '1.100760';
+# ABSTRACT: Holds execution and job context
+use parent 'Class::Scaffold::Base';
 __PACKAGE__->mk_scalar_accessors(qw(execution job));
 
 # types of execution context: cron, apache, shell, soap
@@ -28,99 +31,68 @@ sub as_string {
       (defined $self->execution ? $self->execution : 'none');
 }
 1;
+
+
 __END__
+=pod
 
 =head1 NAME
 
-Class::Scaffold::Context - large-scale OOP application support
+Class::Scaffold::Context - Holds execution and job context
 
-=head1 SYNOPSIS
+=head1 VERSION
 
-    Class::Scaffold::Context->new;
-
-=head1 DESCRIPTION
+version 1.100760
 
 =head1 METHODS
 
-=over 4
+=head2 parse_context
 
-=item C<clear_execution>
+Parses a context that is given as a slash-separated string, for example
+C<foo/bar>, into the job and execution parts and stores them.
 
-    $obj->clear_execution;
+=head2 as_string
 
-Clears the value.
+Joins the job and execution contexts with a slash and returns them as a
+string. If either part is undefined, C<none> will be used in its place.
 
-=item C<clear_job>
+=head1 INSTALLATION
 
-    $obj->clear_job;
-
-Clears the value.
-
-=item C<execution>
-
-    my $value = $obj->execution;
-    $obj->execution($value);
-
-A basic getter/setter method. If called without an argument, it returns the
-value. If called with a single argument, it sets the value.
-
-=item C<execution_clear>
-
-    $obj->execution_clear;
-
-Clears the value.
-
-=item C<job>
-
-    my $value = $obj->job;
-    $obj->job($value);
-
-A basic getter/setter method. If called without an argument, it returns the
-value. If called with a single argument, it sets the value.
-
-=item C<job_clear>
-
-    $obj->job_clear;
-
-Clears the value.
-
-=back
+See perlmodinstall for information and options on installing Perl modules.
 
 =head1 BUGS AND LIMITATIONS
 
 No bugs have been reported.
 
 Please report any bugs or feature requests through the web interface at
-L<http://rt.cpan.org>.
-
-=head1 INSTALLATION
-
-See perlmodinstall for information and options on installing Perl modules.
+L<http://rt.cpan.org/Public/Dist/Display.html?Name=Class-Scaffold>.
 
 =head1 AVAILABILITY
 
 The latest version of this module is available from the Comprehensive Perl
-Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a CPAN
-site near you. Or see <http://www.perl.com/CPAN/authors/id/M/MA/MARCEL/>.
+Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
+site near you, or see
+L<http://search.cpan.org/dist/Class-Scaffold/>.
+
+The development version lives at
+L<http://github.com/hanekomu/Class-Scaffold/>.
+Instead of sending patches, please fork this project using the standard git
+and github infrastructure.
 
 =head1 AUTHORS
 
-Florian Helmberger C<< <fh@univie.ac.at> >>
-
-Achim Adam C<< <ac@univie.ac.at> >>
-
-Mark Hofstetter C<< <mh@univie.ac.at> >>
-
-Heinz Ekker C<< <ek@univie.ac.at> >>
-
-Marcel GrE<uuml>nauer, C<< <marcel@cpan.org> >>
+  Marcel Gruenauer <marcel@cpan.org>
+  Florian Helmberger <fh@univie.ac.at>
+  Achim Adam <ac@univie.ac.at>
+  Mark Hofstetter <mh@univie.ac.at>
+  Heinz Ekker <ek@univie.ac.at>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2004-2009 by the authors.
+This software is copyright (c) 2008 by Marcel Gruenauer.
 
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut
 

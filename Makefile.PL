@@ -1,59 +1,88 @@
-use inc::Module::Install;
-include 'Module::AutoInstall';
-name 'Class-Scaffold';
-all_from 'lib/Class/Scaffold.pm';
-readme_from_pod;
-readme_markdown_from_pod;
-auto_set_homepage;
-auto_set_bugtracker;
-auto_set_repository;
-requires 'Class::Accessor::Complex';
-requires 'Class::Accessor::Constructor';
-requires 'Class::Factory::Enhanced';
-requires 'Class::Accessor::FactoryTyped' => '0.03';
-requires 'Class::Value';
-requires 'Data::Comparable';
-requires 'Data::Inherited';
-requires 'Data::Miscellany';
-requires 'Data::Storage' => '0.02';
-requires 'DBI';
-requires 'Devel::Caller';
-requires 'Error::Hierarchy';
-requires 'List::Util';
-requires 'Property::Lookup';
-requires 'String::FlexMatch';
-requires 'Term::Shell::Enhanced';
-requires 'Test::Class';
-requires 'Test::Class::GetoptControl';
-requires 'Test::Differences';
-requires 'Test::More';
-requires 'Text::Table';
-requires 'Time::HiRes';
-requires 'YAML' => '0.70';
-requires 'YAML::Active';
-test_requires 'Test::CompanionClasses' => '0.05';
-test_requires 'Test::More'             => '0.94';
-extra_tests;
-author_requires 'ShipIt';
-author_requires 'ShipIt::Step::DistClean';
-author_requires 'ShipIt::Step::DistTestExtra';
-author_requires 'ShipIt::Step::Manifest';
-author_requires 'ShipIt::Step::Twitter';
-author_requires 'Test::Compile';
-author_requires 'Test::Perl::Critic';
-author_requires 'Test::Pod';
-author_requires 'Test::Spelling';
-author_requires 'Pod::Wordlist::hanekomu';
-author_requires 'Test::Pod::Coverage';
 
-# author_requires 'Test::Kwalitee';
-author_requires 'Test::YAML::Meta';
-author_requires 'Test::Portability::Files';
-author_requires 'Test::Synopsis';
-author_requires 'Test::MinimumVersion';
-author_requires 'Test::HasVersion';
-author_requires 'Test::CheckChanges';
-author_requires 'Test::DistManifest';
-auto_install;
-auto_include;
-WriteAll;
+use strict;
+use warnings;
+
+ BEGIN { require 5.008; } 
+
+use ExtUtils::MakeMaker 6.11;
+
+
+
+my %WriteMakefileArgs = (
+                       'test' => {
+                                   'TESTS' => 't/*.t'
+                                 },
+                       'NAME' => 'Class::Scaffold',
+                       'DISTNAME' => 'Class-Scaffold',
+                       'CONFIGURE_REQUIRES' => {
+                                                 'ExtUtils::MakeMaker' => '6.11'
+                                               },
+                       'AUTHOR' => 'Marcel Gruenauer <marcel@cpan.org>, Florian Helmberger <fh@univie.ac.at>, Achim Adam <ac@univie.ac.at>, Mark Hofstetter <mh@univie.ac.at>, Heinz Ekker <ek@univie.ac.at>',
+                       'BUILD_REQUIRES' => {},
+                       'ABSTRACT' => 'Large-scale OOP application support',
+                       'EXE_FILES' => [
+                                        'bin/cf_dumpenv'
+                                      ],
+                       'VERSION' => '1.100760',
+                       'PREREQ_PM' => {
+                                        'Data::Miscellany' => '0',
+                                        'YAML' => '0',
+                                        'Property::Lookup' => '0',
+                                        'Test::Class::GetoptControl' => '0',
+                                        'String::FlexMatch' => '0',
+                                        'Encode' => '0',
+                                        'List::Util' => '0',
+                                        'Class::Accessor::Constructor' => '0',
+                                        'Test::Builder' => '0',
+                                        'Error::Hierarchy' => '0',
+                                        'Data::Inherited' => '0',
+                                        'YAML::Active' => '0',
+                                        'Error::Hierarchy::Test' => '0',
+                                        'YAML::Active::Plugin::Hash' => '0',
+                                        'Devel::Caller' => '0',
+                                        'Getopt::Long' => '0',
+                                        'Error::Hierarchy::Container' => '0',
+                                        'parent' => '0',
+                                        'English' => '0',
+                                        'IO::File' => '0',
+                                        'overload' => '0',
+                                        'Error::Hierarchy::Mixin' => '0',
+                                        'Test::More' => '0.88',
+                                        'File::Temp' => '0',
+                                        'YAML::Active::Plugin::Array' => '0',
+                                        'Class::Accessor::FactoryTyped' => '0',
+                                        'Scalar::Util' => '0',
+                                        'FindBin' => '0',
+                                        'Error::Hierarchy::Util' => '0',
+                                        'IO::Handle' => '0',
+                                        'Class::Value' => '0',
+                                        'Test::CompanionClasses::Base' => '0',
+                                        'Class::Factory::Enhanced' => '0',
+                                        'Error' => '0',
+                                        'File::Find' => '0',
+                                        'Test::CompanionClasses::Engine' => '0',
+                                        'File::Spec::Functions' => '0',
+                                        'Class::Accessor::Complex' => '0',
+                                        'Time::HiRes' => '0',
+                                        'constant' => '0',
+                                        'Getopt::Inherited' => '0',
+                                        'YAML::Marshall' => '0',
+                                        'Exporter' => '0',
+                                        'Carp' => '0',
+                                        'Error::Hierarchy::Internal' => '0',
+                                        'Data::Comparable' => '0',
+                                        'UNIVERSAL::require' => '0',
+                                        'Cwd' => '0',
+                                        'Sys::Hostname' => '0'
+                                      },
+                       'LICENSE' => 'perl'
+                     );
+
+
+delete $WriteMakefileArgs{LICENSE}
+  unless eval { ExtUtils::MakeMaker->VERSION(6.31) };
+
+WriteMakefile(%WriteMakefileArgs);
+
+
+

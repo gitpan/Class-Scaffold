@@ -1,10 +1,13 @@
-package Class::Scaffold::Base_TEST;
-use strict;
+use 5.008;
 use warnings;
+use strict;
+
+package Class::Scaffold::Base_TEST;
+our $VERSION = '1.100760';
+# ABSTRACT: Test companion class for the general base class
 use Error::Hierarchy::Test 'throws2_ok';
 use Test::More;
-our $VERSION = '0.16';
-use base 'Class::Scaffold::Test';
+use parent 'Class::Scaffold::Test';
 use constant PLAN => 4;
 
 sub run {
@@ -28,63 +31,62 @@ sub run {
       'call to undefined package caught by UNIVERSAL::AUTOLOAD';
 }
 1;
+
+
 __END__
+=pod
 
 =head1 NAME
 
-Class::Scaffold::Base_TEST - large-scale OOP application support
+Class::Scaffold::Base_TEST - Test companion class for the general base class
 
-=head1 SYNOPSIS
+=head1 VERSION
 
-    Class::Scaffold::Base_TEST->new;
-
-=head1 DESCRIPTION
+version 1.100760
 
 =head1 METHODS
 
-=over 4
-
-=item C<run>
+=head2 run
 
 Runs the actual tests specific to this class.
 
-=back
+=head1 INSTALLATION
+
+See perlmodinstall for information and options on installing Perl modules.
 
 =head1 BUGS AND LIMITATIONS
 
 No bugs have been reported.
 
 Please report any bugs or feature requests through the web interface at
-L<http://rt.cpan.org>.
-
-=head1 INSTALLATION
-
-See perlmodinstall for information and options on installing Perl modules.
+L<http://rt.cpan.org/Public/Dist/Display.html?Name=Class-Scaffold>.
 
 =head1 AVAILABILITY
 
 The latest version of this module is available from the Comprehensive Perl
-Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a CPAN
-site near you. Or see <http://www.perl.com/CPAN/authors/id/M/MA/MARCEL/>.
+Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
+site near you, or see
+L<http://search.cpan.org/dist/Class-Scaffold/>.
+
+The development version lives at
+L<http://github.com/hanekomu/Class-Scaffold/>.
+Instead of sending patches, please fork this project using the standard git
+and github infrastructure.
 
 =head1 AUTHORS
 
-Florian Helmberger C<< <fh@univie.ac.at> >>
-
-Achim Adam C<< <ac@univie.ac.at> >>
-
-Mark Hofstetter C<< <mh@univie.ac.at> >>
-
-Heinz Ekker C<< <ek@univie.ac.at> >>
-
-Marcel GrE<uuml>nauer, C<< <marcel@cpan.org> >>
+  Marcel Gruenauer <marcel@cpan.org>
+  Florian Helmberger <fh@univie.ac.at>
+  Achim Adam <ac@univie.ac.at>
+  Mark Hofstetter <mh@univie.ac.at>
+  Heinz Ekker <ek@univie.ac.at>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2004-2009 by the authors.
+This software is copyright (c) 2008 by Marcel Gruenauer.
 
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut
 

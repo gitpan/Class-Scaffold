@@ -1,7 +1,10 @@
-package Class::Scaffold::Delegate::Mixin;
+use 5.008;
 use warnings;
 use strict;
-our $VERSION = '0.16';
+
+package Class::Scaffold::Delegate::Mixin;
+our $VERSION = '1.100760';
+# ABSTRACT: Mixin that provides access to the framework environment
 
 # Class::Scaffold::Base inherits from this mixin, so we shouldn't use()
 # Class::Scaffold::Environment, which inherits from
@@ -12,71 +15,62 @@ sub delegate {
     Class::Scaffold::Environment->getenv;
 }
 1;
+
+
 __END__
+=pod
 
 =head1 NAME
 
-Class::Scaffold::Delegate::Mixin - large-scale OOP application support
+Class::Scaffold::Delegate::Mixin - Mixin that provides access to the framework environment
 
-=head1 SYNOPSIS
+=head1 VERSION
 
-    Class::Scaffold::Delegate::Mixin->new;
-
-=head1 DESCRIPTION
+version 1.100760
 
 =head1 METHODS
 
-=over 4
+=head2 delegate
 
-=back
-
-Class::Scaffold::Delegate::Mixin inherits from .
-
-=head1 TAGS
-
-If you talk about this module in blogs, on L<delicious.com> or anywhere else,
-please use the C<classscaffold> tag.
-
-=head1 VERSION 
-                   
-This document describes version 0.05 of L<Class::Scaffold::Delegate::Mixin>.
-
-=head1 BUGS AND LIMITATIONS
-
-No bugs have been reported.
-
-Please report any bugs or feature requests to
-C<<bug-class-scaffold@rt.cpan.org>>, or through the web interface at
-L<http://rt.cpan.org>.
+Returns the current framework environment singleton object.
 
 =head1 INSTALLATION
 
 See perlmodinstall for information and options on installing Perl modules.
 
+=head1 BUGS AND LIMITATIONS
+
+No bugs have been reported.
+
+Please report any bugs or feature requests through the web interface at
+L<http://rt.cpan.org/Public/Dist/Display.html?Name=Class-Scaffold>.
+
 =head1 AVAILABILITY
 
 The latest version of this module is available from the Comprehensive Perl
-Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a CPAN
-site near you. Or see <http://www.perl.com/CPAN/authors/id/M/MA/MARCEL/>.
+Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
+site near you, or see
+L<http://search.cpan.org/dist/Class-Scaffold/>.
+
+The development version lives at
+L<http://github.com/hanekomu/Class-Scaffold/>.
+Instead of sending patches, please fork this project using the standard git
+and github infrastructure.
 
 =head1 AUTHORS
 
-Marcel GrE<uuml>nauer, C<< <marcel@cpan.org> >>
-
-Florian Helmberger C<< <fh@univie.ac.at> >>
-
-Achim Adam C<< <ac@univie.ac.at> >>
-
-Mark Hofstetter C<< <mh@univie.ac.at> >>
-
-Heinz Ekker C<< <ek@univie.ac.at> >>
+  Marcel Gruenauer <marcel@cpan.org>
+  Florian Helmberger <fh@univie.ac.at>
+  Achim Adam <ac@univie.ac.at>
+  Mark Hofstetter <mh@univie.ac.at>
+  Heinz Ekker <ek@univie.ac.at>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2004-2009 by Marcel GrE<uuml>nauer
+This software is copyright (c) 2008 by Marcel Gruenauer.
 
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut
 

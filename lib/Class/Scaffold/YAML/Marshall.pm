@@ -1,54 +1,63 @@
-package Class::Scaffold::YAML::Marshall;
+use 5.008;
 use warnings;
 use strict;
 
+package Class::Scaffold::YAML::Marshall;
+our $VERSION = '1.100760';
+# ABSTRACT: Base class for marshalling plugins to YAML
+
 # So that we get a delegate() method
-use base 'Class::Scaffold::Storable';
-our $VERSION = '0.16';
+use parent 'Class::Scaffold::Storable';
 1;
+
 __END__
+=pod
 
 =head1 NAME
 
-Class::Scaffold::YAML::Marshall - large-scale OOP application support
+Class::Scaffold::YAML::Marshall - Base class for marshalling plugins to YAML
 
-=head1 SYNOPSIS
+=head1 VERSION
 
-    Class::Scaffold::YAML::Marshall->new;
-
-=head1 DESCRIPTION
-
-=head1 METHODS
-
-=over 4
-
-=back
-=head1 BUGS AND LIMITATIONS
-
-No bugs have been reported.
-
-Please report any bugs or feature requests through the web interface at
-L<http://rt.cpan.org>.
+version 1.100760
 
 =head1 INSTALLATION
 
 See perlmodinstall for information and options on installing Perl modules.
 
+=head1 BUGS AND LIMITATIONS
+
+No bugs have been reported.
+
+Please report any bugs or feature requests through the web interface at
+L<http://rt.cpan.org/Public/Dist/Display.html?Name=Class-Scaffold>.
+
 =head1 AVAILABILITY
 
 The latest version of this module is available from the Comprehensive Perl
-Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a CPAN
-site near you. Or see <http://www.perl.com/CPAN/authors/id/M/MA/MARCEL/>.
+Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
+site near you, or see
+L<http://search.cpan.org/dist/Class-Scaffold/>.
 
-=head1 AUTHOR
+The development version lives at
+L<http://github.com/hanekomu/Class-Scaffold/>.
+Instead of sending patches, please fork this project using the standard git
+and github infrastructure.
 
-Marcel GrE<uuml>nauer, C<< <marcel@cpan.org> >>
+=head1 AUTHORS
+
+  Marcel Gruenauer <marcel@cpan.org>
+  Florian Helmberger <fh@univie.ac.at>
+  Achim Adam <ac@univie.ac.at>
+  Mark Hofstetter <mh@univie.ac.at>
+  Heinz Ekker <ek@univie.ac.at>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2004-2009 by the author.
+This software is copyright (c) 2008 by Marcel Gruenauer.
 
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut
+

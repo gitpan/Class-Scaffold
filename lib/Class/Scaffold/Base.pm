@@ -1,13 +1,14 @@
-package Class::Scaffold::Base;
-
-# base class for all classes of the class framework.
-# Everything should subclass this.
-use strict;
+use 5.008;
 use warnings;
+use strict;
+
+package Class::Scaffold::Base;
+our $VERSION = '1.100760';
+
+# ABSTRACT: Base class for all classes of the class framework.
 use Data::Miscellany 'set_push';
 use Error::Hierarchy::Util 'load_class';
-our $VERSION = '0.16';
-use base qw/
+use parent qw/
   Data::Inherited
   Data::Comparable
   Error::Hierarchy::Mixin
@@ -107,51 +108,27 @@ sub add_autoloaded_package {
     set_push @autoload_packages, $prefix;
 }
 1;
+
+
 __END__
+=pod
 
 =head1 NAME
 
-Class::Scaffold::Base - large-scale OOP application support
+Class::Scaffold::Base - Base class for all classes of the class framework.
 
-=head1 SYNOPSIS
+=head1 VERSION
 
-    Class::Scaffold::Base->new;
+version 1.100760
 
 =head1 DESCRIPTION
 
+This is the base class for all classes of the class framework. Everything
+should subclass this.
+
 =head1 METHODS
 
-=over 4
-
-=item C<new>
-
-    my $obj = Class::Scaffold::Base->new;
-    my $obj = Class::Scaffold::Base->new(%args);
-
-Creates and returns a new object. The constructor will accept as arguments a
-list of pairs, from component name to initial value. For each pair, the named
-component is initialized by calling the method of the same name with the given
-value. If called with a single hash reference, it is dereferenced and its
-key/value pairs are set as described before.
-
-=item FIRST_CONSTRUCTOR_ARGS
-
-This method is used by the constructor to order key-value pairs that are
-passed to the newly created object's accessors - see
-L<Class::Accessor::Constructor>. This class just defines it as an empty list;
-subclasses should override it as necessary. The method exists in this class so
-even if subclasses don't override it, there's something for the constructor
-mechanism to work with.
-
-=item C<MUNGE_CONSTRUCTOR_ARGS>
-
-This method is used by the constructor to munge the constructor arguments -
-see L<Class::Accessor::Constructor>. This class' method just returns the
-arguments as is; subclasses should override it as necessary. The method exists
-in this class so even if subclasses don't override it, there's something for
-the constructor mechanism to work with.
-
-=item C<add_autoloaded_package>
+=head2 add_autoloaded_package
 
 This class method takes a single prefix and adds it to the list - set, really
 - of packages whose methods should be autoloaded. The L<Class::Scaffold>
@@ -161,7 +138,24 @@ explicitly, you can pass the namespace to this method. This class defines a
 L<UNIVERSAL::AUTOLOAD> that respects the set of classes it should autoload
 methods for.
 
-=item C<init>
+=head2 FIRST_CONSTRUCTOR_ARGS
+
+This method is used by the constructor to order key-value pairs that are
+passed to the newly created object's accessors - see
+L<Class::Accessor::Constructor>. This class just defines it as an empty list;
+subclasses should override it as necessary. The method exists in this class so
+even if subclasses don't override it, there's something for the constructor
+mechanism to work with.
+
+=head2 MUNGE_CONSTRUCTOR_ARGS
+
+This method is used by the constructor to munge the constructor arguments -
+see L<Class::Accessor::Constructor>. This class' method just returns the
+arguments as is; subclasses should override it as necessary. The method exists
+in this class so even if subclasses don't override it, there's something for
+the constructor mechanism to work with.
+
+=head2 init
 
 This method is called at the end of the constructor - see
 L<Class::Accessor::Constructor>. This class' method does nothing; subclasses
@@ -169,7 +163,7 @@ should override it and wrap it with C<SUPER::> as necessary. The method exists
 in this class so even if subclasses don't override it, there's something for
 the constructor mechanism to work with.
 
-=item C<log>
+=head2 log
 
 This method acts as a shortcut to L<Class::Scaffold::Log>. Instead of writing
 
@@ -180,43 +174,43 @@ you can simply write
 
     $self->log->debug('foo');
 
-=back
+=head1 INSTALLATION
+
+See perlmodinstall for information and options on installing Perl modules.
 
 =head1 BUGS AND LIMITATIONS
 
 No bugs have been reported.
 
 Please report any bugs or feature requests through the web interface at
-L<http://rt.cpan.org>.
-
-=head1 INSTALLATION
-
-See perlmodinstall for information and options on installing Perl modules.
+L<http://rt.cpan.org/Public/Dist/Display.html?Name=Class-Scaffold>.
 
 =head1 AVAILABILITY
 
 The latest version of this module is available from the Comprehensive Perl
-Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a CPAN
-site near you. Or see <http://www.perl.com/CPAN/authors/id/M/MA/MARCEL/>.
+Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
+site near you, or see
+L<http://search.cpan.org/dist/Class-Scaffold/>.
+
+The development version lives at
+L<http://github.com/hanekomu/Class-Scaffold/>.
+Instead of sending patches, please fork this project using the standard git
+and github infrastructure.
 
 =head1 AUTHORS
 
-Florian Helmberger C<< <fh@univie.ac.at> >>
-
-Achim Adam C<< <ac@univie.ac.at> >>
-
-Mark Hofstetter C<< <mh@univie.ac.at> >>
-
-Heinz Ekker C<< <ek@univie.ac.at> >>
-
-Marcel GrE<uuml>nauer, C<< <marcel@cpan.org> >>
+  Marcel Gruenauer <marcel@cpan.org>
+  Florian Helmberger <fh@univie.ac.at>
+  Achim Adam <ac@univie.ac.at>
+  Mark Hofstetter <mh@univie.ac.at>
+  Heinz Ekker <ek@univie.ac.at>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2004-2009 by the authors.
+This software is copyright (c) 2008 by Marcel Gruenauer.
 
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut
 

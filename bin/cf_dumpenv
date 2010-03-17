@@ -13,16 +13,13 @@
 use warnings;
 use strict;
 use Getopt::Long;
-
-
-our $VERSION = '0.16';
-
+use UNIVERSAL::require;
 
 sub ptag_find {
     my ($wanted_tag, $ptags_file) = @_;
     $ptags_file = $ENV{PTAGSFILE} unless defined $ptags_file;
 
-    open my $fh, $ptags_file or die "can't open $ptags_file: $!\n";
+    open my $fh, '<', $ptags_file or die "can't open $ptags_file: $!\n";
 
     my $result;
     while (<$fh>) {
@@ -58,14 +55,13 @@ unless (-f $class_file) {
     }
 }
 
-require $class_file;
-die $@ if $@;
+$class_file->require or die $@;
 
 # class_file is the actual file path; it could also come from a tag. Now we
 # need to know which class is defined in that file so we can instantiate it.
 
 my $class;
-open my $fh, $class_file or die "can't open $class_file: $!\n";
+open my $fh, '<', $class_file or die "can't open $class_file: $!\n";
 while (<$fh>) {
     next unless /^\s*package\s+(\w+(::\w+)*)\s*;/o;
     $class = $1;
@@ -84,22 +80,4 @@ my %hash = $env->every_hash($wanted_hash . "_HASH");
 for my $key (sort keys %hash) {
     printf "%s: %s\n", $key, $hash{$key};
 }
-
-
-__END__
-
-=head1 NAME
-
-Class::Scaffold - large-scale OOP application support
-
-=head1 SYNOPSIS
-
-None yet (see below).
-
-=head1 DESCRIPTION
-
-None yet. This is an early release; fully functional, but undocumented. The
-next release will have more documentation.
-
-=cut
 

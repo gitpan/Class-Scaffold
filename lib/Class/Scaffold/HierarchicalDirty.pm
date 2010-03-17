@@ -1,10 +1,11 @@
-package Class::Scaffold::HierarchicalDirty;
-use strict;
+use 5.008;
 use warnings;
+use strict;
 
-# Mixin that multiplexes the dirty flag among its subobjects using
-# Class::Accessor::FactoryTyped's introspection support
-our $VERSION = '0.16';
+package Class::Scaffold::HierarchicalDirty;
+our $VERSION = '1.100760';
+
+# ABSTRACT: Mixin that multiplexes the dirty flag among its subobjects
 
 sub dirty {
     my $self = shift;
@@ -40,61 +41,75 @@ sub clear_dirty {
     }
 }
 1;
+
+
 __END__
+=pod
 
 =head1 NAME
 
-Class::Scaffold::HierarchicalDirty - large-scale OOP application support
+Class::Scaffold::HierarchicalDirty - Mixin that multiplexes the dirty flag among its subobjects
 
-=head1 SYNOPSIS
+=head1 VERSION
 
-    Class::Scaffold::HierarchicalDirty->new;
+version 1.100760
 
 =head1 DESCRIPTION
 
+This is a mixin that multiplexes the dirty flag among its subobjects using
+L<Class::Accessor::FactoryTyped>'s introspection support.
+
 =head1 METHODS
 
-=over 4
+=head2 dirty
 
-=back
+FIXME
 
-Class::Scaffold::HierarchicalDirty inherits from .
+=head2 set_dirty
+
+FIXME
+
+=head2 clear_dirty
+
+FIXME
+
+=head1 INSTALLATION
+
+See perlmodinstall for information and options on installing Perl modules.
 
 =head1 BUGS AND LIMITATIONS
 
 No bugs have been reported.
 
 Please report any bugs or feature requests through the web interface at
-L<http://rt.cpan.org>.
-
-=head1 INSTALLATION
-
-See perlmodinstall for information and options on installing Perl modules.
+L<http://rt.cpan.org/Public/Dist/Display.html?Name=Class-Scaffold>.
 
 =head1 AVAILABILITY
 
 The latest version of this module is available from the Comprehensive Perl
-Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a CPAN
-site near you. Or see <http://www.perl.com/CPAN/authors/id/M/MA/MARCEL/>.
+Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
+site near you, or see
+L<http://search.cpan.org/dist/Class-Scaffold/>.
+
+The development version lives at
+L<http://github.com/hanekomu/Class-Scaffold/>.
+Instead of sending patches, please fork this project using the standard git
+and github infrastructure.
 
 =head1 AUTHORS
 
-Florian Helmberger C<< <fh@univie.ac.at> >>
-
-Achim Adam C<< <ac@univie.ac.at> >>
-
-Mark Hofstetter C<< <mh@univie.ac.at> >>
-
-Heinz Ekker C<< <ek@univie.ac.at> >>
-
-Marcel GrE<uuml>nauer, C<< <marcel@cpan.org> >>
+  Marcel Gruenauer <marcel@cpan.org>
+  Florian Helmberger <fh@univie.ac.at>
+  Achim Adam <ac@univie.ac.at>
+  Mark Hofstetter <mh@univie.ac.at>
+  Heinz Ekker <ek@univie.ac.at>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2004-2009 by the authors.
+This software is copyright (c) 2008 by Marcel Gruenauer.
 
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut
 

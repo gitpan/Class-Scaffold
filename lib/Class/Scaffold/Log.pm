@@ -1,11 +1,14 @@
-package Class::Scaffold::Log;
+use 5.008;
 use warnings;
 use strict;
+
+package Class::Scaffold::Log;
+our $VERSION = '1.100760';
+# ABSTRACT: Logging utilities
 use Carp;
 use IO::File;
 use Time::HiRes 'gettimeofday';
-our $VERSION = '0.16';
-use base 'Class::Scaffold::Base';
+use parent 'Class::Scaffold::Base';
 __PACKAGE__->mk_singleton(qw(instance))
   ->mk_scalar_accessors(qw(filename max_level))
   ->mk_boolean_accessors(qw(pid timestamp))->mk_concat_accessors(qw(output));
@@ -116,199 +119,88 @@ sub fatal {
     croak($message);
 }
 1;
+
+
 __END__
+=pod
 
 =head1 NAME
 
-Class::Scaffold::Log - large-scale OOP application support
+Class::Scaffold::Log - Logging utilities
 
-=head1 SYNOPSIS
+=head1 VERSION
 
-    Class::Scaffold::Log->new;
+version 1.100760
 
-=head1 DESCRIPTION
+=for stopwords logdate precdate
 
 =head1 METHODS
 
-=over 4
+=head2 debug
 
-=item C<instance>
+FIXME
 
-    my $obj = Class::Scaffold::Log->instance;
-    my $obj = Class::Scaffold::Log->instance(%args);
+=head2 deep_debug
 
-Creates and returns a new object. The object will be a singleton, so repeated
-calls to the constructor will always return the same object. The constructor
-will accept as arguments a list of pairs, from component name to initial
-value. For each pair, the named component is initialized by calling the
-method of the same name with the given value. If called with a single hash
-reference, it is dereferenced and its key/value pairs are set as described
-before.
+FIXME
 
-=item C<clear_filename>
+=head2 fatal
 
-    $obj->clear_filename;
+FIXME
 
-Clears the value.
+=head2 handle
 
-=item C<clear_max_level>
+FIXME
 
-    $obj->clear_max_level;
+=head2 info
 
-Clears the value.
+FIXME
 
-=item C<clear_output>
+=head2 logdate
 
-    $obj->clear_output;
+FIXME
 
-Clears the value.
+=head2 precdate
 
-=item C<clear_pid>
-
-    $obj->clear_pid;
-
-Clears the boolean value by setting it to 0.
-
-=item C<clear_timestamp>
-
-    $obj->clear_timestamp;
-
-Clears the boolean value by setting it to 0.
-
-=item C<filename>
-
-    my $value = $obj->filename;
-    $obj->filename($value);
-
-A basic getter/setter method. If called without an argument, it returns the
-value. If called with a single argument, it sets the value.
-
-=item C<filename_clear>
-
-    $obj->filename_clear;
-
-Clears the value.
-
-=item C<max_level>
-
-    my $value = $obj->max_level;
-    $obj->max_level($value);
-
-A basic getter/setter method. If called without an argument, it returns the
-value. If called with a single argument, it sets the value.
-
-=item C<max_level_clear>
-
-    $obj->max_level_clear;
-
-Clears the value.
-
-=item C<output>
-
-    my $value = $obj->output;
-    $obj->output($value);
-
-A getter/setter method. If called without an argument, it returns the
-value. If called with a single argument, it appends to the current value.
-
-=item C<output_clear>
-
-    $obj->output_clear;
-
-Clears the value.
-
-=item C<pid>
-
-    $obj->pid($value);
-    my $value = $obj->pid;
-
-If called without an argument, returns the boolean value (0 or 1). If called
-with an argument, it normalizes it to the boolean value. That is, the values
-0, undef and the empty string become 0; everything else becomes 1.
-
-=item C<pid_clear>
-
-    $obj->pid_clear;
-
-Clears the boolean value by setting it to 0.
-
-=item C<pid_set>
-
-    $obj->pid_set;
-
-Sets the boolean value to 1.
-
-=item C<set_pid>
-
-    $obj->set_pid;
-
-Sets the boolean value to 1.
-
-=item C<set_timestamp>
-
-    $obj->set_timestamp;
-
-Sets the boolean value to 1.
-
-=item C<timestamp>
-
-    $obj->timestamp($value);
-    my $value = $obj->timestamp;
-
-If called without an argument, returns the boolean value (0 or 1). If called
-with an argument, it normalizes it to the boolean value. That is, the values
-0, undef and the empty string become 0; everything else becomes 1.
-
-=item C<timestamp_clear>
-
-    $obj->timestamp_clear;
-
-Clears the boolean value by setting it to 0.
-
-=item C<timestamp_set>
-
-    $obj->timestamp_set;
-
-Sets the boolean value to 1.
-
-=back
-
-=head1 BUGS AND LIMITATIONS
-
-No bugs have been reported.
-
-Please report any bugs or feature requests to
-C<<bug-class-scaffold@rt.cpan.org>>, or through the web interface at
-L<http://rt.cpan.org>.
+FIXME
 
 =head1 INSTALLATION
 
 See perlmodinstall for information and options on installing Perl modules.
 
+=head1 BUGS AND LIMITATIONS
+
+No bugs have been reported.
+
+Please report any bugs or feature requests through the web interface at
+L<http://rt.cpan.org/Public/Dist/Display.html?Name=Class-Scaffold>.
+
 =head1 AVAILABILITY
 
 The latest version of this module is available from the Comprehensive Perl
-Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a CPAN
-site near you. Or see <http://www.perl.com/CPAN/authors/id/M/MA/MARCEL/>.
+Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
+site near you, or see
+L<http://search.cpan.org/dist/Class-Scaffold/>.
+
+The development version lives at
+L<http://github.com/hanekomu/Class-Scaffold/>.
+Instead of sending patches, please fork this project using the standard git
+and github infrastructure.
 
 =head1 AUTHORS
 
-Marcel GrE<uuml>nauer, C<< <marcel@cpan.org> >>
-
-Florian Helmberger C<< <fh@univie.ac.at> >>
-
-Achim Adam C<< <ac@univie.ac.at> >>
-
-Mark Hofstetter C<< <mh@univie.ac.at> >>
-
-Heinz Ekker C<< <ek@univie.ac.at> >>
+  Marcel Gruenauer <marcel@cpan.org>
+  Florian Helmberger <fh@univie.ac.at>
+  Achim Adam <ac@univie.ac.at>
+  Mark Hofstetter <mh@univie.ac.at>
+  Heinz Ekker <ek@univie.ac.at>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2004-2009 by Marcel GrE<uuml>nauer
+This software is copyright (c) 2008 by Marcel Gruenauer.
 
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut
 

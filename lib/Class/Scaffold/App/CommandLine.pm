@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 package Class::Scaffold::App::CommandLine;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 # ABSTRACT: Base class for command line-based framework applications
 use Class::Scaffold::Environment;
 use Property::Lookup;
@@ -37,7 +37,7 @@ Class::Scaffold::App::CommandLine - Base class for command line-based framework 
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =head1 INSTALLATION
 

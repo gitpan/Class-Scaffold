@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 package Class::Scaffold::Test::Inherited;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 # ABSTRACT: Base class for tests shared between framework distributions
 use parent 'Class::Scaffold::Base';
 sub INHERITED_TEST_CLASSES { () }
@@ -24,7 +24,7 @@ Class::Scaffold::Test::Inherited - Base class for tests shared between framework
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =head1 METHODS
 

@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 package Class::Scaffold::Accessor;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 # ABSTRACT: Construct framework-specific accessors
 use Error::Hierarchy::Util 'assert_read_only';
 use Class::Scaffold::Factory::Type;
@@ -56,7 +56,7 @@ Class::Scaffold::Accessor - Construct framework-specific accessors
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =head1 METHODS
 

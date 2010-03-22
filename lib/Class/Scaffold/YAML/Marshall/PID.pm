@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 package Class::Scaffold::YAML::Marshall::PID;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 # ABSTRACT: Marshalling plugin to get the current process id
 use YAML::Marshall 'pid';
 use parent 'Class::Scaffold::YAML::Marshall';
@@ -20,7 +20,7 @@ Class::Scaffold::YAML::Marshall::PID - Marshalling plugin to get the current pro
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =head1 METHODS
 

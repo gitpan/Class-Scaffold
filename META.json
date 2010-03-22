@@ -9,7 +9,7 @@
       "version" : 1.4,
       "url" : "http://module-build.sourceforge.net/META-spec-v1.4.html"
    },
-   "version" : "1.100760",
+   "version" : "1.100810",
    "name" : "Class-Scaffold",
    "author" : [
       "Marcel Gruenauer <marcel@cpan.org>",
@@ -22,199 +22,199 @@
    "build_requires" : {},
    "provides" : {
       "Class::Scaffold::Base" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/Base.pm"
       },
       "Class::Scaffold::YAML::Active::Constant" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/YAML/Active/Constant.pm"
       },
       "Class::Scaffold::Test::UtilLoader" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/Test/UtilLoader.pm"
       },
       "Class::Scaffold::YAML::Active::Environment" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/YAML/Active/Environment.pm"
       },
       "Class::Scaffold::Factory::Type" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/Factory/Type.pm"
       },
       "Class::Scaffold::Base_TEST" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/Base_TEST.pm"
       },
       "Class::Scaffold::Factory" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/Factory.pm"
       },
       "Class::Scaffold::YAML::Marshall::Constant" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/YAML/Marshall/Constant.pm"
       },
       "Class::Scaffold::LazyString::Code" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/LazyString.pm"
       },
       "Class::Scaffold::App" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/App.pm"
       },
       "Class::Scaffold::Context" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/Context.pm"
       },
       "Class::Scaffold::Introspect" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/Introspect.pm"
       },
       "Class::Scaffold::YAML::Active::Hash" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/YAML/Active/Hash.pm"
       },
       "Class::Scaffold::Test" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/Test.pm"
       },
       "Class::Scaffold" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold.pm"
       },
       "Class::Scaffold::Exception::Loader" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/Exception/Loader.pm"
       },
       "Class::Scaffold::YAML::Marshall" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/YAML/Marshall.pm"
       },
       "Class::Scaffold::App::CommandLine" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/App/CommandLine.pm"
       },
       "Class::Scaffold::App::Test::YAMLDriven" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/App/Test/YAMLDriven.pm"
       },
       "Class::Scaffold::Storable_TEST::x001" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/Storable_TEST.pm"
       },
       "Class::Scaffold::Log" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/Log.pm"
       },
       "Class::Scaffold::YAML::Marshall::PID" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/YAML/Marshall/PID.pm"
       },
       "Class::Scaffold::Util" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/Util.pm"
       },
       "Class::Scaffold::Storable_TEST" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/Storable_TEST.pm"
       },
       "Class::Scaffold::LazyString" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/LazyString.pm"
       },
       "Class::Scaffold::Exception::Util" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/Exception/Util.pm"
       },
       "Class::Scaffold::App::Test::Class" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/App/Test/Class.pm"
       },
       "Class::Scaffold::Delegate::Mixin" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/Delegate/Mixin.pm"
       },
       "Class::Scaffold::Exception::Container" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/Exception/Container.pm"
       },
       "Class::Scaffold::HierarchicalDirty" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/HierarchicalDirty.pm"
       },
       "Class::Scaffold::Exception::Business" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/Exception/Business.pm"
       },
       "Class::Scaffold::Test::Inherited" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/Test/Inherited.pm"
       },
       "Class::Scaffold::Log_TEST" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/Log_TEST.pm"
       },
       "Class::Scaffold::App::Test::Classes" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/App/Test/Classes.pm"
       },
       "Class::Scaffold::Environment_TEST" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/Environment_TEST.pm"
       },
       "Class::Scaffold::YAML::Active::ExceptionContainer" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/YAML/Active/ExceptionContainer.pm"
       },
       "Class::Scaffold::YAML::Marshall::Concat" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/YAML/Marshall/Concat.pm"
       },
       "Class::Scaffold::YAML::Active::Exception" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/YAML/Active/Exception.pm"
       },
       "Class::Scaffold::Storable" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/Storable.pm"
       },
       "Class::Scaffold::Exception::NoSuchFactoryHandler" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/Exception/NoSuchFactoryHandler.pm"
       },
       "Class::Scaffold::Exception" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/Exception.pm"
       },
       "Class::Scaffold::App::Test" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/App/Test.pm"
       },
       "Class::Scaffold::YAML::Marshall::ExceptionContainer" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/YAML/Marshall/ExceptionContainer.pm"
       },
       "Class::Scaffold::Accessor" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/Accessor.pm"
       },
       "Class::Scaffold::ConstantImporter" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/ConstantImporter.pm"
       },
       "Class::Scaffold::Environment" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/Environment.pm"
       },
       "Class::Scaffold::YAML::Active::Array" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/YAML/Active/Array.pm"
       },
       "Class::Scaffold::BusinessObject" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/BusinessObject.pm"
       },
       "Class::Scaffold::YAML::Active" : {
-         "version" : "1.100760",
+         "version" : "1.100810",
          "file" : "lib/Class/Scaffold/YAML/Active.pm"
       }
    },
@@ -228,6 +228,7 @@
       "List::Util" : "0",
       "Class::Accessor::Constructor" : "0",
       "Test::Builder" : "0",
+      "Data::Storage" : "0",
       "Error::Hierarchy" : "0",
       "Data::Inherited" : "0",
       "YAML::Active" : "0",

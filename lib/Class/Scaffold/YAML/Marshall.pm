@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 package Class::Scaffold::YAML::Marshall;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 # ABSTRACT: Base class for marshalling plugins to YAML
 
 # So that we get a delegate() method
@@ -19,7 +19,7 @@ Class::Scaffold::YAML::Marshall - Base class for marshalling plugins to YAML
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =head1 INSTALLATION
 

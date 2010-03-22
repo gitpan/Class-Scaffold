@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 package Class::Scaffold::YAML::Active::Array;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 # ABSTRACT: Base class for array-based YAML::Active plugins
 use parent qw(
   Class::Scaffold::Storable
@@ -20,7 +20,7 @@ Class::Scaffold::YAML::Active::Array - Base class for array-based YAML::Active p
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =head1 INSTALLATION
 

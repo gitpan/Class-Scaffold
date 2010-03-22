@@ -3,11 +3,12 @@ use warnings;
 use strict;
 
 package Class::Scaffold::Environment;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 # ABSTRACT: Base class for framework environment classes
 use Error::Hierarchy::Util 'load_class';
 use Class::Scaffold::Factory::Type;
 use Property::Lookup;
+use Data::Storage;   # for AutoPrereq
 use parent 'Class::Scaffold::Base';
 Class::Scaffold::Base->add_autoloaded_package('Class::Scaffold::');
 
@@ -269,7 +270,7 @@ Class::Scaffold::Environment - Base class for framework environment classes
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =head1 METHODS
 

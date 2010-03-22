@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 package Class::Scaffold::Context;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 # ABSTRACT: Holds execution and job context
 use parent 'Class::Scaffold::Base';
 __PACKAGE__->mk_scalar_accessors(qw(execution job));
@@ -42,7 +42,7 @@ Class::Scaffold::Context - Holds execution and job context
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =head1 METHODS
 

@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 package Class::Scaffold::Exception::NoSuchFactoryHandler;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 # ABSTRACT: Exception raised on a factory lookup failure
 use parent 'Class::Scaffold::Exception';
 __PACKAGE__->mk_accessors(qw(handler_type spec));
@@ -33,7 +33,7 @@ Class::Scaffold::Exception::NoSuchFactoryHandler - Exception raised on a factory
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =head1 INSTALLATION
 

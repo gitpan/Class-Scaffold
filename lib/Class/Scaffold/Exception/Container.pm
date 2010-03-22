@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 package Class::Scaffold::Exception::Container;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 
 # ABSTRACT: Implements a container object for exceptions
 
@@ -27,7 +27,7 @@ Class::Scaffold::Exception::Container - Implements a container object for except
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =head1 INSTALLATION
 

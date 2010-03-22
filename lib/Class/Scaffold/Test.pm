@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 package Class::Scaffold::Test;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 # ABSTRACT: Base classes for framework test classes
 use Test::More;
 use Class::Value;    # see run() below
@@ -54,7 +54,7 @@ Class::Scaffold::Test - Base classes for framework test classes
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =head1 METHODS
 

@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 package Class::Scaffold::Introspect;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 # ABSTRACT: Find configuration files within the framework
 use FindBin '$Bin';
 use Cwd;
@@ -70,7 +70,7 @@ Class::Scaffold::Introspect - Find configuration files within the framework
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =head1 METHODS
 

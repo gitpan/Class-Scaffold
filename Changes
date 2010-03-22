@@ -1,5 +1,10 @@
 Revision history for Perl extension Class-Scaffold
 
+1.100810  2010-03-22 20:25:02 Europe/Vienna
+    - R::App::Test::YAMLDriven: should_skip_test() must return a reason
+      (string)
+    - added 'use Data::Storage;' to Class::Scaffold::Environment for AutoPrereq
+
 1.100760  2010-03-17 01:01:18 Europe/Vienna
     - converted distribution to Dist::Zilla-style
 

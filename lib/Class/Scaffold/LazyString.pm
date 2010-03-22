@@ -3,14 +3,14 @@ use warnings;
 use strict;
 
 package Class::Scaffold::LazyString;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 # ABSTRACT: Provides a string that is evaluated lazily
 use Exporter qw(import);
 our @EXPORT  = qw(lazy_string);
 sub lazy_string { bless { code => shift }, 'Class::Scaffold::LazyString::Code' }
 
 package Class::Scaffold::LazyString::Code;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 use overload '""' => sub { $_[0]->{code}->() };
 1;
 
@@ -24,7 +24,7 @@ Class::Scaffold::LazyString - Provides a string that is evaluated lazily
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =head1 METHODS
 

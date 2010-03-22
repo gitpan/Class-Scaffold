@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 package Class::Scaffold::Log;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 # ABSTRACT: Logging utilities
 use Carp;
 use IO::File;
@@ -130,7 +130,7 @@ Class::Scaffold::Log - Logging utilities
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =for stopwords logdate precdate
 

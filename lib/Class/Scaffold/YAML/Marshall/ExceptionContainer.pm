@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 package Class::Scaffold::YAML::Marshall::ExceptionContainer;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 # ABSTRACT: Marshalling plugin that constructs an exception container
 use YAML::Marshall 'exception/container';
 use parent 'Class::Scaffold::YAML::Marshall';
@@ -42,7 +42,7 @@ Class::Scaffold::YAML::Marshall::ExceptionContainer - Marshalling plugin that co
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =head1 METHODS
 

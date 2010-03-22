@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 package Class::Scaffold::App::Test::Classes;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 # ABSTRACT: Base class for companion test classes
 use FindBin '$Bin';
 use Test::More;
@@ -34,7 +34,7 @@ Class::Scaffold::App::Test::Classes - Base class for companion test classes
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =head1 INSTALLATION
 

@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 package Class::Scaffold::HierarchicalDirty;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 
 # ABSTRACT: Mixin that multiplexes the dirty flag among its subobjects
 
@@ -52,7 +52,7 @@ Class::Scaffold::HierarchicalDirty - Mixin that multiplexes the dirty flag among
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =head1 DESCRIPTION
 

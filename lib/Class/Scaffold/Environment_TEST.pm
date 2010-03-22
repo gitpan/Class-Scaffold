@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 package Class::Scaffold::Environment_TEST;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 # ABSTRACT: Companion test class for the framework environment base class
 use Error::Hierarchy::Test 'throws2_ok';
 use Test::More;
@@ -29,7 +29,7 @@ Class::Scaffold::Environment_TEST - Companion test class for the framework envir
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =head1 INSTALLATION
 

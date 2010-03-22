@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 package Class::Scaffold::Test::UtilLoader;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 # ABSTRACT: Load other classes necessary for tests
 use Class::Scaffold::YAML::Marshall::Constant;
 use Class::Scaffold::YAML::Marshall::ExceptionContainer;
@@ -25,7 +25,7 @@ Class::Scaffold::Test::UtilLoader - Load other classes necessary for tests
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =head1 DESCRIPTION
 

@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 package Class::Scaffold::YAML::Marshall::Concat;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 # ABSTRACT: Marshalling plugin to join array elements to a string
 use YAML::Marshall 'concat';
 use parent 'Class::Scaffold::YAML::Marshall';
@@ -25,7 +25,7 @@ Class::Scaffold::YAML::Marshall::Concat - Marshalling plugin to join array eleme
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =head1 METHODS
 

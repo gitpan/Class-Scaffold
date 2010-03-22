@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 package Class::Scaffold::App::Test::Class;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 # ABSTRACT: Base class for Test::Class-based test programs
 use parent qw(Class::Scaffold::App::CommandLine Test::Class::GetoptControl);
 use constant GETOPT => qw(
@@ -28,7 +28,7 @@ Class::Scaffold::App::Test::Class - Base class for Test::Class-based test progra
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =head1 INSTALLATION
 

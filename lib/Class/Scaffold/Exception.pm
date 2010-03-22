@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 package Class::Scaffold::Exception;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 # ABSTRACT: Base class for framework exceptions
 
 # It's ok to inherit from Class::Scaffold::Storable as well; new() will be
@@ -26,7 +26,7 @@ Class::Scaffold::Exception - Base class for framework exceptions
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =head1 INSTALLATION
 

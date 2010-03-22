@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 package Class::Scaffold::YAML::Active::Constant;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 # ABSTRACT: Plugin to get framework environment constants
 use parent 'Class::Scaffold::YAML::Active';
 use YAML::Active qw/assert_hashref hash_activate/;
@@ -27,7 +27,7 @@ Class::Scaffold::YAML::Active::Constant - Plugin to get framework environment co
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =head1 METHODS
 

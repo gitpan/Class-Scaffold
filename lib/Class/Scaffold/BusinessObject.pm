@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 package Class::Scaffold::BusinessObject;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 # ABSTRACT: Base class for framework business objects
 use Error::Hierarchy::Util 'assert_defined';
 use parent qw(
@@ -54,7 +54,7 @@ Class::Scaffold::BusinessObject - Base class for framework business objects
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =head1 METHODS
 

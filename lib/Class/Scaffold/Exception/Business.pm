@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 package Class::Scaffold::Exception::Business;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 
 # ABSTRACT: Differentiate business exceptions from internal exceptions
 use warnings;
@@ -20,7 +20,7 @@ Class::Scaffold::Exception::Business - Differentiate business exceptions from in
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =head1 INSTALLATION
 

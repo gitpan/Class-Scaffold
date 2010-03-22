@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 package Class::Scaffold::YAML::Marshall::Constant;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 # ABSTRACT: Marshalling plugin to get framework environment constants
 use YAML::Marshall 'constant';
 use parent 'Class::Scaffold::YAML::Marshall';
@@ -26,7 +26,7 @@ Class::Scaffold::YAML::Marshall::Constant - Marshalling plugin to get framework 
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =head1 METHODS
 

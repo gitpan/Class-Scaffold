@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 package Class::Scaffold::Storable_TEST;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 # ABSTRACT: Companion test class for the storable base class
 use Error::Hierarchy::Test 'throws2_ok';
 use Test::More;
@@ -23,7 +23,7 @@ sub run {
 }
 
 package Class::Scaffold::Storable_TEST::x001;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 use parent 'Class::Scaffold::Storable';
 1;
 
@@ -36,7 +36,7 @@ Class::Scaffold::Storable_TEST - Companion test class for the storable base clas
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =head1 INSTALLATION
 

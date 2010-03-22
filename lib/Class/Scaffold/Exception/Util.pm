@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 package Class::Scaffold::Exception::Util;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 # ABSTRACT: Helper functions for raising common exceptions
 use Error::Hierarchy::Util 'assert_class';
 use Exporter qw(import);
@@ -32,7 +32,7 @@ Class::Scaffold::Exception::Util - Helper functions for raising common exception
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =head1 METHODS
 

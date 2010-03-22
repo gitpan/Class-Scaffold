@@ -23,7 +23,7 @@ my %WriteMakefileArgs = (
                        'EXE_FILES' => [
                                         'bin/cf_dumpenv'
                                       ],
-                       'VERSION' => '1.100760',
+                       'VERSION' => '1.100810',
                        'PREREQ_PM' => {
                                         'Data::Miscellany' => '0',
                                         'YAML' => '0',
@@ -34,6 +34,7 @@ my %WriteMakefileArgs = (
                                         'List::Util' => '0',
                                         'Class::Accessor::Constructor' => '0',
                                         'Test::Builder' => '0',
+                                        'Data::Storage' => '0',
                                         'Error::Hierarchy' => '0',
                                         'Data::Inherited' => '0',
                                         'YAML::Active' => '0',

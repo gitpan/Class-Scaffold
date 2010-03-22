@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 package Class::Scaffold::Exception::Loader;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 # ABSTRACT: Exception raised when a class cannot be loaded
 use parent qw(Error::Hierarchy::Internal Class::Scaffold::Accessor);
 __PACKAGE__->mk_scalar_accessors(qw(class origin message));
@@ -21,7 +21,7 @@ Class::Scaffold::Exception::Loader - Exception raised when a class cannot be loa
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =head1 METHODS
 

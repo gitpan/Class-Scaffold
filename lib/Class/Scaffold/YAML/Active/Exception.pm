@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 package Class::Scaffold::YAML::Active::Exception;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 # ABSTRACT: Plugin for recording an exception for a test
 use YAML::Active qw/assert_hashref hash_activate/;
 use parent 'Class::Scaffold::YAML::Active';
@@ -29,7 +29,7 @@ Class::Scaffold::YAML::Active::Exception - Plugin for recording an exception for
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =head1 METHODS
 

@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 package Class::Scaffold::Util;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 # ABSTRACT: Exports various useful functions
 use Error::Hierarchy::Util 'assert_hashref';
 use Exporter qw(import);
@@ -93,7 +93,7 @@ Class::Scaffold::Util - Exports various useful functions
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =for stopwords const
 

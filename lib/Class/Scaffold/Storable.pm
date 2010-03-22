@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 package Class::Scaffold::Storable;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 
 # ABSTRACT: Base class for all framework classes that support a storage.
 use parent 'Class::Scaffold::Base';
@@ -114,7 +114,7 @@ Class::Scaffold::Storable - Base class for all framework classes that support a 
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =head1 METHODS
 

@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 package Class::Scaffold::ConstantImporter;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 # ABSTRACT: Import environment constants as simple functions
 use Devel::Caller qw(caller_args);
 
@@ -51,7 +51,7 @@ Class::Scaffold::ConstantImporter - Import environment constants as simple funct
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =head1 INSTALLATION
 

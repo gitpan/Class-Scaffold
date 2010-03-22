@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 package Class::Scaffold;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 # ABSTRACT: Large-scale OOP application support
 
 1;
@@ -18,7 +18,7 @@ Class::Scaffold - Large-scale OOP application support
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =head1 DESCRIPTION
 

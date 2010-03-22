@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 package Class::Scaffold::Delegate::Mixin;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 # ABSTRACT: Mixin that provides access to the framework environment
 
 # Class::Scaffold::Base inherits from this mixin, so we shouldn't use()
@@ -26,7 +26,7 @@ Class::Scaffold::Delegate::Mixin - Mixin that provides access to the framework e
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =head1 METHODS
 

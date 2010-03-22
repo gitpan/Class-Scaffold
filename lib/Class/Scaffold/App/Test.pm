@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 package Class::Scaffold::App::Test;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 # ABSTRACT: Base class for test programs
 use parent 'Class::Scaffold::App::CommandLine';
 
@@ -29,7 +29,7 @@ Class::Scaffold::App::Test - Base class for test programs
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =head1 INSTALLATION
 

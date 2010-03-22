@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 package Class::Scaffold::YAML::Active::ExceptionContainer;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 # ABSTRACT: Plugin that constructs an exception container
 use YAML::Active qw/assert_arrayref array_activate/;
 use parent 'Class::Scaffold::YAML::Active';
@@ -41,7 +41,7 @@ Class::Scaffold::YAML::Active::ExceptionContainer - Plugin that constructs an ex
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =head1 METHODS
 

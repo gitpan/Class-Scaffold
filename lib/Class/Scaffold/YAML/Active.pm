@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 package Class::Scaffold::YAML::Active;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 # ABSTRACT: Base class for YAML::Active plugins
 use parent 'Class::Scaffold::Storable';
 1;
@@ -17,7 +17,7 @@ Class::Scaffold::YAML::Active - Base class for YAML::Active plugins
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =head1 INSTALLATION
 

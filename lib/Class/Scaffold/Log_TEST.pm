@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 package Class::Scaffold::Log_TEST;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 # ABSTRACT: Companion test class for the log class
 use Test::More;
 use parent 'Class::Scaffold::Test';
@@ -52,7 +52,7 @@ Class::Scaffold::Log_TEST - Companion test class for the log class
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =head1 INSTALLATION
 

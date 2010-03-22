@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 package Class::Scaffold::YAML::Active::Environment;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 # ABSTRACT: Plugin for setting environment values
 use Class::Scaffold::Environment;
 use YAML::Active qw/assert_hashref hash_activate yaml_NULL/;
@@ -31,7 +31,7 @@ Class::Scaffold::YAML::Active::Environment - Plugin for setting environment valu
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =head1 METHODS
 

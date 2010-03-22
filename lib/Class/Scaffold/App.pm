@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 package Class::Scaffold::App;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 # ABSTRACT: Base class for framework applications
 use Class::Scaffold::Environment;
 use Property::Lookup;
@@ -96,7 +96,7 @@ Class::Scaffold::App - Base class for framework applications
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =head1 SYNOPSIS
 

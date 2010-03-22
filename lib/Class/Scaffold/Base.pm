@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 package Class::Scaffold::Base;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 
 # ABSTRACT: Base class for all classes of the class framework.
 use Data::Miscellany 'set_push';
@@ -119,7 +119,7 @@ Class::Scaffold::Base - Base class for all classes of the class framework.
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =head1 DESCRIPTION
 

@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 package Class::Scaffold::Factory;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 # ABSTRACT: Base class for framework factories
 use Error;    # to get $Error::Depth;
 use Error::Hierarchy::Util qw/assert_defined load_class/;
@@ -62,7 +62,7 @@ Class::Scaffold::Factory - Base class for framework factories
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =head1 METHODS
 

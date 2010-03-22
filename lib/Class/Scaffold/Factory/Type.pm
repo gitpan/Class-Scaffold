@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 package Class::Scaffold::Factory::Type;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 # ABSTRACT: Factory for framework object types
 use parent 'Class::Factory::Enhanced';
 
@@ -51,7 +51,7 @@ Class::Scaffold::Factory::Type - Factory for framework object types
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =head1 METHODS
 

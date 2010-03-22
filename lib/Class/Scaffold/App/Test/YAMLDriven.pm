@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 package Class::Scaffold::App::Test::YAMLDriven;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 # ABSTRACT: Base class for YAML-driven test programs
 use Class::Scaffold::App;
 use Error::Hierarchy::Util 'assert_defined';
@@ -146,7 +146,8 @@ sub ordered_test_def_keys {
 
 sub should_skip_testname {
     my ($self, $testname) = @_;
-    $self->test_def($testname)->{skip};
+    return 'wants to be skipped' if $self->test_def($testname)->{skip};
+    return undef;
 }
 
 sub make_plan {
@@ -173,8 +174,8 @@ sub execute_test_def {
 
         # If the current test def specifies that it wants to be skipped, just
         # pass.
-        if ($self->should_skip_testname($testname)) {
-            $self->todo_skip_test;
+        if (my $reason = $self->should_skip_testname($testname)) {
+            $self->todo_skip_test($reason);
         } else {
             $self->run_test;
         }
@@ -195,8 +196,8 @@ sub named_test {
 }
 
 sub todo_skip_test {
-    my $self = shift;
-    Test::Builder->new->todo_skip('wants to be skipped', 1);
+    my ($self, $reason) = @_;
+    Test::Builder->new->todo_skip($reason, 1);
 }
 1;
 
@@ -210,7 +211,7 @@ Class::Scaffold::App::Test::YAMLDriven - Base class for YAML-driven test program
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =head1 METHODS
 

@@ -3,7 +3,7 @@ use warnings;
 use strict;
 
 package Class::Scaffold::Base_TEST;
-our $VERSION = '1.100760';
+our $VERSION = '1.100810';
 # ABSTRACT: Test companion class for the general base class
 use Error::Hierarchy::Test 'throws2_ok';
 use Test::More;
@@ -42,7 +42,7 @@ Class::Scaffold::Base_TEST - Test companion class for the general base class
 
 =head1 VERSION
 
-version 1.100760
+version 1.100810
 
 =head1 METHODS
 

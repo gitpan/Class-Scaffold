@@ -3,7 +3,9 @@ use warnings;
 use strict;
 
 package Class::Scaffold::YAML::Active::Exception;
-our $VERSION = '1.100810';
+BEGIN {
+  $Class::Scaffold::YAML::Active::Exception::VERSION = '1.100980';
+}
 # ABSTRACT: Plugin for recording an exception for a test
 use YAML::Active qw/assert_hashref hash_activate/;
 use parent 'Class::Scaffold::YAML::Active';
@@ -29,7 +31,7 @@ Class::Scaffold::YAML::Active::Exception - Plugin for recording an exception for
 
 =head1 VERSION
 
-version 1.100810
+version 1.100980
 
 =head1 METHODS
 
@@ -54,11 +56,6 @@ The latest version of this module is available from the Comprehensive Perl
 Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
 site near you, or see
 L<http://search.cpan.org/dist/Class-Scaffold/>.
-
-The development version lives at
-L<http://github.com/hanekomu/Class-Scaffold/>.
-Instead of sending patches, please fork this project using the standard git
-and github infrastructure.
 
 =head1 AUTHORS
 

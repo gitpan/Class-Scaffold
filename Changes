@@ -1,5 +1,13 @@
 Revision history for Perl extension Class-Scaffold
 
+1.100980  2010-04-08 16:23:58 Europe/Vienna
+    - use parent instead of use base
+    - Class::Scaffold::App: when specifying multiple configuration files,
+      accept a colon as delimiter as well to make it easier for bash usage.
+    - Class::Scaffold::App: documented initialized()
+    - removed unused variables
+    - POD typo fixes
+
 1.100810  2010-03-22 20:25:02 Europe/Vienna
     - R::App::Test::YAMLDriven: should_skip_test() must return a reason
       (string)

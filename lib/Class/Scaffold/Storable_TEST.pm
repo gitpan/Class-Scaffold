@@ -3,7 +3,9 @@ use warnings;
 use strict;
 
 package Class::Scaffold::Storable_TEST;
-our $VERSION = '1.100810';
+BEGIN {
+  $Class::Scaffold::Storable_TEST::VERSION = '1.100980';
+}
 # ABSTRACT: Companion test class for the storable base class
 use Error::Hierarchy::Test 'throws2_ok';
 use Test::More;
@@ -13,7 +15,7 @@ use constant PLAN => 1;
 sub run {
     my $self = shift;
     $self->SUPER::run(@_);
-    my $obj = $self->make_real_object;
+    $self->make_real_object;
     throws2_ok {
         Class::Scaffold::Storable_TEST::x001->new->storage->prepare('foo');
     }
@@ -23,7 +25,9 @@ sub run {
 }
 
 package Class::Scaffold::Storable_TEST::x001;
-our $VERSION = '1.100810';
+BEGIN {
+  $Class::Scaffold::Storable_TEST::x001::VERSION = '1.100980';
+}
 use parent 'Class::Scaffold::Storable';
 1;
 
@@ -36,7 +40,7 @@ Class::Scaffold::Storable_TEST - Companion test class for the storable base clas
 
 =head1 VERSION
 
-version 1.100810
+version 1.100980
 
 =head1 INSTALLATION
 
@@ -55,11 +59,6 @@ The latest version of this module is available from the Comprehensive Perl
 Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
 site near you, or see
 L<http://search.cpan.org/dist/Class-Scaffold/>.
-
-The development version lives at
-L<http://github.com/hanekomu/Class-Scaffold/>.
-Instead of sending patches, please fork this project using the standard git
-and github infrastructure.
 
 =head1 AUTHORS
 

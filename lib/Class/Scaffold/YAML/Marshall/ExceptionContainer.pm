@@ -3,7 +3,9 @@ use warnings;
 use strict;
 
 package Class::Scaffold::YAML::Marshall::ExceptionContainer;
-our $VERSION = '1.100810';
+BEGIN {
+  $Class::Scaffold::YAML::Marshall::ExceptionContainer::VERSION = '1.100980';
+}
 # ABSTRACT: Marshalling plugin that constructs an exception container
 use YAML::Marshall 'exception/container';
 use parent 'Class::Scaffold::YAML::Marshall';
@@ -42,7 +44,7 @@ Class::Scaffold::YAML::Marshall::ExceptionContainer - Marshalling plugin that co
 
 =head1 VERSION
 
-version 1.100810
+version 1.100980
 
 =head1 METHODS
 
@@ -67,11 +69,6 @@ The latest version of this module is available from the Comprehensive Perl
 Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
 site near you, or see
 L<http://search.cpan.org/dist/Class-Scaffold/>.
-
-The development version lives at
-L<http://github.com/hanekomu/Class-Scaffold/>.
-Instead of sending patches, please fork this project using the standard git
-and github infrastructure.
 
 =head1 AUTHORS
 

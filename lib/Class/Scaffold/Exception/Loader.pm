@@ -3,7 +3,9 @@ use warnings;
 use strict;
 
 package Class::Scaffold::Exception::Loader;
-our $VERSION = '1.100810';
+BEGIN {
+  $Class::Scaffold::Exception::Loader::VERSION = '1.100980';
+}
 # ABSTRACT: Exception raised when a class cannot be loaded
 use parent qw(Error::Hierarchy::Internal Class::Scaffold::Accessor);
 __PACKAGE__->mk_scalar_accessors(qw(class origin message));
@@ -21,7 +23,7 @@ Class::Scaffold::Exception::Loader - Exception raised when a class cannot be loa
 
 =head1 VERSION
 
-version 1.100810
+version 1.100980
 
 =head1 METHODS
 
@@ -46,11 +48,6 @@ The latest version of this module is available from the Comprehensive Perl
 Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
 site near you, or see
 L<http://search.cpan.org/dist/Class-Scaffold/>.
-
-The development version lives at
-L<http://github.com/hanekomu/Class-Scaffold/>.
-Instead of sending patches, please fork this project using the standard git
-and github infrastructure.
 
 =head1 AUTHORS
 

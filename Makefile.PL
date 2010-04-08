@@ -4,7 +4,7 @@ use warnings;
 
  BEGIN { require 5.008; } 
 
-use ExtUtils::MakeMaker 6.11;
+use ExtUtils::MakeMaker 6.31;
 
 
 
@@ -15,15 +15,20 @@ my %WriteMakefileArgs = (
                        'NAME' => 'Class::Scaffold',
                        'DISTNAME' => 'Class-Scaffold',
                        'CONFIGURE_REQUIRES' => {
-                                                 'ExtUtils::MakeMaker' => '6.11'
+                                                 'ExtUtils::MakeMaker' => '6.31'
                                                },
                        'AUTHOR' => 'Marcel Gruenauer <marcel@cpan.org>, Florian Helmberger <fh@univie.ac.at>, Achim Adam <ac@univie.ac.at>, Mark Hofstetter <mh@univie.ac.at>, Heinz Ekker <ek@univie.ac.at>',
-                       'BUILD_REQUIRES' => {},
+                       'BUILD_REQUIRES' => {
+                                             'Test::More' => '0.94',
+                                             'Scalar::Util' => '0',
+                                             'English' => '0',
+                                             'File::Temp' => '0'
+                                           },
                        'ABSTRACT' => 'Large-scale OOP application support',
                        'EXE_FILES' => [
                                         'bin/cf_dumpenv'
                                       ],
-                       'VERSION' => '1.100810',
+                       'VERSION' => '1.100980',
                        'PREREQ_PM' => {
                                         'Data::Miscellany' => '0',
                                         'YAML' => '0',
@@ -44,15 +49,12 @@ my %WriteMakefileArgs = (
                                         'Getopt::Long' => '0',
                                         'Error::Hierarchy::Container' => '0',
                                         'parent' => '0',
-                                        'English' => '0',
                                         'IO::File' => '0',
                                         'overload' => '0',
                                         'Error::Hierarchy::Mixin' => '0',
-                                        'Test::More' => '0.88',
-                                        'File::Temp' => '0',
+                                        'Test::More' => '0',
                                         'YAML::Active::Plugin::Array' => '0',
                                         'Class::Accessor::FactoryTyped' => '0',
-                                        'Scalar::Util' => '0',
                                         'FindBin' => '0',
                                         'Error::Hierarchy::Util' => '0',
                                         'IO::Handle' => '0',
@@ -73,15 +75,18 @@ my %WriteMakefileArgs = (
                                         'Error::Hierarchy::Internal' => '0',
                                         'Data::Comparable' => '0',
                                         'UNIVERSAL::require' => '0',
-                                        'Cwd' => '0',
-                                        'Sys::Hostname' => '0'
+                                        'Sys::Hostname' => '0',
+                                        'Cwd' => '0'
                                       },
                        'LICENSE' => 'perl'
                      );
 
 
-delete $WriteMakefileArgs{LICENSE}
-  unless eval { ExtUtils::MakeMaker->VERSION(6.31) };
+delete $WriteMakefileArgs{BUILD_REQUIRES}
+  unless eval { ExtUtils::MakeMaker->VERSION(6.56) };
+
+delete $WriteMakefileArgs{CONFIGURE_REQUIRES}
+  unless eval { ExtUtils::MakeMaker->VERSION(6.52) };
 
 WriteMakefile(%WriteMakefileArgs);
 

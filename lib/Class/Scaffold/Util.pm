@@ -3,7 +3,9 @@ use warnings;
 use strict;
 
 package Class::Scaffold::Util;
-our $VERSION = '1.100810';
+BEGIN {
+  $Class::Scaffold::Util::VERSION = '1.100980';
+}
 # ABSTRACT: Exports various useful functions
 use Error::Hierarchy::Util 'assert_hashref';
 use Exporter qw(import);
@@ -87,15 +89,15 @@ sub const ($@) {
 __END__
 =pod
 
+=for stopwords const
+
 =head1 NAME
 
 Class::Scaffold::Util - Exports various useful functions
 
 =head1 VERSION
 
-version 1.100810
-
-=for stopwords const
+version 1.100980
 
 =head1 METHODS
 
@@ -124,11 +126,6 @@ The latest version of this module is available from the Comprehensive Perl
 Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
 site near you, or see
 L<http://search.cpan.org/dist/Class-Scaffold/>.
-
-The development version lives at
-L<http://github.com/hanekomu/Class-Scaffold/>.
-Instead of sending patches, please fork this project using the standard git
-and github infrastructure.
 
 =head1 AUTHORS
 

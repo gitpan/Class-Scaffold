@@ -8,7 +8,7 @@ use strict;
 use Test::More tests => 5;
 
 
-use base 'Class::Scaffold::App::Test';
+use parent 'Class::Scaffold::App::Test';
 
 
 sub app_init {

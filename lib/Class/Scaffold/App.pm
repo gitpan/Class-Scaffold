@@ -3,7 +3,9 @@ use warnings;
 use strict;
 
 package Class::Scaffold::App;
-our $VERSION = '1.100810';
+BEGIN {
+  $Class::Scaffold::App::VERSION = '1.100980';
+}
 # ABSTRACT: Base class for framework applications
 use Class::Scaffold::Environment;
 use Property::Lookup;
@@ -18,12 +20,7 @@ use constant CONTEXT => 'generic/generic';
 sub app_init {
     my $self = shift;
 
-    # Normally, app_init() is called only once (namely, when the program
-    # subclasses this class and does 'main->new->run_app'). However, if used
-    # from within mod_perl (for example), the app is a cached object and
-    # run_app() is called repeatedly from the outside. In this case,
-    # app_init() should be called only once. We do this with initialized().
-    return if $self->initialized;
+    return if $self->initialized;  # See POD
     $self->initialized(1);
     my $configurator = Property::Lookup->instance;
 
@@ -33,7 +30,7 @@ sub app_init {
     # special string "local" is given, we try to find the conf file.
     # Otherwise use the one given in an environment variable.
     my $conf_file_spec = $configurator->conf || $ENV{CF_CONF} || '';
-    for my $conf_file (split ';', $conf_file_spec) {
+    for my $conf_file (split /[:;]/, $conf_file_spec) {
         if ($conf_file eq 'local') {
 
             # only load if needed
@@ -96,7 +93,7 @@ Class::Scaffold::App - Base class for framework applications
 
 =head1 VERSION
 
-version 1.100810
+version 1.100980
 
 =head1 SYNOPSIS
 
@@ -140,6 +137,51 @@ do the actual application-specific work.
 Called by C<run_app()> right before the end. Override this method to do any
 cleanup your application needs.
 
+=head2 initialized
+
+Normally, C<app_init()> is called only once, namely, when the program
+subclasses this class and does C<< main->new->run_app >>. However, if used
+from within mod_perl, for example, the application is a cached object and
+C<run_app()> is called repeatedly from the outside. In this case,
+C<app_init()> should be called only once. We do this with the boolean flag
+C<initialized()>.
+
+If called without an argument, returns the boolean value (0 or 1). If called
+with an argument, it normalizes it to the boolean value. That is, the values
+0, undef and the empty string become 0; everything else becomes 1.
+
+Examples:
+
+  $obj->initialized($value);
+
+  my $value = $obj->initialized;
+
+There are also the following helper methods for this accessor:
+
+=over 4
+
+=item C<set_initialized>
+
+=item C<initialized_set>
+
+Sets the boolean value to 1.
+
+Example:
+
+  $obj->set_initialized;
+
+=item C<clear_initialized>
+
+=item C<initialized_clear>
+
+Clears the boolean value by setting it to 0.
+
+Example:
+
+  $obj->clear_initialized;
+
+=back
+
 =head1 INSTALLATION
 
 See perlmodinstall for information and options on installing Perl modules.
@@ -157,11 +199,6 @@ The latest version of this module is available from the Comprehensive Perl
 Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
 site near you, or see
 L<http://search.cpan.org/dist/Class-Scaffold/>.
-
-The development version lives at
-L<http://github.com/hanekomu/Class-Scaffold/>.
-Instead of sending patches, please fork this project using the standard git
-and github infrastructure.
 
 =head1 AUTHORS
 

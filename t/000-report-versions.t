@@ -406,6 +406,7 @@ BEGIN {
     my %skip = map { $_ => 1 } qw(
       App::FatPacker
       Class::Accessor::Classy
+      Devel::Cover
       Module::Install
       Moose::Role
       Test::YAML::Meta

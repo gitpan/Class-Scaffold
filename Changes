@@ -1,5 +1,10 @@
 Revision history for Perl extension Class-Scaffold
 
+1.101400  2010-05-20 14:34:51 Europe/Vienna
+    - C::S::App: store the conf_file_spec in the default configuration layer
+      for reference
+    - C::S::Environment: forward get_config() onto the configurator
+
 1.100980  2010-04-08 16:23:58 Europe/Vienna
     - use parent instead of use base
     - Class::Scaffold::App: when specifying multiple configuration files,

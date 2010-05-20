@@ -4,7 +4,7 @@ use strict;
 
 package Class::Scaffold::Factory;
 BEGIN {
-  $Class::Scaffold::Factory::VERSION = '1.100980';
+  $Class::Scaffold::Factory::VERSION = '1.101400';
 }
 # ABSTRACT: Base class for framework factories
 use Error;    # to get $Error::Depth;
@@ -64,7 +64,7 @@ Class::Scaffold::Factory - Base class for framework factories
 
 =head1 VERSION
 
-version 1.100980
+version 1.101400
 
 =head1 METHODS
 
@@ -97,6 +97,11 @@ The latest version of this module is available from the Comprehensive Perl
 Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
 site near you, or see
 L<http://search.cpan.org/dist/Class-Scaffold/>.
+
+The development version lives at
+L<http://github.com/hanekomu/Class-Scaffold/>.
+Instead of sending patches, please fork this project using the standard git
+and github infrastructure.
 
 =head1 AUTHORS
 

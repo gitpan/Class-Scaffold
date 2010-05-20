@@ -28,7 +28,7 @@ my %WriteMakefileArgs = (
                        'EXE_FILES' => [
                                         'bin/cf_dumpenv'
                                       ],
-                       'VERSION' => '1.100980',
+                       'VERSION' => '1.101400',
                        'PREREQ_PM' => {
                                         'Data::Miscellany' => '0',
                                         'YAML' => '0',

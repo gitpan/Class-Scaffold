@@ -2,7 +2,7 @@ NAME
     Class::Scaffold - Large-scale OOP application support
 
 VERSION
-    version 1.100980
+    version 1.101400
 
 DESCRIPTION
     This is a marker package so distributions that are based on
@@ -23,6 +23,11 @@ AVAILABILITY
     Perl Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a
     CPAN site near you, or see
     <http://search.cpan.org/dist/Class-Scaffold/>.
+
+    The development version lives at
+    <http://github.com/hanekomu/Class-Scaffold/>. Instead of sending
+    patches, please fork this project using the standard git and github
+    infrastructure.
 
 AUTHORS
       Marcel Gruenauer <marcel@cpan.org>

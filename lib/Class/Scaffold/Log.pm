@@ -4,7 +4,7 @@ use strict;
 
 package Class::Scaffold::Log;
 BEGIN {
-  $Class::Scaffold::Log::VERSION = '1.100980';
+  $Class::Scaffold::Log::VERSION = '1.101400';
 }
 # ABSTRACT: Logging utilities
 use Carp;
@@ -134,7 +134,7 @@ Class::Scaffold::Log - Logging utilities
 
 =head1 VERSION
 
-version 1.100980
+version 1.101400
 
 =head1 METHODS
 
@@ -183,6 +183,11 @@ The latest version of this module is available from the Comprehensive Perl
 Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
 site near you, or see
 L<http://search.cpan.org/dist/Class-Scaffold/>.
+
+The development version lives at
+L<http://github.com/hanekomu/Class-Scaffold/>.
+Instead of sending patches, please fork this project using the standard git
+and github infrastructure.
 
 =head1 AUTHORS
 

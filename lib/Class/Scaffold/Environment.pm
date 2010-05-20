@@ -4,13 +4,14 @@ use strict;
 
 package Class::Scaffold::Environment;
 BEGIN {
-  $Class::Scaffold::Environment::VERSION = '1.100980';
+  $Class::Scaffold::Environment::VERSION = '1.101400';
 }
+
 # ABSTRACT: Base class for framework environment classes
 use Error::Hierarchy::Util 'load_class';
 use Class::Scaffold::Factory::Type;
 use Property::Lookup;
-use Data::Storage;   # for AutoPrereq
+use Data::Storage;    # for AutoPrereq
 use parent 'Class::Scaffold::Base';
 Class::Scaffold::Base->add_autoloaded_package('Class::Scaffold::');
 
@@ -20,9 +21,15 @@ __PACKAGE__->mk_scalar_accessors(qw(test_mode context))
   ->mk_class_hash_accessors(qw(storage_cache multiplex_transaction_omit))
   ->mk_object_accessors(
     'Property::Lookup' => {
-        slot => 'configurator',
-        comp_mthds =>
-          [ qw(core_storage_name core_storage_args memory_storage_name) ]
+        slot       => 'configurator',
+        comp_mthds => [
+            qw(
+              get_config
+              core_storage_name
+              core_storage_args
+              memory_storage_name
+              )
+        ]
     },
   );
 use constant DEFAULTS =>
@@ -271,7 +278,7 @@ Class::Scaffold::Environment - Base class for framework environment classes
 
 =head1 VERSION
 
-version 1.100980
+version 1.101400
 
 =head1 METHODS
 
@@ -380,6 +387,11 @@ The latest version of this module is available from the Comprehensive Perl
 Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
 site near you, or see
 L<http://search.cpan.org/dist/Class-Scaffold/>.
+
+The development version lives at
+L<http://github.com/hanekomu/Class-Scaffold/>.
+Instead of sending patches, please fork this project using the standard git
+and github infrastructure.
 
 =head1 AUTHORS
 

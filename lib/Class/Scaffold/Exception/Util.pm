@@ -4,7 +4,7 @@ use strict;
 
 package Class::Scaffold::Exception::Util;
 BEGIN {
-  $Class::Scaffold::Exception::Util::VERSION = '1.101400';
+  $Class::Scaffold::Exception::Util::VERSION = '1.102280';
 }
 # ABSTRACT: Helper functions for raising common exceptions
 use Error::Hierarchy::Util 'assert_class';
@@ -34,7 +34,7 @@ Class::Scaffold::Exception::Util - Helper functions for raising common exception
 
 =head1 VERSION
 
-version 1.101400
+version 1.102280
 
 =head1 METHODS
 
@@ -51,7 +51,7 @@ See perlmodinstall for information and options on installing Perl modules.
 No bugs have been reported.
 
 Please report any bugs or feature requests through the web interface at
-L<http://rt.cpan.org/Public/Dist/Display.html?Name=Class-Scaffold>.
+L<http://rt.cpan.org>.
 
 =head1 AVAILABILITY
 
@@ -67,11 +67,29 @@ and github infrastructure.
 
 =head1 AUTHORS
 
-  Marcel Gruenauer <marcel@cpan.org>
-  Florian Helmberger <fh@univie.ac.at>
-  Achim Adam <ac@univie.ac.at>
-  Mark Hofstetter <mh@univie.ac.at>
-  Heinz Ekker <ek@univie.ac.at>
+=over 4
+
+=item *
+
+Marcel Gruenauer <marcel@cpan.org>
+
+=item *
+
+Florian Helmberger <fh@univie.ac.at>
+
+=item *
+
+Achim Adam <ac@univie.ac.at>
+
+=item *
+
+Mark Hofstetter <mh@univie.ac.at>
+
+=item *
+
+Heinz Ekker <ek@univie.ac.at>
+
+=back
 
 =head1 COPYRIGHT AND LICENSE
 

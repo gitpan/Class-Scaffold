@@ -8,7 +8,6 @@ META.yml
 Makefile.PL
 README
 bin/cf_dumpenv
-dist.ini
 etc/SMOKEconf.yaml
 lib/Class/Scaffold.pm
 lib/Class/Scaffold/Accessor.pm
@@ -69,6 +68,7 @@ t/release-distmeta.t
 t/release-has-version.t
 t/release-kwalitee.t
 t/release-minimum-version.t
+t/release-no-tabs.t
 t/release-pod-coverage.t
 t/release-pod-spell.t
 t/release-pod-syntax.t

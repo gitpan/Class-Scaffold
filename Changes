@@ -1,5 +1,9 @@
 Revision history for Perl extension Class-Scaffold
 
+1.102280  2010-08-16 18:47:17 Europe/Vienna
+    - Class::Scaffold::App->run_app(): catching an error activates rollback
+      mode
+
 1.101400  2010-05-20 14:34:51 Europe/Vienna
     - C::S::App: store the conf_file_spec in the default configuration layer
       for reference
